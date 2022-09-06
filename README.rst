@@ -1,9 +1,16 @@
-Template for the Read the Docs tutorial
+Layover Connections General Read Me Document
 =======================================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+We should format the read-me document to be pretty standard for Github open source projects outlining the purpose of the app.
 
+=======================================
+
+
+
+
+
+
+========================================
 Read the tutorial here:
 
 https://docs.readthedocs.io/en/stable/tutorial/
