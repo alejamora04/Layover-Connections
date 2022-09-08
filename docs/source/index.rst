@@ -1,19 +1,31 @@
-Welcome to Lumache's documentation!
+Welcome to Layover Connection's documentation!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+Major Steps
+**TODO** 
+1. Build an App interface where solo travelers can sign up and check in to the O'hare Airport
+TO Build
+Backend:
+Front End
+2. Give users a simple option and scroll menu to announce how long they have to spend in the city.
+TO Build
+Backend:
+Front End
+3. Have the app display how many users are in the airport at the same time
+TO Build
+Backend:
+Front End
+4. Give any of the users the option to quickly post what they want to do in the city: ie check out a place to eat hit up a bar etc.
+TO Build
+Backend:
+Front End
 
-Lumache has its documentation hosted on read the docs.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
-
 .. note::
 
-   This project is under active development.
+This project is under active development.
 
 Contents
 --------
@@ -22,3 +34,6 @@ Contents
 
    usage
    api
+
+Layover Connections has its documentation hosted on read the docs.
+Website at: 

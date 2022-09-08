@@ -6,11 +6,12 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+#TODO 
+Add Usage instructions
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   (.venv) $ pip install layover_connections
 
 Creating recipes
 ----------------
