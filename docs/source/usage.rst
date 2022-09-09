@@ -13,7 +13,7 @@ Add Usage instructions
 
    (.venv) $ pip install layover_connections
 
-Creating recipes
+Stuff to code in Python
 ----------------
 
 To retrieve a list of random ingredients,
