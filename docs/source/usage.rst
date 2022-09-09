@@ -16,8 +16,8 @@ Add Usage instructions
 Stuff to code in Python
 ----------------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+Sample of how to use a specific Python Function
+you can use the ``layover_connection()'' function via:
 
 .. autofunction:: lumache.get_random_ingredients
 
