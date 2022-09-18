@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+{% load static %}
 
-<!-- An Index Page that acts as the sign up form-->
+<!DOCTYPE html>
+<!-- An HTML page that acts as the sign-in form-->
 <html lang="en">
     <head>
         <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -13,7 +14,7 @@
             <script
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
             </script>
-        <link href="styles.css" rel="stylesheet">
+        <link href="{% static 'registration/styles.css' %}" rel="stylesheet">
         <title>
             Layover Connections
         </title>
@@ -42,7 +43,9 @@
   
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form>
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p}}
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
