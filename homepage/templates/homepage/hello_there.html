@@ -4,7 +4,20 @@
         <meta charset="utf-8"/>
         <title>Hello, Django</title>
     </head>
+
     <body>
-        <strong>Hello there, {{ name }}! It's {{ date | date:"l, d F, Y" }} at {{ date | time:"H:i:S"}}
+        <strong>Hello there, {{ name }}!</strong> It's {{ date | date:"l, d F, Y" }} at {{ date | time:"H:i:S"}}
+            <div>
+                <h1>
+                  Layover Connections <br />
+                  <span>A Social Travel Hub.</span>
+                </h1>
+                <p>
+                  Welcome to Layover Connections the app where solo travelers can meetup and 
+                  spend time together to share stories and create new experiences. Sign up 
+                  to meet other travelers in the area and connect. Whether it's a quick 
+                  drink or some fun in the city we've got you covered.
+                </p>
+            </div>
     </body>
 </html>
