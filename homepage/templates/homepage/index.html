@@ -30,7 +30,6 @@
   <body>
 
     <header>
-
       <!-- Upper Navbar linkin to important pages-->
       <div class="navbar navbar-dark box-shadow" style="background-color: hsl(218, 41%, 15%);">
         <div class="container d-flex justify-content-between">
@@ -45,19 +44,20 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <!-- Collapsable menu-->
+      <!-- Collapsable Navbar menu-->
             <div class="collapse" id="navbarHeader">
               <div class="container">
                 <div class="row">
                   <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white"> Main Menu </h4>
+                    <h4 class="text-white"> Menu </h4>
                     <p class="text-muted">
-                    Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                    Upcoming Events [Django placeholder Populate quick info of upcoming events].</p>
                   </div>
                   <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
                       <li><a href="#" class="text-white">View Messages</a></li>
+                      <li><a href="#" class="text-white">Check into the airport</a></li>
                       <li><a href="#" class="text-white">Edit Profile</a></li>
                       <li><a href="#" class="text-white">Create a New Event</a></li>
                     </ul>
@@ -67,17 +67,6 @@
             </div>
         </div>
       </div>
-
-      <!-- Deafult Bootstrap Collapsable Button Formatting
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-bs-target
-      </button>
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-        </div>
-      </div>
-      -->
     </header>
 
     <main role="main">
@@ -85,13 +74,13 @@
       <section class="jumbotron text-center" style="background-image: url('{% static '/images/jeshoots-com-mSESwdMZr-A-unsplash.jpg' %}')">
         <div class="container">
           <h1 class="jumbotron-heading">Welcome to the travel hub</h1>
-          <p class="lead text-muted">Welcome to the travel hub.
+          <p class="lead text-muted">What's happening around the airport.
             <li>Start a new get together.</li>
             <li>See available groups.</li>
             <li>Meet other Travelers.</li>
           </p>
           <p>
-            <a href="#" class="btn btn-primary my-2">View Events</a>
+            <a href="#" class="btn btn-primary my-2 text-white"> View Events</a>
             <a href="#" class="btn btn-secondary my-2">Create a Event</a>
           </p>
         </div>
