@@ -48,7 +48,11 @@
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>Album</strong>
+            <strong>Profile Page</strong>
+          </a>
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>Messages</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,14 +62,14 @@
     </header>
 
     <main role="main">
-    <section class="background-radial-gradient overflow-hidden">
-      <section class="jumbotron text-center">
+      <!-- Main Page welcome banner-->
+      <section class="jumbotron text-center" style="background-image: url('{% static '/images/jeshoots-com-mSESwdMZr-A-unsplash.jpg' %}')">
         <div class="container">
           <h1 class="jumbotron-heading">Welcome to the travel hub</h1>
           <p class="lead text-muted">Welcome to the travel hub.
-            <li>click here to start a new get together.</li>
-            <li>click here to see available groups</li>
-            <li>click here to edit your profile</li>
+            <li>Start a new get together.</li>
+            <li>See available groups.</li>
+            <li>Meet other Travelers.</li>
           </p>
           <p>
             <a href="#" class="btn btn-primary my-2">View Events</a>
@@ -80,7 +84,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Restuarants">
                 <div class="card-body">
                   <p class="card-text"> Grab some food around the city.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -88,14 +92,14 @@
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted">Django TODO list # of events </small>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Nightlife">
                 <div class="card-body">
                   <p class="card-text">Take in the nightlife</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -110,7 +114,7 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(218, 31%, 25%, 0.644); height:200px;" alt="Drinks">
                 <div class="card-body">
                   <p class="card-text">Grab a quick drink at the bar.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -126,7 +130,7 @@
 
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Events">
                 <div class="card-body">
                   <p class="card-text"> Enjoy a day on the town.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -141,7 +145,7 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Connect with Residents">
                 <div class="card-body">
                   <p class="card-text">Meetup with some of the locals.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -156,7 +160,7 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Current Events">
                 <div class="card-body">
                   <p class="card-text">See some of the current events in town.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -172,7 +176,22 @@
 
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Nightlife">
+                <div class="card-body">
+                  <p class="card-text"> Real time Update test</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Nightlife">
                 <div class="card-body">
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -187,22 +206,7 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <img class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Nightlife">
                 <div class="card-body">
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -226,8 +230,8 @@
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p>Layover Connections is still in Beta while we test out some features in Chicago.</p>
+        <p>Have any suggestions for ways we can improve? <a href="../../">E-mail Us</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
       </div>
     </footer>
 
