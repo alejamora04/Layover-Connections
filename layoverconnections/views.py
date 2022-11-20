@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.utils.timezone import datetime
 
 # Create the formatting for the home page here.
 def index(request):
@@ -17,6 +16,5 @@ def user_profile(request, name):
         'layoverconnections/user_profile.html',
         {
             'name': name,
-            'date': datetime.now()
         }
     ) 
