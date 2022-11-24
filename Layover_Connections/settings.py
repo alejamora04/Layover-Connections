@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'layoverconnections',
+    'crispy_forms',
     'django_rename_app',
     'django.contrib.admin',
     'django.contrib.auth',
