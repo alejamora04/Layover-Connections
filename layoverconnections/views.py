@@ -9,7 +9,7 @@ def index(request):
 def login(request):
     return render(request, 'layoverconnections/login.html')
 
-# URL routing to a name 
+# Routing to a user profile. 
 def user_profile(request, name):
     return render(
         request,
