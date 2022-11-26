@@ -2,10 +2,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-# ^ check to see if auth.forms and aut.models must be added to project settings.py
 
 # Create your forms here.
-
+# User Registration forms
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
 
