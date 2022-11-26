@@ -48,15 +48,7 @@
                 <!-- Register buttons -->
                 <div class="text-center">
                     <p>or sign up with:</p>
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-facebook-f"></i>
-                    </button>
-    
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-google"></i>
-                    </button>
-
-                    <!-- Google Sign-on Prompt Test on Django Server App-->
+                    <!-- Google Sign-on Prompt consider Django Server app recommendations-->
                     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                     <script>
                       function onSignIn(googleUser) {
@@ -74,17 +66,8 @@
                         console.log("ID Token: " + id_token);
                       }
                     </script>
-
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-twitter"></i>
-                    </button>
-    
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="fab fa-github"></i>
-                    </button>
-
                     <!-- Checkbox -->
-                    <div class="form-check d-flex justify-content-center mb-4">
+                    <div class="form-check d-flex justify-content-center  mt-4 mb-4">
                         <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" unchecked />
                         <label class="form-check-label" for="form2Example33">
                           Subscribe for updates to our app.
