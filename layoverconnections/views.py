@@ -5,14 +5,13 @@ from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 
-# Create the formatting for the home page here.
+# Configure formatting for the home page here.
 def index(request):
 	if not request.user.is_authenticated:
-		return HttpResponseRedirect("layoverconnections/login.html")
+		return redirect(reverse("layoverconnections:login"))
 	return render(request, 'layoverconnections/index.html')
 
 # Server side new user registration validation
-# consider changing layoverconnections/register on urls.py
 def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST) 
@@ -20,7 +19,7 @@ def register_request(request):
 			user = form.save()
 			login(request, user)
 			messages.success(request, "Registration successful." )
-			return redirect("layoverconnections:login.html")
+			return redirect("layoverconnections:login")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="layoverconnections/register.html", context={"register_form":form})
@@ -49,3 +48,7 @@ def user_profile(request, name):
             'name': name,
         }
     ) 
+
+# Configure Requests for the homepage http request
+def homepage(request):
+	return render(request, 'layoverconnections/homepage.html')

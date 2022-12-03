@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}         
 
 <!--Registration form--> 
-<div class="container py-5">
+
 	<h1>Register</h1>
 	<form method="POST">
 		{% csrf_token %}
@@ -17,6 +17,5 @@
 	<a class="btn btn-primary btn-block mb-4" href="{% url 'layoverconnections:login' %}" role="button">
 		<strong>Sign In</strong>
 	</a>
-</div>
 
 {% endblock %}
