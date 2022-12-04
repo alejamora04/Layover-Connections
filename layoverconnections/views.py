@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
-# Configure formatting for the home page here. return render(request, 'layoverconnections/index.html')
+# Formatting for the splash page portal. return render(request, 'layoverconnections/index.html')
 def index(request):
 	if not request.user.is_authenticated:
 		return redirect(reverse("layoverconnections:login"))
@@ -25,7 +25,8 @@ def register_request(request):
 	form = NewUserForm()
 	return render (request=request, template_name="layoverconnections/register.html", context={"register_form":form})
 
-# Set up the formatting for the welcome page. email = request.POST["email"]
+# Formatting for the Login page. 
+# TODO change username field to email- register form email = request.POST["email"]
 def login_view(request):
 	if request.method == "POST":
 		username = request.POST["username"]
@@ -39,6 +40,11 @@ def login_view(request):
 				"message": "Invalid Credentials."
 			})
 	return render(request, 'layoverconnections/login.html')
+
+def logout_request(request):
+	logout(request)
+	messages.info(request, "You have successfully logged out.") 
+	return redirect("layoverconnections:index")
 
 # Routing to a user profile. 
 def user_profile(request, name):

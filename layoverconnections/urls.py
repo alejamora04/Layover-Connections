@@ -11,5 +11,6 @@ urlpatterns = [
     path("layoverconnections", views.homepage, name="homepage"),
     path("layoverconnections/register", views.register_request, name="register"),
     path("layoverconnections/login.html", views.login_view, name="login"),
+    path("logout", views.logout_request, name="logout"),
     path("layoverconnections/<str:name>", views.user_profile, name="profile"),
 ]
