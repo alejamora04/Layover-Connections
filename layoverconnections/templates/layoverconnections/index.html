@@ -7,15 +7,16 @@
 <!--Registration form--> 
 
 	<h1>Register</h1>
+	<p>Create a profile to Connect with other travelers</p>
 	<form method="POST">
 		{% csrf_token %}
 		{{ register_form|crispy }}                    
-		<button class="btn btn-primary btn-block mb-4" type="submit"><strong>Register</strong></button>
+		<button class="btn btn-primary btn-block mb-4" type="submit"><strong>Sign-up</strong></button>
 	</form>
 	<!-- Sign In Redirect-->
 	<p>If you already have an account login instead.</p>
 	<a class="btn btn-primary btn-block mb-4" href="{% url 'layoverconnections:login' %}" role="button">
-		<strong>Sign In</strong>
+		<strong>Login</strong>
 	</a>
 
 {% endblock %}

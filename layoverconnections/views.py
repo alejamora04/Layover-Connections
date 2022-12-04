@@ -6,11 +6,11 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
-# Configure formatting for the home page here.
+# Configure formatting for the home page here. return render(request, 'layoverconnections/index.html')
 def index(request):
 	if not request.user.is_authenticated:
 		return redirect(reverse("layoverconnections:login"))
-	return render(request, 'layoverconnections/index.html')
+	return render(request, 'layoverconnections/homepage.html')
 
 # Server side new user registration validation
 def register_request(request):

@@ -54,12 +54,16 @@
                     Upcoming Events [Django placeholder Populate quick info of upcoming events].</p>
                   </div>
                   <div class="col-sm-4 offset-md-1 py-4">
-                    <h4 class="text-white">Contact</h4>
+                    <h4 class="text-white">Welcome, {{user.username}}</h4>
                     <ul class="list-unstyled">
-                      <li><a href="#" class="text-white">View Messages</a></li>
-                      <li><a href="#" class="text-white">Check into the airport</a></li>
-                      <li><a href="#" class="text-white">Edit Profile</a></li>
-                      <li><a href="#" class="text-white">Create a New Event</a></li>
+                      <!-- Django tools for User Navbar Controls-->
+                      {% if user.is_authenticated %}
+                      <li><a href="#" class="nav-link text-white">Check into the Airport</a></li>
+                      <li><a href="#" class="nav-link text-white">Create a New Event</a></li>
+                      <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
+                      {% else %}
+                      <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                      {% endif %}
                     </ul>
                   </div>
                 </div>
