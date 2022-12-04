@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 # Configure formatting for the home page here.
 def index(request):
@@ -32,7 +33,7 @@ def login_view(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return HttpResponseRedirect("layoverconnections/index.html")
+			return redirect("layoverconnections:homepage")
 		else:
 			return render(request, "layoverconnections/index.html", {
 				"message": "Invalid Credentials."
