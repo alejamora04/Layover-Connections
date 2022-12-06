@@ -6,7 +6,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
-# Formatting for the splash page portal. return render(request, 'layoverconnections/index.html')
+# Formatting for the splash page portal. 
+#TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
 def index(request):
 	if not request.user.is_authenticated:
 		return redirect(reverse("layoverconnections:login"))
@@ -27,10 +28,11 @@ def register_request(request):
 
 # Formatting for the Login page. 
 # TODO change username field to email- register form email = request.POST["email"]
+# TODO Fix Django populated error messages
 def login_view(request):
 	if request.method == "POST":
 		username = request.POST["username"]
-		password = request.POST["password"]
+		password = request.POST["password"] 
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
@@ -41,6 +43,7 @@ def login_view(request):
 			})
 	return render(request, 'layoverconnections/login.html')
 
+# Logout Functionality
 def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
