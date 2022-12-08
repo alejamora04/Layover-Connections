@@ -75,3 +75,14 @@ footer p {
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+/* Main Page Styling*/
+
+/* Spotify Style card text
+.main-card-text {
+  text-: white;
+  text-align: center; 
+  margin-top: 5;
+  text-shadow: 2px 2px 0px #0c0c0c;
+}
+*/

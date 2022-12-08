@@ -37,9 +37,10 @@
             <i class="fa-sharp fa-solid fa-circle-user"></i>
             <strong> Profile Page</strong>
           </a>
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <i class="fa-sharp fa-solid fa-comments"></i>
-            <strong> Messages</strong>
+          <a href="#" class="navbar-brand d-flex align-items-center ">
+            <button type="button" class="btn btn-primary" style="background-color:hsl(202, 65%, 20%)">
+              Messages <span class="badge bg-secondary">4</span>
+            </button>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -85,11 +86,11 @@
           </p>
           <p>
             <a href="#" class="btn btn-primary my-2 text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View Events</strong></a>
-            <a href="#" class="btn btn-secondary my-2">Create a Event</a>
+            <a href="#" class="btn btn-secondary my-2"><strong>Create a Event</strong></a>
           </p>
         </div>
       </section>
-    <!-- Events Page style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%)" -->
+    <!-- Events Page" -->
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">
@@ -98,8 +99,8 @@
                 <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
                   <h1 class="card-text text-white text-center mt-5"><strong>Get Food</strong></h1>
                 </div>
-                <img src= "{% static '/images/fabio-alves-tN3CDxTkx0Q-unsplash.jpg' %}" class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="food">
-                <div class="card-body" style="background-color: hsla(218, 55%, 20%, 0.356)">
+                <img src= "{% static '/images/fabio-alves-tN3CDxTkx0Q-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="food">
+                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
                   <p class="card-text"> Grab some food around the city.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -116,8 +117,8 @@
                 <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
                   <h1 class="card-text text-white text-center mt-5"><strong>Enjoy the Nightlife</strong></h1>
                 </div>
-                <img src= "{% static '/images/redd-f-nE1K_qO2z38-unsplash.jpg' %}" class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Nightlife">
-                <div class="card-body" style="background-color: hsla(218, 55%, 20%, 0.356)">
+                <img src= "{% static '/images/redd-f-nE1K_qO2z38-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Nightlife">
+                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
                   <p class="card-text">Take in the nightlife</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -134,8 +135,8 @@
                 <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
                   <h1 class="card-text text-white text-center mt-5"><strong>Have a Drink</strong></h1>
                 </div>
-                <img src= "{% static '/images/stanislav-ivanitskiy-j5SwUbcgeyA-unsplash.jpg' %}" class="card-img-top" style="background-color: hsla(218, 31%, 25%, 0.644); height:200px;" alt="Drinks">
-                <div class="card-body" style="background-color: hsla(218, 55%, 20%, 0.356)">
+                <img src= "{% static '/images/stanislav-ivanitskiy-j5SwUbcgeyA-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Drinks">
+                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
                   <p class="card-text">Grab a drink at the bar.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -152,8 +153,8 @@
                 <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
                   <h1 class="card-text text-white text-center mt-5"><strong>Explore the City</strong></h1>
                 </div>
-                <img src= "{% static '/images/robert-v-ruggiero-jE0gJddqulM-unsplash.jpg' %}" class="card-img-top"  style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Events">
-                <div class="card-body" style="background-color: hsla(218, 55%, 20%, 0.356)">
+                <img src= "{% static '/images/robert-v-ruggiero-jE0gJddqulM-unsplash.jpg' %}" class="card-img-top"  style="height:200px;" alt="Events">
+                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
                   <p class="card-text"> Explore the city for a day.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -170,8 +171,8 @@
                 <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
                   <h1 class="card-text text-white text-center mt-5"><strong>Meet Locals</strong></h1>
                 </div>
-                <img src= "{% static '/images/valiant-made-UrzN-8K1PCE-unsplash.jpg' %}" class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Connect with Residents">
-                <div class="card-body" style="background-color: hsla(218, 55%, 20%, 0.356)">
+                <img src= "{% static '/images/valiant-made-UrzN-8K1PCE-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Connect with Residents">
+                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
                   <p class="card-text">Meet the locals.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -188,8 +189,8 @@
                 <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
                   <h1 class="card-text text-white text-center mt-5"><strong>Current Events</strong></h1>
                 </div>
-                <img src= "{% static '/images/yu-shao-wu-EzPfYTB4aDg-unsplash.jpg' %}" class="card-img-top" style="background-color: hsla(219, 67%, 17%, 0.644); height:200px;" alt="Current Events">
-                <div class="card-body" style="background-color: hsla(218, 55%, 20%, 0.356)">
+                <img src= "{% static '/images/yu-shao-wu-EzPfYTB4aDg-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Current Events">
+                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
                   <p class="card-text"> Enjoy current events in town.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
