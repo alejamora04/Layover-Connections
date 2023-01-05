@@ -33,6 +33,7 @@
       <!-- Upper Navbar linkin to important pages-->
       <div class="navbar navbar-dark box-shadow" style="background-color: hsl(218, 41%, 15%);">
         <div class="container d-flex justify-content-between">
+          <!-- If user Athenticated provide link to profile page -->
           <a href="#" class="navbar-brand d-flex align-items-center">
             <i class="fa-sharp fa-solid fa-circle-user"></i>
             <strong> Profile Page</strong>
@@ -59,6 +60,12 @@
                     <ul class="list-unstyled">
                       <!-- Django tools for User Navbar Controls-->
                       {% if user.is_authenticated %}
+                      <li>
+                        <a href="layoverconnections/user_profile.html" class="navbar-brand d-flex align-items-center">
+                          <i class="fa-sharp fa-solid fa-circle-user"></i>
+                          <strong> Profile Page</strong>
+                        </a>
+                      </li>
                       <li><a href="#" class="nav-link text-white">Check into the Airport</a></li>
                       <li><a href="#" class="nav-link text-white">Create a New Event</a></li>
                       <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>

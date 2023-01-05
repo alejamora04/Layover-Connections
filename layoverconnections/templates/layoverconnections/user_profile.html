@@ -16,7 +16,7 @@
             </script>
         <link rel="stylesheet" href="{% static 'layoverconnections/styles.css' %}">
 
-        <title>Hello {{ name }}</title>
+        <title>Hello {{ user.name }}</title>
     </head>
 
     <body>
@@ -27,7 +27,8 @@
                 <div class="card">
                   <div class="rounded-top text-white d-flex flex-row" style="background-color: hsl(218, 41%, 15%); height:200px;">
                     <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                      <!-- Image upload from Database if none present creates a default thumbnail-->
+                      <img src="{{ user.profile.image.url }}"
                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                         style="width: 150px; z-index: 1">
                       <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
@@ -36,7 +37,7 @@
                       </button>
                     </div>
                     <div class="ms-3" style="margin-top: 130px;">
-                      <h5>{{ name }}</h5>
+                      <h5>{{ user.name }}</h5>
                       <p>Hometown</p>
                     </div>
                   </div>

@@ -6,6 +6,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
+from django.contrib.auth.decorators import login_required
+
 # Formatting for the splash page portal. 
 #TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
 def index(request):
@@ -49,7 +51,17 @@ def logout_request(request):
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("layoverconnections:index")
 
-# Routing to a user profile. 
+# Routing to a user profile.
+@login_required
+def user_profile(request):
+    return render(request, 'layoverconnections/user_profile.html') 
+
+# Configure Requests for the homepage http request
+def homepage(request):
+	return render(request, 'layoverconnections/homepage.html')
+
+
+"""
 def user_profile(request, name):
     return render(
         request,
@@ -59,6 +71,4 @@ def user_profile(request, name):
         }
     ) 
 
-# Configure Requests for the homepage http request
-def homepage(request):
-	return render(request, 'layoverconnections/homepage.html')
+"""
