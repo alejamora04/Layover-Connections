@@ -1,0 +1,10 @@
+# Ignore files related to API keys
+/.venv
+
+# Byte-compiled / optimized / DLL files
+Layover_Connections/__pycache__/
+layoverconnections/__pycache__/
+/__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
