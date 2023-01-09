@@ -1,5 +1,11 @@
 # Ignore files related to API keys
+.DS_Store
+__pycache__/
+.ipynb_checkpoints/
+venv
 .venv
+.vscode
+.env
 
 # Byte-compiled / optimized / DLL files
 Layover_Connections/__pycache__/
