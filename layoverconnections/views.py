@@ -31,6 +31,7 @@ def register_request(request):
 # Formatting for the Login page. 
 # TODO change username field to email- register form email = request.POST["email"]
 # TODO Fix Django populated error messages
+# TODO Fix Redirect after user registers and signs in
 def login_view(request):
 	if request.method == "POST":
 		username = request.POST["username"]

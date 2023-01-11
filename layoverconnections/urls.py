@@ -19,7 +19,6 @@ urlpatterns = [
     path("layoverconnections/user_profile.html", views.user_profile, name="profile"),
 ] 
 
-# path("layoverconnections/<str:name>", views.user_profile, name="profile"),
 # Pre-Deployment check to see if currently in DEBUG mode
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
