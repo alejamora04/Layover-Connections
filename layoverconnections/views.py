@@ -55,29 +55,9 @@ def logout_request(request):
 # Routing to a user profile.
 @login_required
 def user_profile(request):
-	if request.method == "POST":
-		u_form = UserUpdateForm(request.POST, instance=request.user)
-		p_form = ProfileUpdateForm(request.POST, 
-								   request.FILES, 
-								   instance=request.user.profile)
-		if u_form.is_valid() and p_form.is_valid():
-			u_form.save()
-			p_form.save()
-			messages.success(request, f"Your account has been updated.") 
-			return redirect('layoverconnections/user_profile.html')
+	return render(request, 'layoverconnections/user_profile.html')
 
-	else:
-		u_form = UserUpdateForm(instance=request.user)
-		p_form = ProfileUpdateForm(instance=request.user.profile)
-
-	context = {
-		'u_form': u_form,
-		'p_form': p_form
-	}
-
-	return render(request, 'layoverconnections/user_profile.html', context)
-
-# IN PROGRESS - Test Profile page update information
+# Prototype Profile page update information
 @login_required
 def edit_profile(request):
 	if request.method == "POST":
