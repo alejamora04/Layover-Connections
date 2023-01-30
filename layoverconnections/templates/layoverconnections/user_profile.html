@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags%}
 
 <!DOCTYPE html>
         <!-- An HTML page containing the user information-->
@@ -16,7 +17,7 @@
             </script>
         <link rel="stylesheet" href="{% static 'layoverconnections/styles.css' %}">
 
-        <title>Hello {{ user.name }}</title>
+        <title>Hello {{ User.name }}</title>
     </head>
 
     <body>
@@ -27,30 +28,38 @@
                 <div class="card">
                   <div class="rounded-top text-white d-flex flex-row" style="background-color: hsl(218, 41%, 15%); height:200px;">
                     <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                      <!-- Image upload from Database if none present creates a default thumbnail-->
+                      <!-- Image upload from Database if none present provides a default thumbnail-->
                       <img src="{{ user.profile.image.url }}"
                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                         style="width: 150px; z-index: 1">
-                      <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                        style="z-index: 1;">
-                        Edit profile
-                      </button>
+<!-- TODO Django Tutorial part 9 update button to change profile picture-->
+<!-- Django Utility to update profile picture -->
+
+
+
                     </div>
-                    <div class="ms-3" style="margin-top: 130px;">
+                    <div class="ms-3" style="margin-top: 100px;">
                       <h5>{{ user.name }}</h5>
                       <p>Hometown</p>
                     </div>
                   </div>
                   <div class="p-4 text-black" style="background-color: #f8f9fa;">
                     <div class="d-flex justify-content-end text-center py-1">
+                      <!-- Route to the main page -->
 
-                      <div>
+<!-- TODO Django Tutorial part 9 update button to change profile picture-->
+<!-- Django Utility to update profile picture -->
+
+
+
+                      <div class="px-3">
+                        <button type="button" class="btn btn-md" style="background-color:hsl(194, 65%, 20%)">
+                          <strong><a href="{% url 'layoverconnections:homepage' %}">Main Page</a></strong>
+                        </button>
+                      </div> 
+                      <div class="px-3">
                         <p class="mb-1 h5"><a class="social-icon" href="placeholder"><i class="fab fa-twitter"></i></a></p>
                         <p class="small text-muted mb-0">twitter</p>
-                      </div>
-                      <div class="px-3">
-                        <p class="mb-1 h5"><a class="social-icon" href="placeholder"><i class="fab fa-facebook-f"></i></a></p>
-                        <p class="small text-muted mb-0">Facebook</p>
                       </div>
                       <div>
                         <p class="mb-1 h5"><a class="social-icon" href="placeholder"><i class="fab fa-instagram"></i></a></p>
@@ -62,7 +71,7 @@
                     <div class="mb-5">
                       <p class="lead fw-normal mb-1">About Me</p>
                       <div class="p-4" style="background-color: #f8f9fa;">
-                        <strong>Hello there, {{ name }}!</strong>
+                        <strong>Hello there, {{ user.name }}!</strong>
                         <p class="font-italic mb-1">Tell fellow travelers a little bit about yourself and your hobbies. What type of activities would you like to explore
                           in a new city?
                         </p>
@@ -70,7 +79,7 @@
                         <div>
                           <!-- Route to the main page -->
                           <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(194, 65%, 20%)">
-                            <strong><a href="{% url 'layoverconnections:homepage' %}">Connect with Travelers</a></strong>
+                            <strong><a href="{% url 'layoverconnections:editprofile' %}">Update Profile</a></strong>
                           </button>           
                         </div>
                       </div>
@@ -79,29 +88,29 @@
                       <p class="lead fw-normal mb-0">
                         <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                         style="z-index: 1;">
-                        Link to Instagram or Upload photos
-                        </button></p>
-                      <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
+                        Upload photos
+                        </button>
+                      </p>
                     </div>
                     <div class="row g-2">
-                      <div class="col mb-2">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                          alt="image 1" class="w-100 rounded-3">
-                      </div>
-                      <div class="col mb-2">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                          alt="image 1" class="w-100 rounded-3">
-                      </div>
+                        <div class="col mb-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                            alt="image 1" class="w-100 rounded-3">
+                        </div>
+                        <div class="col mb-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                            alt="image 1" class="w-100 rounded-3">
+                        </div>
                     </div>
                     <div class="row g-2">
-                      <div class="col">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                          alt="image 1" class="w-100 rounded-3">
-                      </div>
-                      <div class="col">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                          alt="image 1" class="w-100 rounded-3">
-                      </div>
+                        <div class="col">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
+                            alt="image 1" class="w-100 rounded-3">
+                        </div>
+                        <div class="col">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
+                            alt="image 1" class="w-100 rounded-3">
+                        </div>
                     </div>
                   </div>
                 </div>

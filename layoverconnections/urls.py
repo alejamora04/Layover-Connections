@@ -17,6 +17,7 @@ urlpatterns = [
     path("layoverconnections/login.html", views.login_view, name="login"),
     path("logout", views.logout_request, name="logout"),
     path("layoverconnections/user_profile.html", views.user_profile, name="profile"),
+    path("layoverconnections/edit_profile.html", views.edit_profile, name="editprofile")
 ] 
 
 # Pre-Deployment check to see if currently in DEBUG mode
