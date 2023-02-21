@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 
 app_name = "layoverconnections"
 
-# homepage is django placeholder consider removing it
+# Homepage is django placeholder consider removing it
 urlpatterns = [
     path("", views.index, name="index"),
     path("layoverconnections", views.homepage, name="homepage"),

@@ -3,10 +3,10 @@ from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
-from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-
 from django.contrib.auth.decorators import login_required
+from .models import Profile
+from django.contrib import messages
 
 # Formatting for the splash page portal. 
 #TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
@@ -57,7 +57,7 @@ def logout_request(request):
 def user_profile(request):
 	return render(request, 'layoverconnections/user_profile.html')
 
-# Prototype Profile page update information
+# Update User Profile information
 @login_required
 def edit_profile(request):
 	if request.method == "POST":
