@@ -35,8 +35,8 @@
         <div class="container d-flex justify-content-between">
           <!-- If user Athenticated provide link to profile page -->
           <a href="{% url 'layoverconnections:profile' %}" class="navbar-brand d-flex align-items-center">
-            <i class="fa-sharp fa-solid fa-circle-user"></i>
-            <strong> Profile Page</strong>
+            <i class="fa-sharp fa-solid fa-circle-user" style="margin-right:10px;"></i>
+            <strong>Profile</strong>
           </a>
           <a href="#" class="navbar-brand d-flex align-items-center ">
             <button type="button" class="btn btn-primary" style="background-color:hsl(202, 65%, 20%)">
@@ -51,7 +51,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white"> Menu </h4>
+                    <h4 class="text-white"> Upcoming Events </h4>
                     <p class="text-muted">
                     Upcoming Events [Django placeholder Populate quick info of upcoming events].</p>
                   </div>
@@ -79,14 +79,14 @@
       <!-- Main Page welcome banner-->
       <section class="jumbotron text-center" style="background-image: url('{% static '/images/jeshoots-com-mSESwdMZr-A-unsplash.jpg' %}')">
         <div class="container">
-          <h1 class="jumbotron-heading">Welcome to the travel hub</h1>
+          <h1 class="jumbotron-heading"><strong>Welcome to the Travel Hub</strong></h1>
           <p class="lead text-muted">It's a good time to meet and connect with fellow travelers.
             <li>Start a get together.</li>
             <li>See available groups.</li>
             <li>Meet other Travelers.</li>
           </p>
           <p>
-            <a href="#" class="btn btn-primary my-2 text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View Events</strong></a>
+            <a href="#" class="btn btn-primary my-2 text-white" style="background-color:hsl(2, 64%, 20%)"><strong>Upcoming Events</strong></a>
             <a href="#" class="btn btn-secondary my-2"><strong>Create a Event</strong></a>
           </p>
         </div>
@@ -97,29 +97,29 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
-                  <h1 class="card-text text-white text-center mt-5"><strong>Get Food</strong></h1>
+                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Get Food</strong></h1>
                 </div>
-                <img src= "{% static '/images/fabio-alves-tN3CDxTkx0Q-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="food">
-                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
+                <img src= "{% static '/images/fabio-alves-tN3CDxTkx0Q-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="food">
+                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
                   <p class="card-text"> Grab some food around the city.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>
                       <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
                     </div>
-                    <small class="text-muted"> # of events[Django] </small>
+                    <small class="text-muted"> # of events </small>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
-                  <h1 class="card-text text-white text-center mt-5"><strong>Enjoy the Nightlife</strong></h1>
+                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Take in the Nightlife</strong></h1>
                 </div>
-                <img src= "{% static '/images/redd-f-nE1K_qO2z38-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Nightlife">
-                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
+                <img src= "{% static '/images/redd-f-nE1K_qO2z38-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Nightlife">
+                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
                   <p class="card-text">Take in the nightlife</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -133,11 +133,11 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
-                  <h1 class="card-text text-white text-center mt-5"><strong>Have a Drink</strong></h1>
+                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Have a Drink</strong></h1>
                 </div>
-                <img src= "{% static '/images/stanislav-ivanitskiy-j5SwUbcgeyA-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Drinks">
-                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
+                <img src= "{% static '/images/stanislav-ivanitskiy-j5SwUbcgeyA-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Drinks">
+                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
                   <p class="card-text">Grab a drink at the bar.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -151,11 +151,11 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
-                  <h1 class="card-text text-white text-center mt-5"><strong>Explore the City</strong></h1>
+                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Explore the City</strong></h1>
                 </div>
-                <img src= "{% static '/images/robert-v-ruggiero-jE0gJddqulM-unsplash.jpg' %}" class="card-img-top"  style="height:200px;" alt="Events">
-                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
+                <img src= "{% static '/images/robert-v-ruggiero-jE0gJddqulM-unsplash.jpg' %}" class="card-img-top"  style="height:275px;" alt="Events">
+                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
                   <p class="card-text"> Explore the city for a day.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -169,11 +169,11 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
-                  <h1 class="card-text text-white text-center mt-5"><strong>Meet Locals</strong></h1>
+                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Meet Locals</strong></h1>
                 </div>
-                <img src= "{% static '/images/valiant-made-UrzN-8K1PCE-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Connect with Residents">
-                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
+                <img src= "{% static '/images/valiant-made-UrzN-8K1PCE-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Connect with Residents">
+                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
                   <p class="card-text">Meet the locals.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -187,11 +187,11 @@
             </div>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%")>
-                  <h1 class="card-text text-white text-center mt-5"><strong>Current Events</strong></h1>
+                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Current Events</strong></h1>
                 </div>
-                <img src= "{% static '/images/yu-shao-wu-EzPfYTB4aDg-unsplash.jpg' %}" class="card-img-top" style="height:200px;" alt="Current Events">
-                <div class="card-body" style="background-color: hsla(218, 94%, 34%, 0.356)">
+                <img src= "{% static '/images/yu-shao-wu-EzPfYTB4aDg-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Current Events">
+                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
                   <p class="card-text"> Enjoy current events in town.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">

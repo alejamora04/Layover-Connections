@@ -9,8 +9,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Create a Field to hold the user uploaded profile picture image.
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    # DOB populate user age new information
-    date_of_birth = models.DateField(blank=True, null=True)
+    # User Profile About me
+    hometown = models.CharField(max_length= 25, null=True)
+    age = models.IntegerField(null=True)
+    profile = models.CharField(max_length=500,
+                                blank=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
