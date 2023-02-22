@@ -1,0 +1,76 @@
+{% load static %}
+{% load crispy_forms_tags%}
+
+<!DOCTYPE html>
+        <!-- An HTML page containing the user information-->
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
+            <!-- Font Awesome icons (free version)-->
+            <script 
+                  src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous">
+            </script>
+        <link rel="stylesheet" href="{% static 'layoverconnections/styles.css' %}">
+        <title>Hello {{ user.first_name }}</title>
+    </head>
+
+    <!-- Upper Navbar linkin to important pages-->
+    <header>
+        <div class="navbar navbar-dark box-shadow" style="background-color: hsl(218, 41%, 15%);">
+          <div class="container d-flex justify-content-between">
+            <!-- If user Athenticated provide link to profile page -->
+            <a href="{% url 'layoverconnections:profile' %}" class="navbar-brand d-flex align-items-center">
+              <i class="fa-sharp fa-solid fa-circle-user" style="margin-right:10px;"></i>
+              <strong>Profile</strong>
+            </a>
+            <a href="{% url 'layoverconnections:homepage' %}" class="navbar-brand d-flex align-items-center">
+                <i class="fa-sharp fa-solid fa-plane" style="margin-right:10px;"></i>
+                <strong>Main Page</strong>
+            </a>
+            <a href="#" class="navbar-brand d-flex align-items-center ">
+              <button type="button" class="btn btn-primary" style="background-color:hsl(202, 65%, 20%)">
+                Messages <span class="badge bg-secondary">4</span>
+              </button>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <!-- Collapsible Navbar menu-->
+              <div class="collapse" id="navbarHeader">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-7 col-md-7 py-4">
+                      <h4 class="text-white"> Upcoming Events </h4>
+                      <p class="text-muted">
+                      Upcoming Events [Django placeholder Populate quick info of upcoming events].</p>
+                    </div>
+                    <div class="col-sm-5 offset-md-1 py-4">
+                      <h4 class="text-white">Welcome, {{user.first_name}}</h4>
+                      <ul class="list-unstyled">
+                        <!-- Django tools for User Navbar Controls-->
+                        {% if user.is_authenticated %}
+                        <li><a href="#" class="nav-link text-white">Check into the Airport</a></li>
+                        <li><a href="#" class="nav-link text-white">Create a New Event</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </header>
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+  
+</html>
