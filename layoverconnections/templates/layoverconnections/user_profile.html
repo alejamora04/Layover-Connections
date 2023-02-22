@@ -28,11 +28,11 @@
               <div class="d-flex justify-content-end text-center py-1">
                 <!-- Route to the main page -->
                 <div class="px-3">
-                  <p class="mb-1 h5"><a class="social-icon" href="placeholder"><i class="fab fa-twitter"></i></a></p>
+                  <p class="mb-1 h5"><a class="social-icon" href="#"><i class="fab fa-twitter"></i></a></p>
                   <p class="small text-muted mb-0">twitter</p>
                 </div>
                 <div>
-                  <p class="mb-1 h5"><a class="social-icon" href="placeholder"><i class="fab fa-instagram"></i></a></p>
+                  <p class="mb-1 h5"><a class="social-icon" href="#"><i class="fab fa-instagram"></i></a></p>
                   <p class="small text-muted mb-0">Instagram</p>
                 </div>
               </div>
@@ -45,12 +45,18 @@
                       <strong><a href="{% url 'layoverconnections:editprofile' %}" style="color: #f8f9fa; text-decoration:none;">Edit Profile</a></strong>
                     </button>   
                 </p>
-                <!-- User Profile information -->
+                <!-- Provide profile about me information if present -->
                 <div class="p-4" style="background-color: #f8f9fa;">
                   <strong>Hello, {{ user.first_name }}.</strong>
-                  <p class="font-italic mb-1">Tell fellow travelers a little bit about yourself and your hobbies. What type of activities would you like to explore
-                    in a new city?
-                  </p>
+                  {% if user.profile.profile %}
+                    <p class="font-italic mb-1">                    
+                      {{ user.profile.profile}}
+                    </p>
+                  {% else %}
+                    <p class="font-italic mb-1">Tell fellow travelers a little bit about yourself and your hobbies. What type of activities would you like to explore
+                      in a new city?
+                    </p>
+                  {% endif %}
                 </div>
               </div>
               <div class="d-flex justify-content-between align-items-center mb-4">
