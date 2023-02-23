@@ -1,0 +1,66 @@
+{% extends "layoverconnections/base_profile.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}   
+
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card">
+            <div class="rounded-top text-white d-flex flex-row" style="background-color: hsl(218, 41%, 15%); height:200px;">
+              <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                <!-- Image upload from Database if none present provides a default thumbnail-->
+                <img src="{{ user.profile.image.url }}"
+                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                  style="width: 150px; z-index: 1">
+              </div>
+              <!-- Populate User Defined information. -->
+              <div class="ms-3" style="margin-top: 100px;">
+                <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+                <p>
+                        Age: {{ user.profile.age }}, 
+                  <br> Hometown: {{ user.profile.hometown }}
+                </p>
+              </div>
+            </div>
+            <!-- Django forms to apply updates to user profile. -->
+            <div class="p-4 text-black" style="background-color: #f8f9fa;">
+              <div class="d-flex justify-content-end text-center py-1">
+                <!-- Route to the main page -->
+                <div>
+                  <button type="button" class="btn btn-md btn-outline-secondary" style="background-color:hsl(194, 65%, 20%)">
+                    <strong><a href="{% url 'layoverconnections:profile' %}" style="color: #f8f9fa; text-decoration:none;">Return to Profile</a></strong>
+                  </button>
+                </div>   
+            </div>
+            <!-- Forms to Edit User Profile-->
+            <div class="card-body p-4 text-black">
+              <div class="mb-5">
+                <div class="p-4" style="background-color: #f8f9fa;">
+                  <!-- <form method="POST" enctype="multipart/form-data"> -->
+                  <div>
+                    <form method="POST">
+                      {% csrf_token %}
+                      <fieldset class="form">
+                        <legend><strong> Update Profile </strong></legend>
+                        <p>{{ aboutme_form|crispy }}</p>
+                      </fieldset>
+                      <div class="form-group">
+                        <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
+                          <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}
