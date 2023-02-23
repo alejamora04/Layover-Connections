@@ -3,17 +3,18 @@ from django.contrib.auth.models import User
 from PIL import Image
 from django.conf import settings
 
-# Import the pre-configured User Model
+# Creates a User Profile with a one to one relationship with User Model
+# Contains information for: profilepic, hometown, age, bio
 class Profile(models.Model):
     # Create a one to one relationship with the User Model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # Create a Field to hold the user uploaded profile picture image.
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    # User Profile About me
     hometown = models.CharField(max_length= 25, null=True)
     age = models.IntegerField(null=True)
     profile = models.CharField(max_length=500,
                                 blank=True)
+    bio = models.CharField(max_length=500,
+                            blank=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'

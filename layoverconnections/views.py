@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm
+from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, AboutMeForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
@@ -81,6 +81,27 @@ def edit_profile(request):
 	}
 
 	return render(request, 'layoverconnections/edit_profile.html', context)
+
+# Update About Me Section
+@login_required
+def edit_bio(request):
+	if request.method == "POST":
+		aboutme_form = AboutMeForm(request.POST, 
+								   request.FILES, 
+								   instance=request.user.profile)
+		if aboutme_form.is_valid():
+			aboutme_form.save()
+			messages.success(request, f"Your profile has been updated.") 
+			return render(request, 'layoverconnections/user_profile.html')
+
+	else:
+		aboutme_form = AboutMeForm(instance=request.user.profile)
+
+	context = {
+		'aboutme_form': aboutme_form
+	}
+
+	return render(request, 'layoverconnections/about_me.html', context)
 
 # Configure Requests for the homepage http request
 def homepage(request):

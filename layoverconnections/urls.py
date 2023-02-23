@@ -12,19 +12,21 @@ app_name = "layoverconnections"
 # Homepage is django placeholder consider removing it
 urlpatterns = [
     path("", views.index, name="index"),
-    # old path("layoverconnections", views.homepage, name="homepage"),
     path("main", views.homepage, name="homepage"),
-    # old path("layoverconnections/register", views.register_request, name="register"),
     path("register", views.register_request, name="register"),
-    # old path("layoverconnections/login.html", views.login_view, name="login"),
     path("login", views.login_view, name="login"),
     path("logout", views.logout_request, name="logout"),
-    # old path("layoverconnections/user_profile.html", views.user_profile, name="profile"),
     path("user_profile", views.user_profile, name="profile"),
-    # old path("layoverconnections/edit_profile.html", views.edit_profile, name="editprofile"),
     path("edit_profile", views.edit_profile, name="editprofile"),
+    path("about_me", views.edit_bio, name="aboutme"),
 ] 
 
 # Pre-Deployment check to see if currently in DEBUG mode
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# old path("layoverconnections", views.homepage, name="homepage"),
+# old path("layoverconnections/register", views.register_request, name="register"),
+# old path("layoverconnections/login.html", views.login_view, name="login"),
+# old path("layoverconnections/user_profile.html", views.user_profile, name="profile"),
+# old path("layoverconnections/edit_profile.html", views.edit_profile, name="editprofile"),

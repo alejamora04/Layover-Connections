@@ -15,6 +15,7 @@
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                   style="width: 150px; z-index: 1">
               </div>
+              <!-- Populate User Defined information. -->
               <div class="ms-3" style="margin-top: 100px;">
                 <h5>{{ user.first_name }} {{ user.last_name }}</h5>
                 <p>
@@ -23,7 +24,6 @@
                 </p>
               </div>
             </div>
-
             <!-- Django forms to apply updates to user profile. -->
             <div class="p-4 text-black" style="background-color: #f8f9fa;">
               <div class="d-flex justify-content-end text-center py-1">
@@ -32,9 +32,6 @@
                   <button type="button" class="btn btn-md btn-outline-secondary" style="background-color:hsl(194, 65%, 20%)">
                     <strong><a href="{% url 'layoverconnections:profile' %}" style="color: #f8f9fa; text-decoration:none;">Return to Profile</a></strong>
                   </button>
-                  <button type="button" class="btn btn-md btn-outline-secondary" style="background-color:hsl(194, 65%, 20%)">
-                    <strong><a href="{% url 'layoverconnections:homepage' %}" style="color: #f8f9fa; text-decoration:none;">Main Page</a></strong>
-                  </button>  
                 </div>   
             </div>
             <!-- Forms to Edit User Profile-->

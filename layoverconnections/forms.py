@@ -32,4 +32,12 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['image', 'hometown', 'age', 'profile', ]
+		fields = ['image', 'hometown', 'age']
+
+# Biography form modified from comment form
+class AboutMeForm(forms.ModelForm):
+	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+
+	class Meta:
+		model = Profile
+		fields = ['bio']
