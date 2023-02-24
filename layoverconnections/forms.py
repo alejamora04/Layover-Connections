@@ -32,11 +32,19 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['image', 'hometown', 'age']
+		fields = ['image', 'age', 'hometown']
+
+# Formatting for image upload forms
+class ImageUploadForm(forms.ModelForm):
+	image = forms.ImageField(label= 'Upload Image')
+
+	class Meta:
+		model = Profile
+		fields = ['image']
 
 # Biography form modified from comment form
 class AboutMeForm(forms.ModelForm):
-	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 6}))
 
 	class Meta:
 		model = Profile

@@ -33,21 +33,41 @@
                     <strong><a href="{% url 'layoverconnections:profile' %}" style="color: #f8f9fa; text-decoration:none;">Return to Profile</a></strong>
                   </button>
                 </div>   
-            </div>
+              </div>
+
+            <!-- 
+              Full unformatted Profile Information
+              {{ p_form|crispy }}
+              {{ u_form|crispy }}
+            -->
+
             <!-- Forms to Edit User Profile-->
-            <div class="card-body p-4 text-black">
+            <div class="card-body p-3 text-black">
               <div class="mb-5">
-                <div class="p-4" style="background-color: #f8f9fa;">
-                  <!--  <fieldset class="form-group"></fieldset> -->
+                <div class="py-4" style="background-color: #f8f9fa;">
+                  <!--  User Profile information -->
                   <div>
                     <form method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
                       <fieldset class="form-group">
-                        <legend><strong> Profile Information </strong></legend>
-                        {{ p_form|crispy }}
-                        Format [yyyy-mm-dd]
-                        {{ u_form|crispy }}
+                        <!-- Individual Form Fields -->
+                        <ul class="list-group" style="padding-5px;">
+                          <!-- User Login information -->
+                          <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                            <strong style="color: #f8f9fa;"> Login Information </strong> 
+                          </li>
+                          <li class="list-group-item"><strong>Username</strong> </br> {{ u_form.username }}</li>
+                          <li class="list-group-item"><strong>Email</strong> </br> {{ u_form.email }}</li>
+                          <!-- User profile information -->
+                          <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                            <strong style="color: #f8f9fa;"> Profile Information </strong> 
+                          </li>
+                          <li class="list-group-item"><strong>Age</strong> </br> {{ p_form.age }}</li>
+                          <li class="list-group-item"><strong>Hometown</strong> </br> {{ p_form.hometown }}</li>
+                          <li class="list-group-item"><strong>Profile Picture</strong> </br> {{ p_form.image }}</li>
+                        </ul>
                       </fieldset>
+                      <!-- Submit Button-->
                       <div class="form-group">
                         <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
                           <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
@@ -57,9 +77,8 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
+
           </div>
         </div>
       </div>

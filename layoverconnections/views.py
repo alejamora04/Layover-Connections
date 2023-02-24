@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, AboutMeForm
+from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, AboutMeForm, ImageUploadForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
@@ -69,7 +69,7 @@ def edit_profile(request):
 			u_form.save()
 			p_form.save()
 			messages.success(request, f"Your account has been updated.") 
-			return render(request, 'layoverconnections/homepage.html')
+			return render(request, 'layoverconnections/user_profile.html')
 
 	else:
 		u_form = UserUpdateForm(instance=request.user)
@@ -89,16 +89,23 @@ def edit_bio(request):
 		aboutme_form = AboutMeForm(request.POST, 
 								   request.FILES, 
 								   instance=request.user.profile)
-		if aboutme_form.is_valid():
+		picture_form = ImageUploadForm(request.POST, 
+										request.FILES, 
+										instance=request.user.profile)
+		if aboutme_form.is_valid() and picture_form.is_valid():
 			aboutme_form.save()
-			messages.success(request, f"Your profile has been updated.") 
+			picture_form.save()
+			messages.success(request, f"Your bio has been updated.") 
 			return render(request, 'layoverconnections/user_profile.html')
 
 	else:
 		aboutme_form = AboutMeForm(instance=request.user.profile)
+		picture_form = ImageUploadForm(instance=request.user.profile)
+
 
 	context = {
-		'aboutme_form': aboutme_form
+		'aboutme_form': aboutme_form,
+		'picture_form': picture_form
 	}
 
 	return render(request, 'layoverconnections/about_me.html', context)

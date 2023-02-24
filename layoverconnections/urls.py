@@ -24,9 +24,3 @@ urlpatterns = [
 # Pre-Deployment check to see if currently in DEBUG mode
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# old path("layoverconnections", views.homepage, name="homepage"),
-# old path("layoverconnections/register", views.register_request, name="register"),
-# old path("layoverconnections/login.html", views.login_view, name="login"),
-# old path("layoverconnections/user_profile.html", views.user_profile, name="profile"),
-# old path("layoverconnections/edit_profile.html", views.edit_profile, name="editprofile"),

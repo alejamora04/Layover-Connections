@@ -28,9 +28,8 @@
   </head>
 
   <body>
-
+    <!-- Upper Navbar linkin to important pages-->
     <header>
-      <!-- Upper Navbar linkin to important pages-->
       <div class="navbar navbar-dark box-shadow" style="background-color: hsl(218, 41%, 15%);">
         <div class="container d-flex justify-content-between">
           <!-- If user Athenticated provide link to profile page -->
@@ -46,7 +45,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-      <!-- Collapsible Navbar menu-->
+          <!-- Collapsible Navbar menu-->
             <div class="collapse" id="navbarHeader">
               <div class="container">
                 <div class="row">
@@ -76,21 +75,31 @@
     </header>
 
     <main role="main">
-      <!-- Main Page welcome banner-->
-      <section class="jumbotron text-center" style="background-image: url('{% static '/images/jeshoots-com-mSESwdMZr-A-unsplash.jpg' %}')">
-        <div class="container">
-          <h1 class="jumbotron-heading"><strong>Welcome to the Travel Hub</strong></h1>
-          <p class="lead text-muted">It's a good time to meet and connect with fellow travelers.
-            <li>Start a get together.</li>
-            <li>See available groups.</li>
-            <li>Meet other Travelers.</li>
-          </p>
-          <p>
-            <a href="#" class="btn btn-primary my-2 text-white" style="background-color:hsl(2, 64%, 20%)"><strong>Upcoming Events</strong></a>
-            <a href="#" class="btn btn-secondary my-2"><strong>Create a Event</strong></a>
-          </p>
+    <!-- Main Page welcome banner-->
+      <section class="jumbotron text-center" style="background-color: hsla(224, 65%, 20%, 0.363);">
+        <div class="container" >
+          <ul class="list-group" style="padding-5px;">
+            <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+              <h1 class="jumbotron-heading" style="color: #f8f9fa;"><strong>Welcome to the Travel Hub</strong></h1>
+            </li>
+            <li class="list-group-item">
+              <p class="lead text-muted" style="background-color: #f8f9fa;">
+                It's a good time to meet and connect with fellow travelers.
+              </p>
+            </li>
+            <li class="list-group-item text-muted">Start a get together. </li>
+            <li class="list-group-item text-muted">See available groups. </li>
+            <li class="list-group-item text-muted">Meet other travelers. </li>
+            <li class="list-group-item">
+              <p>
+                <a href="#" class="btn btn-primary my-2 text-white" style="background-color:hsl(221, 65%, 20%);"><strong>Upcoming Events</strong></a>
+                <a href="#" class="btn btn-secondary my-2"><strong>Create a Event</strong></a>
+              </p>
+            </li>
+          </ul>
         </div>
       </section>
+
     <!-- Events Page" -->
       <div class="album py-5 bg-light">
         <div class="container">
@@ -116,11 +125,11 @@
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
                 <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
-                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Take in the Nightlife</strong></h1>
+                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Enjoy the Nightlife</strong></h1>
                 </div>
                 <img src= "{% static '/images/redd-f-nE1K_qO2z38-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Nightlife">
                 <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
-                  <p class="card-text">Take in the nightlife</p>
+                  <p class="card-text">Enjoy the nightlife</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>

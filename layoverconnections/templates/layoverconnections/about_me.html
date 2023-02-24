@@ -34,24 +34,104 @@
                   </button>
                 </div>   
             </div>
+            <!-- Regular About me form 
+              <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form">
+                  <legend><strong> Update Profile </strong></legend>
+                  <p>{{ aboutme_form|crispy }}</p>
+                </fieldset>
+                <div class="form-group">
+                  <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
+                    <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
+                  </button>
+                </div>
+              </form>  
+            -->
             <!-- Forms to Edit User Profile-->
             <div class="card-body p-4 text-black">
               <div class="mb-5">
-                <div class="p-4" style="background-color: #f8f9fa;">
+                <div class="p-1" style="background-color: #f8f9fa;">
                   <!-- <form method="POST" enctype="multipart/form-data"> -->
                   <div>
+                  <!-- Individual Form Fields -->
+                  <ul class="list-group" style="padding-3px;">
+                    <!-- User Login information -->
+                    <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                      <legend><strong style="color: #f8f9fa;"> Update Bio </strong></legend>
+                    </li>
+                    <li class="list-group-item">
+                      <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form">
+                          <p>{{ aboutme_form }}</p>
+                        </fieldset>
+                        <div class="form-group">
+                          <button class="btn btn-outline-info" style="background-color:hsl(194, 65%, 20%)" type="submit">
+                            <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
+                          </button>
+                        </div>
+                      </form>
+                    </li>
+
+                    <!-- User profile information -->
+                    <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                      <h2 style="color: #f8f9fa;"> Upload Images </h2> 
+                    </li>
+                    <li class="list-group-item"><legend><strong> Profile Picture </strong></legend></li>
+                    <li class="list-group-item">
+                    <!-- Profile Picture upload form -->
+                      <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form">
+                          <p>{{ picture_form|crispy }}</p>
+                        </fieldset>
+                        <div class="form-group">
+                          <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
+                            <strong style="color: #f8f9fa; text-decoration:none;">Upload</strong>
+                          </button>
+                        </div>
+                      </form>
+                    </li>
+                    <!-- Profile picture upload Forms-->
+                    <li class="list-group-item"><strong>Image 1</strong> </br> {{ p_form.image }}</li>
+                    <li class="list-group-item"><strong>Image 2</strong> </br> {{ p_form.image }}</li>
+                    <li class="list-group-item"><strong>Image 3</strong> </br> {{ p_form.image }}</li>
+                    <li class="list-group-item"><strong>Image 4</strong> </br> {{ p_form.image }}</li>
+                  </ul>
+
+
+                  <!-- 
+                  Form Modification generic
+                  
+                    <div class="fieldWrapper">
+                    {{ form.picture_form.errors }}
+                    <label for="{{ form.picture_form.id_for_label }}">Change image:</label>
+                    {{ form.picture_form }}
+                    </div>
+                  -->
+
+
+                    <!-- Rudimentary upload image form -->
                     <form method="POST">
                       {% csrf_token %}
-                      <fieldset class="form">
-                        <legend><strong> Update Profile </strong></legend>
-                        <p>{{ aboutme_form|crispy }}</p>
+                      <fieldset class="form" style="margin-top:10px;">
+                        <legend><strong> Upload Images </strong></legend>
+                        <p>{{ picture_form|crispy }}</p>
                       </fieldset>
                       <div class="form-group">
                         <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
                           <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
                         </button>
                       </div>
+
+                      <div class="fieldWrapper">
+                        {{ form.picture_form.errors }}
+                        <label for="{{ form.picture_form.id_for_label }}">Change image:</label>
+                        {{ form.picture_form }}
+                      </div>
                     </form>
+
                   </div>
                 </div>
               </div>
