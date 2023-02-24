@@ -40,7 +40,7 @@ class ImageUploadForm(forms.ModelForm):
 
 	class Meta:
 		model = Profile
-		fields = ['image']
+		fields = ['image', 'userimage_1', 'userimage_2', 'userimage_3', 'userimage_4']
 
 # Biography form modified from comment form
 class AboutMeForm(forms.ModelForm):

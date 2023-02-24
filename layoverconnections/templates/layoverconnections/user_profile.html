@@ -64,26 +64,36 @@
                   </button>
                 </div>
               </div>
-              <div class="row g-2">
+              <!-- Profile picture formatting-->
+
+              <div class="container" style="width:26em;">
+                  <!-- Row 1 -->
+                <div class="row g-2">
+                  <!-- Image 1-->
                   <div class="col mb-2">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                      alt="image 1" class="w-100 rounded-3">
+                    <img src="{{ user.profile.userimage_1.url }}"
+                        alt="Image 1" class="w-100 rounded-3" style="height:10rem;">
                   </div>
+                  <!-- Image 2 -->
                   <div class="col mb-2">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                      alt="image 1" class="w-100 rounded-3">
+                    <img src="{{ user.profile.userimage_2.url }}"
+                    alt="Image 2" class="w-100 rounded-3" style="height:10rem;">
                   </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="row g-2">
+                    <div class="col mb-2">
+                      <img src="{{ user.profile.userimage_3.url }}"
+                        alt="image 3" class="w-100 rounded-3" style="height:10rem;">
+                    </div>
+                    <div class="col mb-2">
+                      <img src="{{ user.profile.userimage_4.url }}"
+                        alt="image 4" class="w-100 rounded-3" style="height:10rem;">
+                    </div>
+                </div>
               </div>
-              <div class="row g-2">
-                  <div class="col">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                      alt="image 1" class="w-100 rounded-3">
-                  </div>
-                  <div class="col">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                      alt="image 1" class="w-100 rounded-3">
-                  </div>
-              </div>
+
+
               <div class="d-flex justify-content-between align-items-center mt-3">
                 <p class="lead fw-normal mb-0">
                   <!-- Upload photos -->
@@ -100,4 +110,42 @@
     </div>
   </section>
 </body>
+
+              <!--
+                BootStrap PLaceholder Images
+                  <div class="col mb-2">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                    alt="image 1" class="w-100 rounded-3">
+                  </div>
+                  <div class="col mb-2">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                      alt="image 2" class="w-100 rounded-3">
+                  </div>
+                  Row 2
+                  <div class="row g-2">
+                    <div class="col">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
+                        alt="image 3" class="w-100 rounded-3">
+                    </div>
+                    <div class="col">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
+                        alt="image 4" class="w-100 rounded-3">
+                    </div>
+                </div>
+
+                <div class="col mb-2 w-100 rounded-3" style="background-color:hsl(194, 65%, 20%)">
+                </div>
+
+
+
+                  <img src= "{% static '/images/fabio-alves-tN3CDxTkx0Q-unsplash.jpg' %}"
+
+                  <img src="{{ user.profile.image.url }}"
+
+                  <img src= "{% static '/images/Camera_Default_Image.jpg' %}"
+                  {{ picture_form.userimage_2 }}
+              -->
+
+
+
 {% endblock %}
