@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}   
 
 <section class="h-100 gradient-custom-2">
-    <div class="container py-5 h-100">
+    <div class="container py-1 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-lg-9 col-xl-7">
           <div class="card">
@@ -36,13 +36,13 @@
             </div>
 
             <!-- Forms to Edit User Profile-->
-            <div class="card-body p-4 text-black">
+            <div class="card-body pt-4 text-black">
               <div class="mb-5">
                 <div class="p-1" style="background-color: #f8f9fa;">
                   <!-- <form method="POST" enctype="multipart/form-data"> -->
                   <div>
                   <!-- Individual Form Fields -->
-                  <ul class="list-group" style="padding-3px;">
+                  <ul class="list-group" style="padding-1px;">
                     <!-- User Login information -->
                     <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
                       <legend><strong style="color: #f8f9fa;"> Update Bio </strong></legend>
@@ -56,18 +56,80 @@
                         </fieldset>
 
                         <!-- User Profile Images -->
-                        <li class="list-group-item"><strong>profile picture</strong> </br>
-                          {{ picture_form.image }}
+                        <li class="list-group-item" style="background-color: hsl(218, 41%, 15%);"> 
+                          <strong style="color: #f8f9fa;"> Upload Pictures </strong>
                         </li>
-                        <li class="list-group-item"><strong>Image 1</strong> </br> 
-                          {{ picture_form.userimage_1 }}</li>
-                        <li class="list-group-item"><strong>Image 2</strong> </br> 
-                          {{ picture_form.userimage_2 }}</li>
-                        <li class="list-group-item"><strong>Image 3</strong> </br> 
-                          {{ picture_form.userimage_3 }}</li>
-                        <li class="list-group-item"><strong>Image 4</strong> </br> 
-                          {{ picture_form.userimage_4 }}</li>
+                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                          <strong style="color: #f8f9fa;"> Profile Picture </strong>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card">
+                              <img class="card-img-top" src="{{ user.profile.image.url }}"
+                              alt="Generic placeholder image" class="img-fluid img-thumbnail"
+                              style="width: 150px;">
+                              <div class="card-body">
+                                <p class="card-text">
+                                  {{ picture_form.image }}</p>
+                              </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                          <strong style="color: #f8f9fa;"> Image 1 </strong>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card">
+                              <img class="card-img-top" src="{{ user.profile.userimage_1.url }}" class="img-fluid img-thumbnail">
+                              <div class="card-body">
+                                <p class="card-text">{{ picture_form.userimage_1 }}</p>
+                              </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                          <strong style="color: #f8f9fa;"> Image 2 </strong>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card">
+                              <img class="card-img-top" src="{{ user.profile.userimage_2.url }}" class="img-fluid img-thumbnail">
+                              <div class="card-body">
+                                <p class="card-text">{{ picture_form.userimage_2 }}</p>
+                              </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                          <strong style="color: #f8f9fa;"> Image 3 </strong>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card">
+                              <img class="card-img-top" src="{{ user.profile.userimage_3.url }}" class="img-fluid img-thumbnail">
+                              <div class="card-body">
+                                <p class="card-text">{{ picture_form.userimage_3 }}</p>
+                              </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                          <strong style="color: #f8f9fa;"> Image 4 </strong>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="card">
+                              <img class="card-img-top" src="{{ user.profile.userimage_4.url }}" class="img-fluid img-thumbnail">
+                              <div class="card-body">
+                                <p class="card-text">{{ picture_form.userimage_4 }}</p>
+                              </div>
+                            </div>
+                        </li>
 
+                        <!-- Bootstrap formatting for Image Upload-->
+                        <li class="list-group-item">
+                              {{ picture_form.userimage_4|as_crispy_field }}
+                        </li>
+                        <li>
+                          <div class="mb-3">
+                            <label for="formFile" class="form-label"></label>
+                            <input class="form-control" type="file" id="formFile">
+                          </div>
+                        </li>
+
+                        <!-- Submit Profile information -->
                         <div class="form-group" style="margin-top: 5px;">
                           <button class="btn btn-outline-info" style="background-color:hsl(194, 65%, 20%)" type="submit">
                             <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
@@ -78,18 +140,19 @@
                   </ul>
 
                   <!-- 
-                  Form Modification generic
-                  
-                    <div class="fieldWrapper">
-                    {{ form.picture_form.errors }}
-                    <label for="{{ form.picture_form.id_for_label }}">Change image:</label>
-                    {{ form.picture_form }}
-                    </div>
+                    Image Upload Default HTML
+                        <li class="list-group-item"><strong>profile picture</strong> <br>
+
+                          Currently: <a href="/media/profile_pics/albert-dera-ILip77SbmOE-unsplash_8tAmmuo.jpg">profile_pics/albert-dera-ILip77SbmOE-unsplash_8tAmmuo.jpg</a><br>
+                          Change: <input type="file" name="image" accept="image/*" id="id_image">
+
+                        </li>
                   -->
 
                   </div>
                 </div>
               </div>
+
 
 
             </div>

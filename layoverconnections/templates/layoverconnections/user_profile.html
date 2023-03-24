@@ -4,8 +4,10 @@
 
 {% block content %}
 <body>
+
   <section class="h-100 gradient-custom-2">
-    <div class="container py-3 h-100">
+    
+    <div class="container py-1 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-lg-9 col-xl-7">
           <div class="card">
@@ -44,9 +46,9 @@
                 </p>
               </div>
             </div>
+            <!-- User profile information -->
             <div class="card-body p-4 text-black">
               <div class="mb-4">
-                <!-- User profile information -->
                 <div class="p-3" style="background-color: #f8f9fa;">
                   <strong>Hello, {{ user.first_name }}.</strong>
                   <!-- Provide Bio if present -->
@@ -59,51 +61,71 @@
                       in a new city?
                     </p>
                   {% endif %}
-                  <button type="button" class="btn btn-md btn-outline-secondary mt-2" style="background-color:hsl(194, 65%, 20%)">
-                    <strong><a href="{% url 'layoverconnections:aboutme' %}" style="color: #f8f9fa; text-decoration:none;">Edit Bio</a></strong>
+                </div>
+              </div>
+
+              <!-- Carousel with Profile Images-->
+              <div class="container justify-content-center" style="width: 26rem;">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <!-- 1st Carousel Row Image 1 + 2-->
+                    <div class="carousel-item active">
+                      <div class="row g-3">
+                        <!-- Image 1-->
+                        <div class="col mb-2">
+                          <img src="{{ user.profile.userimage_1.url }}"
+                              alt="Image 1" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                        <!-- Image 2 -->
+                        <div class="col mb-2">
+                          <img src="{{ user.profile.userimage_2.url }}"
+                              alt="Image 2" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Row 2 Image 3 + 4-->
+                    <div class="carousel-item">
+                      <div class="row g-3">
+                        <!-- Image 3 -->
+                        <div class="col mb-2">
+                          <img src="{{ user.profile.userimage_3.url }}"
+                            alt="image 3" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                        <!-- Image 4 -->
+                        <div class="col mb-2">
+                          <img src="{{ user.profile.userimage_4.url }}"
+                            alt="image 4" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
                   </button>
-                </div>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>  
               </div>
-              <!-- Profile picture formatting-->
 
-              <div class="container" style="width:26em;">
-                  <!-- Row 1 -->
-                <div class="row g-2">
-                  <!-- Image 1-->
-                  <div class="col mb-2">
-                    <img src="{{ user.profile.userimage_1.url }}"
-                        alt="Image 1" class="w-100 rounded-3" style="height:10rem;">
+
+
+                  <!-- Edit User Profile -->
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <p class="lead fw-normal mb-0">
+                      <!-- Upload photos -->
+                      <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
+                        <strong><a href="{% url 'layoverconnections:aboutme' %}" style="color: #f8f9fa; text-decoration:none;"> Edit Profile </a></strong>
+                      </button>
+                    </p>
                   </div>
-                  <!-- Image 2 -->
-                  <div class="col mb-2">
-                    <img src="{{ user.profile.userimage_2.url }}"
-                    alt="Image 2" class="w-100 rounded-3" style="height:10rem;">
-                  </div>
                 </div>
-                <!-- Row 2 -->
-                <div class="row g-2">
-                    <div class="col mb-2">
-                      <img src="{{ user.profile.userimage_3.url }}"
-                        alt="image 3" class="w-100 rounded-3" style="height:10rem;">
-                    </div>
-                    <div class="col mb-2">
-                      <img src="{{ user.profile.userimage_4.url }}"
-                        alt="image 4" class="w-100 rounded-3" style="height:10rem;">
-                    </div>
-                </div>
-              </div>
-
-
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <p class="lead fw-normal mb-0">
-                  <!-- Upload photos -->
-                  <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
-                    <strong><a href="#" style="color: #f8f9fa; text-decoration:none;">Upload Photos</a></strong>
-                  </button> 
-                </p>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>

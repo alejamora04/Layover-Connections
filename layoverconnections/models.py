@@ -10,9 +10,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     userimage_1 = models.ImageField(default='placeholder.jpg', upload_to='profile_pics')
-    userimage_2 = models.ImageField(default='placeholer.jpg', upload_to='profile_pics')
-    userimage_3 = models.ImageField(default='placeholer.jpg', upload_to='profile_pics')
-    userimage_4 = models.ImageField(default='placeholer.jpg', upload_to='profile_pics')
+    userimage_2 = models.ImageField(default='placeholder.jpg', upload_to='profile_pics')
+    userimage_3 = models.ImageField(default='placeholder.jpg', upload_to='profile_pics')
+    userimage_4 = models.ImageField(default='placeholder.jpg', upload_to='profile_pics')
     hometown = models.CharField(max_length= 25, null=True)
     age = models.IntegerField(null=True)
     profile = models.CharField(max_length=500,
