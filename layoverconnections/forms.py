@@ -3,17 +3,14 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile
-# PROTOTYPE - Custom Django Image Upload Formatting
-from django.forms.widgets import ClearableFileInput
 
-# Create your forms here.
 # User Registration forms
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
 
 	class Meta:
 		model = User
-		fields = ("username", "email", "password1", "password2")
+		fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2' ]
 
 	def save(self, commit=True):
 		user = super(NewUserForm, self).save(commit=False)
@@ -22,7 +19,7 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 
-# Allows you to change User name and email address
+# Allows user to change profile information
 class UserUpdateForm(forms.ModelForm):
 	email = forms.EmailField()
 	
@@ -36,7 +33,6 @@ class ProfileUpdateForm(forms.ModelForm):
 		model = Profile
 		fields = ['image', 'age', 'hometown']
 
-"""
 # Formatting for image upload forms
 class ImageUploadForm(forms.ModelForm):
 	image = forms.ImageField(label= 'Upload Image')
@@ -44,7 +40,6 @@ class ImageUploadForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['image', 'userimage_1', 'userimage_2', 'userimage_3', 'userimage_4']
-"""
 
 # Biography form modified from comment form
 class AboutMeForm(forms.ModelForm):
@@ -55,7 +50,16 @@ class AboutMeForm(forms.ModelForm):
 		fields = ['bio']
 
 
-# PROTOTYPE - Custom Image Upload  Form
+"""
+
+# Custom Django Image Upload Formatting
+from django.forms.widgets import ClearableFileInput
+
+Protype Custom Image forms
+
+# Library Dependancy
+from django.forms.widgets import ClearableFileInput
+
 # PROTOTYPE - Custom Django Imgae HTML Formatting
 class CustomImageFieldWidget(ClearableFileInput):
 	template_with_clear = 'layoverconnections/imageuploadform.html'
@@ -70,7 +74,5 @@ class ImageUploadForm(forms.ModelForm):
             'userimage_1': CustomImageFieldWidget,
 		}
 
-"""
-# Custom Django Image Upload Formatting
-from django.forms.widgets import ClearableFileInput
+
 """

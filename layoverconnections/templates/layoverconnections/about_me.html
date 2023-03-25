@@ -24,12 +24,13 @@
                 </p>
               </div>
             </div>
+
             <!-- Django forms to apply updates to user profile. -->
-            <div class="p-4 text-black" style="background-color: #f8f9fa;">
-              <div class="d-flex justify-content-end text-center py-1">
+            <div class="py-4 text-black" style="background-color: #f8f9fa;">
+              <div class="d-flex justify-content-end text-center">
                 <!-- Route to the main page -->
-                <div>
-                  <button type="button" class="btn btn-md btn-outline-secondary" style="background-color:hsl(194, 65%, 20%)">
+                <div style="padding-right: 1rem;">
+                  <button type="button" class="btn btn-md btn-outline-secondary" style="background-color:hsl(194, 65%, 20%);">
                     <strong><a href="{% url 'layoverconnections:profile' %}" style="color: #f8f9fa; text-decoration:none;">Return to Profile</a></strong>
                   </button>
                 </div>   
@@ -38,108 +39,108 @@
             <!-- Forms to Edit User Profile-->
             <div class="card-body pt-4 text-black">
               <div class="mb-5">
-                <div class="p-1" style="background-color: #f8f9fa;">
+                <div  style="background-color: #f8f9fa;">
                   <!-- <form method="POST" enctype="multipart/form-data"> -->
                   <div>
-                  <!-- Individual Form Fields -->
-                  <ul class="list-group" style="padding-1px;">
-                    <!-- User Login information -->
-                    <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
-                      <legend><strong style="color: #f8f9fa;"> Update Bio </strong></legend>
-                    </li>
                     <li class="list-group-item">
                       <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+                        <!-- User About Me Section -->
+                        <!-- Profile Picture-->
+                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+                          <strong style="color: #f8f9fa;"> Profile Picture </strong>
+                        </li>
+                            <div class="card">
+                              <img class="card-img-top" src="{{ user.profile.image.url }}"
+                              alt="Generic placeholder image" class="img-fluid img-thumbnail"
+                              style="width: 150px; padding: 1rem; ">
+                              <div class="card-body">
+                                <p class="card-text">
+                                  {{ picture_form.image }}</p>
+                              </div>
+                            </div>
+
                         <!-- User About Me Section -->
                         <fieldset class="form">
                           <p>{{ aboutme_form }}</p>
                         </fieldset>
 
                         <!-- User Profile Images -->
-                        <li class="list-group-item" style="background-color: hsl(218, 41%, 15%);"> 
+                        <li class="list-group-item" style="background-color: hsl(220, 39%, 23%); text-align: center;"> 
                           <strong style="color: #f8f9fa;"> Upload Pictures </strong>
                         </li>
-                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
-                          <strong style="color: #f8f9fa;"> Profile Picture </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card">
-                              <img class="card-img-top" src="{{ user.profile.image.url }}"
-                              alt="Generic placeholder image" class="img-fluid img-thumbnail"
-                              style="width: 150px;">
-                              <div class="card-body">
-                                <p class="card-text">
-                                  {{ picture_form.image }}</p>
+                        <!-- Image Upload Carousel-->
+                        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                          <div class="carousel-inner">
+                          <!-- Img 1 -->
+                            <div class="carousel-item active">
+                                <div class="card">
+                                  <div style="background-color:hsla(194, 65%, 20%, 0.815); height: 2.75rem; text-align: center; padding-top:.5rem;"> 
+                                    <strong style="color: #f8f9fa;"> Image 1 </strong>
+                                  </div>
+                                  <img class="card-img-top" src="{{ user.profile.userimage_1.url }}" class="img-fluid img-thumbnail" style="padding: 1rem;">
+                                  <div class="card-body">
+                                    <p class="card-text">{{ picture_form.userimage_1 }}</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- Image 2 -->
+                            <div class="carousel-item">
+                              <div style="background-color:hsla(194, 65%, 20%, 0.815); height: 2.5rem; text-align: center; padding-top:.5rem;"> 
+                                <strong style="color: #f8f9fa;"> Image 2 </strong>
+                              </div>
+                              <div class="card">
+                                <img class="card-img-top" src="{{ user.profile.userimage_2.url }}" class="img-fluid img-thumbnail" style="padding: 1rem;">
+                                <div class="card-body">
+                                  <p class="card-text">{{ picture_form.userimage_2 }}</p>
+                                </div>
                               </div>
                             </div>
-                        </li>
-                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
-                          <strong style="color: #f8f9fa;"> Image 1 </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card">
-                              <img class="card-img-top" src="{{ user.profile.userimage_1.url }}" class="img-fluid img-thumbnail">
-                              <div class="card-body">
-                                <p class="card-text">{{ picture_form.userimage_1 }}</p>
+                            <!-- Img 3 -->
+                            <div class="carousel-item">
+                              <div style="background-color:hsla(194, 65%, 20%, 0.815); height: 2.5rem; text-align: center; padding-top:.5rem;"> 
+                                <strong style="color: #f8f9fa;"> Image 3 </strong>
+                              </div>
+                              <div class="card">
+                                <img class="card-img-top" src="{{ user.profile.userimage_3.url }}" class="img-fluid img-thumbnail" style="padding: 1rem;">
+                                <div class="card-body">
+                                  <p class="card-text">{{ picture_form.userimage_3 }}</p>
+                                </div>
                               </div>
                             </div>
-                        </li>
-                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
-                          <strong style="color: #f8f9fa;"> Image 2 </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card">
-                              <img class="card-img-top" src="{{ user.profile.userimage_2.url }}" class="img-fluid img-thumbnail">
-                              <div class="card-body">
-                                <p class="card-text">{{ picture_form.userimage_2 }}</p>
+                            <!-- Img 4 -->
+                            <div class="carousel-item">
+                              <div style="background-color:hsla(194, 65%, 20%, 0.815); height: 2.5rem; text-align: center; padding-top:.5rem;"> 
+                                <strong style="color: #f8f9fa;"> Image 4 </strong>
+                              </div>
+                              <div class="card" style="margin-bottom: 1rem;">
+                                <img class="card-img-top" src="{{ user.profile.userimage_4.url }}" class="img-fluid img-thumbnail" style="padding: 1rem;">
+                                <div class="card-body">
+                                  <p class="card-text">{{ picture_form.userimage_4 }}</p>
+                                </div>
                               </div>
                             </div>
-                        </li>
-                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
-                          <strong style="color: #f8f9fa;"> Image 3 </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card">
-                              <img class="card-img-top" src="{{ user.profile.userimage_3.url }}" class="img-fluid img-thumbnail">
-                              <div class="card-body">
-                                <p class="card-text">{{ picture_form.userimage_3 }}</p>
-                              </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
-                          <strong style="color: #f8f9fa;"> Image 4 </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="card">
-                              <img class="card-img-top" src="{{ user.profile.userimage_4.url }}" class="img-fluid img-thumbnail">
-                              <div class="card-body">
-                                <p class="card-text">{{ picture_form.userimage_4 }}</p>
-                              </div>
-                            </div>
-                        </li>
-
-                        <!-- Bootstrap formatting for Image Upload-->
-                        <li class="list-group-item">
-                              {{ picture_form.userimage_4|as_crispy_field }}
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <label for="formFile" class="form-label"></label>
-                            <input class="form-control" type="file" id="formFile">
                           </div>
-                        </li>
-
-                        <!-- Submit Profile information -->
-                        <div class="form-group" style="margin-top: 5px;">
+                          <!-- Carousel Control Buttons-->
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
+                        <!-- Submit Profile information -->                        
+                        <div class="form-group" style="margin-bottom: 7px;" method="POST" enctype="multipart/form-data">
                           <button class="btn btn-outline-info" style="background-color:hsl(194, 65%, 20%)" type="submit">
                             <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
                           </button>
                         </div>
                       </form>
-                    </li>
-                  </ul>
-
+                  
                   <!-- 
+
                     Image Upload Default HTML
                         <li class="list-group-item"><strong>profile picture</strong> <br>
 

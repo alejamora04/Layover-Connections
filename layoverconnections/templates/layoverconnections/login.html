@@ -43,10 +43,20 @@
                   <strong>Sign up</strong>
                 </a>
 
-                <!-- Register buttons -->
+                    <!-- Checkbox -->
+                    <div class="form-check d-flex justify-content-center  mt-4 mb-4">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" unchecked />
+                        <label class="form-check-label" for="form2Example33">
+                          Join our mailing list for updates?
+                        </label>
+                    </div>
+
+                <!-- Register buttons 
+
                 <div class="text-center">
                     <p>or sign up with:</p>
-                    <!-- Google Sign-on Prompt consider Django Server app recommendations-->
+                     Google Sign-on Prompt consider Django Server app recommendations-->
+                     <!-- 
                     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                     <script>
                       function onSignIn(googleUser) {
@@ -64,11 +74,6 @@
                         console.log("ID Token: " + id_token);
                       }
                     </script>
-                    <!-- Checkbox -->
-                    <div class="form-check d-flex justify-content-center  mt-4 mb-4">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" unchecked />
-                        <label class="form-check-label" for="form2Example33">
-                          Subscribe for updates to our app.
-                        </label>
-                    </div>
+
+                  -->
 {% endblock %}
