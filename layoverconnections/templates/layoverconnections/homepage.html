@@ -60,7 +60,8 @@
                       <!-- Django tools for User Navbar Controls-->
                       {% if user.is_authenticated %}
                       <li><a href="#" class="nav-link text-white">Check into the Airport</a></li>
-                      <li><a href="#" class="nav-link text-white">Create a New Event</a></li>
+                      <!-- Route to event Creation -->
+                      <li><a href="{% url 'layoverconnections:events' %}" class="nav-link text-white">Create a New Event</a></li>
                       <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
                       {% else %}
                       <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
@@ -77,8 +78,8 @@
     <main role="main">
     <!-- Main Page welcome banner-->
       <section class="jumbotron text-center" style="background-color: hsla(224, 65%, 20%, 0.363);">
-        <div class="container" >
-          <ul class="list-group" style="padding-5px;">
+        <div class="container">
+          <ul class="list-group" style="width: 100%;">
             <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
               <h1 class="jumbotron-heading" style="color: #f8f9fa;"><strong>Welcome to the Travel Hub</strong></h1>
             </li>
@@ -87,13 +88,13 @@
                 It's a good time to meet and connect with fellow travelers.
               </p>
             </li>
-            <li class="list-group-item text-muted">Start a get together. </li>
-            <li class="list-group-item text-muted">See available groups. </li>
-            <li class="list-group-item text-muted">Meet other travelers. </li>
             <li class="list-group-item">
               <p>
                 <a href="#" class="btn btn-primary my-2 text-white" style="background-color:hsl(221, 65%, 20%);"><strong>Upcoming Events</strong></a>
-                <a href="#" class="btn btn-secondary my-2"><strong>Create a Event</strong></a>
+
+                <!-- Route to event Creation -->
+                <a href="{% url 'layoverconnections:events' %}" class="btn btn-secondary my-2"><strong>Create a Event</strong></a>
+              
               </p>
             </li>
           </ul>

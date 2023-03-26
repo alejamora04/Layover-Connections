@@ -113,3 +113,10 @@ def edit_bio(request):
 # Configure Requests for the homepage http request
 def homepage(request):
 	return render(request, 'layoverconnections/homepage.html')
+
+
+#  path("events", views.create_event, name="events")
+# Routing to a user profile.
+@login_required
+def create_event(request):
+	return render(request, 'layoverconnections/events.html')

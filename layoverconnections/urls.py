@@ -19,6 +19,8 @@ urlpatterns = [
     path("user_profile", views.user_profile, name="profile"),
     path("edit_profile", views.edit_profile, name="editprofile"),
     path("about_me", views.edit_bio, name="aboutme"),
+    # Event Creation URL routing
+    path("events", views.create_event, name="events")
 ] 
 
 # Pre-Deployment check to see if currently in DEBUG mode
