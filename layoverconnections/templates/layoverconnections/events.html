@@ -81,41 +81,69 @@
     </div>
     <!-- Center Piece -->
     <div id="event_main" style="background-color: whitesmoke; padding: 2rem; width: 32rem;">
-        <div class="card mb-4 box-shadow" style="border-radius: 5px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
-            <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+        <div class="card mb-4 box-shadow" style="border-radius: 10px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
+            <div class="card-img-overlay" style ="background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
               <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Create Event</strong></h1>
             </div>
             <img src= "{% static '/images/jeshoots-com-mSESwdMZr-A-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Create Event">
-            <div class="card-body" style="background-color: hsla(197, 45%, 58%, 0.603)">
+            <div class="card-body" style="background-color: hsla(197, 45%, 58%, 0.603);">
               <!-- Event Form controls -->
-              <ul class="list-group" style="opacity: 95%;">
+              <ul class="list-group" style="opacity: 70%;">
                 <li class="list-group-item">
                     <p> 
                         Hi {{ user.first_name }} Nice of you to show up. Theres plently of awesome people around you also looking to kill sometime.
                         Chicago can be a neat playground with the proper company. What kind of vibe are you feeling and what do you wanna see?
                     </p>
                 </li>
+                <li class="list-group-item">Upload a Picture?</li>
                 <!-- TODO: Populate category of preset events added to the event model.-->
-                <li class="list-group-item">Category</li>
+                <li class="list-group-item">
+                    Category
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Select...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </li>
                 <li class="list-group-item">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Event Details</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                 </li>
-                <li class="list-group-item">Start Time</li>
-                <li class="list-group-item">End Time</li>
-                <li class="list-group-item">Length of Time</li>
+                <li class="list-group-item">
+                    <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                        <label for="start">Select Date:</label>
+                        <input type="date" class="form-control" id="start" name="trip-start"
+                            value="2018-MM-DD"
+                            min="2018-01-01">
+                    </div>
+                </li>
+                <!-- Start End Time and Duration of Event -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                        Start:
+                          <input type="time" class="form-control" placeholder="Start Time:" label="Start">
+                        </div>
+                        <div class="col">
+                        Finish:
+                          <input type="time" class="form-control" placeholder="End Time:">
+                        </div>
+                    </div> 
+                    <div class="row" style="padding-left: 1rem;">
+                        Duration 00:00
+                    </div>
+                </li>
                 <li class="list-group-item">Creator</li>
-                <li class="list-group-item">Guest Participating</li>
+                <li class="list-group-item">Invite Guest? </li>
                 <li class="list-group-item">Active or Finished Status</li>
-                <li class="list-group-item">Thumbnail or user profile picture</li>
              </ul>
               <div class="d-flex justify-content-between align-items-center" style="padding-top:1rem;">
                 <div class="btn-group">
                   <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
                 </div>
-                <small class="text-muted"> # of events </small>
               </div>
             </div>
         </div>
