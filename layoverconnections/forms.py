@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Event
 
 # User Registration forms
 class NewUserForm(UserCreationForm):
@@ -19,7 +19,7 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 
-# Allows user to change profile information
+# Combine 1-3 Allows user to change profile information
 class UserUpdateForm(forms.ModelForm):
 	email = forms.EmailField()
 	
@@ -27,11 +27,19 @@ class UserUpdateForm(forms.ModelForm):
 		model = User
 		fields = ['first_name', 'last_name', 'username', 'email']
 
-# Provides Front-End controls to modify the user model on the profile page
+# Combine 2-3 Provides Front-End controls to modify the user model on the profile page
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['image', 'age', 'hometown']
+
+# Combine 3-3 Biography form modified from comment form
+class AboutMeForm(forms.ModelForm):
+	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 7}))
+
+	class Meta:
+		model = Profile
+		fields = ['bio']
 
 # Formatting for image upload forms
 class ImageUploadForm(forms.ModelForm):
@@ -41,13 +49,11 @@ class ImageUploadForm(forms.ModelForm):
 		model = Profile
 		fields = ['image', 'userimage_1', 'userimage_2', 'userimage_3', 'userimage_4']
 
-# Biography form modified from comment form
-class AboutMeForm(forms.ModelForm):
-	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 7}))
-
+# Prototype formatting for event creation.
+class EventCreationForm(forms.ModelForm):
 	class Meta:
-		model = Profile
-		fields = ['bio']
+		model = Event
+		fields = ['title', 'date']
 
 
 """

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 from django.conf import settings
+from django.utils import timezone
 
 # Creates a User Profile with a one to one relationship with User Model
 # Contains information for: profilepic, hometown, age, bio
@@ -33,3 +34,21 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+# Prototype model for Events
+"""
+ Model should contain: 
+ Creator, Title, Date, Start time, end Time
+ Thumbnail, Guest, Descriptions,
+ Status (Active, upcoming, finished)
+"""
+class Event(models.Model):
+    # attach an event to a owner.
+    creator = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    title = models.TextField()
+    date = models.DateTimeField()
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
