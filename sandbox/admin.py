@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Event
 
-# Register your models here.
+# Registerred Event property to permit admin views and controls.
+admin.site.register(Event)
