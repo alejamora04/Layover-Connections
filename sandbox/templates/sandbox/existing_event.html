@@ -39,33 +39,28 @@
                         <h1> All Current Events </h1>
                         <p> 
                             Show the crude display of all current events and event properties.
-                            {{ Event }}
-                            
                             <!-- Iterate through all of the events published and stored in the db-->
                             {% for events in Events %}
                             <div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
                                 <h2 style="color:rgb(6, 3, 53);">
-                                    {{ events.title }}
-                                    {{ events.start_time }}
-                                    {{ events.end_time }}
-                                </h2>
+                                    Event: {{ events.title }} </br></h2>
+                                    Start Time: {{ events.start_time }} </br>
+                                    End Time: {{ events.end_time }} </br> 
                             </div>
                             {% endfor %}
 
-                            <!-- Individual model attributes
-
-                                <div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
-                                
-                                <h2>
-                                <a href="{{ post.get_absolute_url }}" style="color:rgb(6, 3, 53);">
-                                    {{ post.title }}
-                                </a>
-                                </h2>
-    
-                                </div>
-                            
-                            -->
-
+                            <!-- Generic Model access template boilerplate -->
+                            {% if "Event" %}
+                                <!-- Create list view for each detected and parsed db model object -->
+                                <ul>
+                                {% for events in Event %}
+                                    <!-- Hyperlink to page/post containing object -->
+                                    <li> <a href=" " {{ events.title }}> {{ Event  }} </a> </li>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                    <p> No Event entry available/found </p>
+                            {% endif%}
                         </p>
                         <!-- Page Navigation Button Controls. -->
                         <div>

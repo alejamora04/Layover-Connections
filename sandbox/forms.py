@@ -7,34 +7,12 @@ from .models import Event
 # Event model [Prototype]
 # Formatting for event creation.
 class EventCreationForm(forms.ModelForm):
+	title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 1}))
+	start_time = forms.CharField(label= 'Start Time: [ yyyy-mm-dd 00:00 ]')
+
 	class Meta:
 		model = Event
 		fields = ['title', 'start_time', 'end_time']
-
-
-
-"""
-# Unique Form Attributes
-class UserUpdateForm(forms.ModelForm):
-	email = forms.EmailField()
-	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 7}))
-	image = forms.ImageField(label= 'Upload Image')
-	
-	class Meta:
-		model = User
-		fields = ['email', 'bio', 'image', 'userimage_1', 'userimage_2', 'userimage_3', 'userimage_4']
-
-
-	def save(self, commit=True):
-		user = super(NewUserForm, self).save(commit=False)
-		user.email = self.cleaned_data['email']
-		if commit:
-			user.save()
-		return user
-
-		
-
-"""
 
 
 

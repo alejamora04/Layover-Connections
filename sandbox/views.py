@@ -38,12 +38,12 @@ def create_event(request):
 
 # Base Event Page to encapsulate all event controls.
 def view_events(request):
-	event_list = Event(request.GET)
+    event_list = Event.objects.all()
+    context = {
+        "Events": event_list
+    }
+    return render(request, 'sandbox/existing_event.html', context)
 
-	context = {
-		'Events': event_list
-	}
-	return render(request, 'sandbox/existing_event.html', context)
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation
 def end_product(request):
