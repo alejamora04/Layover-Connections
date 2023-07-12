@@ -6,6 +6,9 @@ from django.contrib import messages
 from .models import Event
 from .forms import EventCreationForm
 
+from django.utils.timezone import datetime
+from . import events
+
 # Formatting for the splash page portal. 
 #TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
 def index(request):
@@ -15,9 +18,7 @@ def index(request):
 def event_base(request):
 	return render(request, 'sandbox/event.html')
 
-
-# TODO Link to the event.py to check duration and other python driven controls.
-# [PROTOTYPE] Formatting for the Event page. 
+# Load form variables for the event creation portal. 
 def create_event(request):
 	if request.method == 'POST':
 		Event_Form = EventCreationForm(request.POST)
@@ -38,11 +39,16 @@ def create_event(request):
 
 # Base Event Page to encapsulate all event controls.
 def view_events(request):
-    event_list = Event.objects.all()
-    context = {
-        "Events": event_list
-    }
-    return render(request, 'sandbox/existing_event.html', context)
+	event_list = Event.objects.all()
+
+	time_now = datetime.now()
+
+	context = {
+		"Events": event_list,
+		"Status": time_now,
+	}
+
+	return render(request, 'sandbox/existing_event.html', context)
 
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation

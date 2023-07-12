@@ -20,6 +20,8 @@ class Event:
 
 # Inputs (start_time, end_time, current_time)
 def event_status(start, end, now):
+    now = datetime.datetime.now()
+    
     if start < now and now < end:
         status = 'Active'
     elif now < start and now < end:
@@ -28,6 +30,9 @@ def event_status(start, end, now):
         status = 'Finished'
     return status
 
+
+
+"""
 start_time = datetime.datetime(2023, 8, 24, 9 ,34)
 end_time = datetime.datetime(2023, 8, 24, 15 ,34)
 event_duration = (end_time - start_time)
@@ -36,3 +41,4 @@ current_status = event_status(start_time, end_time, time_now)
 
 house_party = Event("House Party", start_time, end_time, current_status, event_duration)
 print(house_party)
+"""

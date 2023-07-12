@@ -7,22 +7,21 @@ from PIL import Image
 """
 MVP Properties
  Creator, 
- Title, 
- Date, 
- Start time, 
- End Time,
+ Title, x 
+ Date, x
+ Start time, x
+ End Time, x
  Status (Active, upcoming, finished)
 
 Post MVP
  Thumbnail, 
  Guest, 
  Descriptions,
- Host approval controls 
+ Host approval controls,
+ Duration 
 
 
 """
-
-
 
 # Prototype model for Events
 class Event(models.Model):
@@ -31,7 +30,10 @@ class Event(models.Model):
     end_time = models.DateTimeField()
 
     def __str__(self):
-        return self.title
+        event_properties = (f"Event: {Event.title}\n"+
+                    f"Start Time: {Event.start_time}\n"+
+                    f"End Time: {Event.end_time}\n")
+        return event_properties
     
 
 
