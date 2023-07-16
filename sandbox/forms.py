@@ -21,9 +21,6 @@ class EventCreationForm(forms.ModelForm):
 # Protype Custom Image forms Custom Django Image Upload Formatting
 from django.forms.widgets import ClearableFileInput
 
-# Library Dependancy
-from django.forms.widgets import ClearableFileInput
-
 # PROTOTYPE - Custom Django Imgae HTML Formatting
 class CustomImageFieldWidget(ClearableFileInput):
 	template_with_clear = 'layoverconnections/imageuploadform.html'

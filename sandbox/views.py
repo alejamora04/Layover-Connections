@@ -6,8 +6,13 @@ from django.contrib import messages
 from .models import Event
 from .forms import EventCreationForm
 
+#import datetime
+#from . import events
+# Make Datetime objects aware
 from django.utils.timezone import datetime
-from . import events
+from django.utils import timezone
+
+
 
 # Formatting for the splash page portal. 
 #TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
@@ -41,11 +46,56 @@ def create_event(request):
 def view_events(request):
 	event_list = Event.objects.all()
 
+	start = Event._meta.get_field("start_time")
+
+	# V django.utils.timezone
 	time_now = datetime.now()
+
+	start_field_name = 'start_time'
+	start_obj = Event.objects.first()
+	start = getattr(start_obj, start_field_name)
+
+	field_name = 'end_time'
+	obj = Event.objects.first()
+	end = getattr(obj, field_name)
+
+	# TypeError: Can't compare offset-naive and offset-aware datetimes
+
+	"""
+	Variable	Value
+	end_time	
+	datetime.datetime(2006, 10, 25, 16, 30, 59, tzinfo=datetime.timezone.utc)
+	now	
+	datetime.datetime(2023, 7, 16, 16, 25, 55, 457113)
+	start_time	
+	datetime.datetime(2006, 10, 25, 14, 30, 59, tzinfo=datetime.timezone.utc)
+	"""
+	# Compares start, end, and current time to determine status.
+	# Datetime Comparisons are made in UTC Timezones.
+	def event_status(start_time, end_time):
+		now = timezone.now()
+
+		if start_time < now and now < end_time:
+			status = 'Active'
+			return status
+		elif now < start_time and now < end_time:
+			status = 'Upcoming'
+			return status
+		elif now > start_time and now > end_time:
+			status = 'Finished'
+			return status
+		return
+	
+	status = event_status(start, end)	
+
+
 
 	context = {
 		"Events": event_list,
-		"Status": time_now,
+		"Datetime_now": time_now,
+		"Status_Start": start,
+		"Status_End": end,
+		"Event_Status": status,
 	}
 
 	return render(request, 'sandbox/existing_event.html', context)
@@ -56,66 +106,3 @@ def end_product(request):
 	return render(request, 'sandbox/event_frontend.html')
 
 
-
-
-
-
-
-
-"""
-
-# Update User Profile information
-@login_required
-def edit_profile(request):
-	if request.method == "POST":
-		u_form = UserUpdateForm(request.POST, instance=request.user)
-		p_form = ProfileUpdateForm(request.POST, 
-								   request.FILES, 
-								   instance=request.user.profile)
-		if u_form.is_valid() and p_form.is_valid():
-			u_form.save()
-			p_form.save()
-			messages.success(request, f"Your account has been updated.") 
-			return render(request, 'layoverconnections/user_profile.html')
-
-	else:
-		u_form = UserUpdateForm(instance=request.user)
-		p_form = ProfileUpdateForm(instance=request.user.profile)
-
-	context = {
-		'u_form': u_form,
-		'p_form': p_form
-	}
-
-	return render(request, 'layoverconnections/edit_profile.html', context)
-
-# Update About Me Section
-@login_required
-def edit_bio(request):
-	if request.method == "POST":
-		aboutme_form = AboutMeForm(request.POST, 
-								   request.FILES, 
-								   instance=request.user.profile)
-		picture_form = ImageUploadForm(request.POST, 
-										request.FILES, 
-										instance=request.user.profile)
-		if aboutme_form.is_valid() and picture_form.is_valid():
-			aboutme_form.save()
-			picture_form.save()
-			messages.success(request, f"Your bio has been updated.") 
-			return render(request, 'layoverconnections/user_profile.html')
-
-	else:
-		aboutme_form = AboutMeForm(instance=request.user.profile)
-		picture_form = ImageUploadForm(instance=request.user.profile)
-
-
-	context = {
-		'aboutme_form': aboutme_form,
-		'picture_form': picture_form
-	}
-
-	return render(request, 'layoverconnections/about_me.html', context)
-
-
-"""

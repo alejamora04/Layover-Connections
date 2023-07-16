@@ -37,8 +37,11 @@
                     <div class="card-body px-2 py-5 px-md-5">
                         <!-- Integrate all model attributes -->
                         <h1> All Current Events </h1>
-                            Time now: {{Status}}
+                            Time now [Datetime.now module]: {{ Datetime_now }}
                             </br>
+                        <div>
+                            Accessed Variable {{ accessed }}
+                        </div>
                         <p> 
                             Show the crude display of all current events and event properties.
                             <!-- Iterate through all of the events published and stored in the db-->
@@ -50,7 +53,11 @@
                                     End Time: {{ events.end_time }} </br> 
                             </div>
                             {% endfor %}
-
+                            <div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
+                                    Event Start Time Attr: {{ Status_Start }} </br>
+                                    Event End Time Attr: {{ Status_End }} </br>
+                                    Event Status from [django.utils "timezone"]: {{ Event_Status }} </br>
+                            </div>
                             <!-- Generic Model access template boilerplate -->
                             {% if "Event" %}
                                 <!-- Create list view for each detected and parsed db model object -->

@@ -19,9 +19,9 @@ class Event:
         return event_properties
 
 # Inputs (start_time, end_time, current_time)
-def event_status(start, end, now):
+def event_status(start, end):
     now = datetime.datetime.now()
-    
+
     if start < now and now < end:
         status = 'Active'
     elif now < start and now < end:
