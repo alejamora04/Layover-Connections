@@ -12,12 +12,9 @@ from django.utils import timezone
 
 # Formatting for the splash page portal. 
 #TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
-def index(request):
-	return render(request, 'sandbox/sandbox_placeholder.html')
-
 # Base Event Page to encapsulate all event controls.
 def event_base(request):
-	return render(request, 'sandbox/event.html')
+	return render(request, 'events/event.html')
 
 # Load form variables for the event creation portal. 
 def create_event(request):
@@ -27,7 +24,7 @@ def create_event(request):
 			Event_Form.save()
 			messages.success(request, f"Event has been created")
 			# TODO Create redirect to updated event
-			return render(request, 'sandbox/existing_event.html')
+			return render(request, 'events/existing_event.html')
 	else:
 		Event_Form = EventCreationForm()
 
@@ -36,7 +33,7 @@ def create_event(request):
 		'Event_Form': Event_Form
 	}
 
-	return render(request, 'sandbox/create_event.html', context)
+	return render(request, 'events/create_event.html', context)
 
 # Base Event Page to encapsulate all event controls.
 def view_events(request):
@@ -68,6 +65,7 @@ def view_events(request):
 		elif now > start_time and now > end_time:
 			status = 'Finished'
 			return status
+		
 		return
 	
 	status = event_status(start, end)	
@@ -81,9 +79,9 @@ def view_events(request):
 		"Event_Status": status,
 	}
 
-	return render(request, 'sandbox/existing_event.html', context)
+	return render(request, 'events/existing_event.html', context)
 
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation
 def end_product(request):
-	return render(request, 'sandbox/event_frontend.html')
+	return render(request, 'events/event_frontend.html')
