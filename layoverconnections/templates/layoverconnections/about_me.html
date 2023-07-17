@@ -62,7 +62,8 @@
 
                         <!-- User About Me Section -->
                         <fieldset class="form">
-                          <p>{{ aboutme_form }}</p>
+                          <!-- Combined About me Form and Bio Form -->
+                          <p> {{ profile_form | crispy }} </p>
                         </fieldset>
 
                         <!-- User Profile Images -->

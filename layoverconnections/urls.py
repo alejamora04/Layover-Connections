@@ -18,7 +18,10 @@ urlpatterns = [
     path("logout", views.logout_request, name="logout"),
     path("user_profile", views.user_profile, name="profile"),
     path("edit_profile", views.edit_profile, name="editprofile"),
+    
+    # Testing combined form
     path("about_me", views.edit_bio, name="aboutme"),
+
     # Event Creation URL routing
     path("events", views.create_event, name="events")
 ] 

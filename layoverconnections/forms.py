@@ -27,19 +27,13 @@ class UserUpdateForm(forms.ModelForm):
 		model = User
 		fields = ['first_name', 'last_name', 'username', 'email']
 
-# Combine 2-3 Provides Front-End controls to modify the user model on the profile page
+# Combined ProfileUpdate Form + AboutMe Form Provides Front-End access to user the profile model
 class ProfileUpdateForm(forms.ModelForm):
-	class Meta:
-		model = Profile
-		fields = ['image', 'age', 'hometown']
-
-# Combine 3-3 Biography form modified from comment form
-class AboutMeForm(forms.ModelForm):
 	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 7}))
 
 	class Meta:
 		model = Profile
-		fields = ['bio']
+		fields = ['image', 'age', 'hometown', 'bio']
 
 # Formatting for image upload forms
 class ImageUploadForm(forms.ModelForm):
@@ -49,11 +43,6 @@ class ImageUploadForm(forms.ModelForm):
 		model = Profile
 		fields = ['image', 'userimage_1', 'userimage_2', 'userimage_3', 'userimage_4']
 
-# Prototype formatting for event creation.
-class EventCreationForm(forms.ModelForm):
-	class Meta:
-		model = Event
-		fields = ['title', 'date']
 
 
 """

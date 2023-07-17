@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Event
 from django.contrib import messages
-from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, AboutMeForm, ImageUploadForm
+from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, ImageUploadForm
 
 # Formatting for the splash page portal. 
 #TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
@@ -86,25 +86,25 @@ def edit_profile(request):
 @login_required
 def edit_bio(request):
 	if request.method == "POST":
-		aboutme_form = AboutMeForm(request.POST, 
+		profile_form = ProfileUpdateForm(request.POST, 
 								   request.FILES, 
 								   instance=request.user.profile)
 		picture_form = ImageUploadForm(request.POST, 
 										request.FILES, 
 										instance=request.user.profile)
-		if aboutme_form.is_valid() and picture_form.is_valid():
-			aboutme_form.save()
+		if profile_form.is_valid() and picture_form.is_valid():
+			profile_form.save()
 			picture_form.save()
 			messages.success(request, f"Your bio has been updated.") 
 			return render(request, 'layoverconnections/user_profile.html')
 
 	else:
-		aboutme_form = AboutMeForm(instance=request.user.profile)
+		profile_form = ProfileUpdateForm(instance=request.user.profile)
 		picture_form = ImageUploadForm(instance=request.user.profile)
 
 
 	context = {
-		'aboutme_form': aboutme_form,
+		'profile_form': profile_form,
 		'picture_form': picture_form
 	}
 
