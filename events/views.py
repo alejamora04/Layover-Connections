@@ -14,7 +14,7 @@ from django.utils import timezone
 #TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
 # Base Event Page to encapsulate all event controls.
 def event_base(request):
-	return render(request, 'events/event_base.html')
+	return render(request, 'events/event_splashpage.html')
 
 # Load form variables for the event creation portal. 
 def create_event(request):

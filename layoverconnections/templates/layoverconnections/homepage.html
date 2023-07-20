@@ -26,7 +26,7 @@
   </head>
 
   <body>
-    <!-- Upper Navbar linkin to important pages-->
+    <!-- Upper Navbar links to important app sections-->
     <header>
       <div class="navbar navbar-dark box-shadow" style="background-color: hsl(218, 41%, 15%);">
         <div class="container d-flex justify-content-between">
@@ -35,6 +35,11 @@
             <i class="fa-sharp fa-solid fa-circle-user" style="margin-right:10px;"></i>
             <strong>Profile</strong>
           </a>
+          <a href="{% url 'events:event_base' %}" class="navbar-brand d-flex align-items-center">
+            <i class="fa-solid fa-people-group" style="margin-right:10px;"></i>
+            <strong>events</strong>
+          </a>
+
           <a href="#" class="navbar-brand d-flex align-items-center ">
             <button type="button" class="btn btn-primary" style="background-color:hsl(202, 65%, 20%)">
               Messages <span class="badge bg-secondary">4</span>
@@ -83,16 +88,15 @@
             </li>
             <li class="list-group-item">
               <p class="lead text-muted" style="background-color: #f8f9fa;">
-                It's a good time to meet and connect with fellow travelers.
+                It's a good time to meet and connect with fellow travelers. Lets help you find a group and explore the windy city. 
+                Feel free to explore some of the open events below or feel free to create one yourself. If you're a local now's the chance
+                to show some travelers what makes this place so special.
               </p>
             </li>
             <li class="list-group-item">
+              <!-- Route Users to Events Apps -->
               <p>
                 <a href="{% url 'events:event_base' %}" class="btn btn-primary my-2 text-white" style="background-color:hsl(221, 65%, 20%);"><strong>View Events</strong></a>
-
-                <!-- Route to event Creation -->
-                <a href="{% url 'events:create_event' %}" class="btn btn-secondary my-2"><strong>Create a Event</strong></a>
-              
               </p>
             </li>
           </ul>

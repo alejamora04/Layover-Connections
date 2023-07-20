@@ -24,6 +24,10 @@ Post MVP Attributes
 
 # Prototype model for Events
 class Event(models.Model):
+    host = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    description = models.CharField(max_length=250,
+                    blank=True)
+
     title = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
