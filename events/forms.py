@@ -10,29 +10,4 @@ class EventCreationForm(forms.ModelForm):
 
 	class Meta:
 		model = Event
-		fields = ['title', 'start_time', 'end_time', 'host', 'description']
-
-
-"""
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-
-# Protype Custom Image forms Custom Django Image Upload Formatting
-from django.forms.widgets import ClearableFileInput
-
-# PROTOTYPE - Custom Django Imgae HTML Formatting
-class CustomImageFieldWidget(ClearableFileInput):
-	template_with_clear = 'layoverconnections/imageuploadform.html'
-
-# PROTOTYPE - Custom Django Image Upload Form
-class ImageUploadForm(forms.ModelForm):
-
-	class Meta:
-		model = Profile
-		fields = ['userimage_1',]
-		widgets = {
-            'userimage_1': CustomImageFieldWidget,
-		}
-
-
-"""
+		fields = ['title', 'start_time', 'end_time', 'description']

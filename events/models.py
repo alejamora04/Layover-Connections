@@ -1,33 +1,34 @@
 from django.db import models
 from django.conf import settings
+from django.contrib import auth
+
+
 from django.utils import timezone
 from django.contrib.auth.models import User
 from PIL import Image
 
 """
 MVP Checklist
-- Assign CST to views attribute to make status accurate
-- Link to Host based on User model allow them mod controls over event
+- Configure Middlewar to assign local CST to views attribute to make status accurate
+- Configure special permissions for Host controls over event
 - Assign Guest controls based on request to join event. 
 
 MVP Attributes
- Descriptions,
  Host approval controls,
  Event Guest controls, 
- Thumbnail, 
+ Thumbnail,
 
 Post MVP Attributes 
- Duration 
-
+ Duration
+ Basic Category tags and pagination controls. 
 
 """
 
 # Prototype model for Events
 class Event(models.Model):
-    host = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    host = models.ForeignKey(auth.get_user_model(), on_delete=models.CASCADE)
     description = models.CharField(max_length=250,
                     blank=True)
-
     title = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()

@@ -1,11 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
 from .models import Event
 from .forms import EventCreationForm
-
 # Enables Datetime objects to become aware
 from django.utils import timezone
 
@@ -16,10 +13,12 @@ from django.utils import timezone
 def event_base(request):
 	return render(request, 'events/event_splashpage.html')
 
-# Load form variables for the event creation portal. 
+# Load form variables for the event creation portal.
+@login_required 
 def create_event(request):
 	if request.method == 'POST':
 		Event_Form = EventCreationForm(request.POST)
+		Event_Form.instance.host = request.user
 		if Event_Form.is_valid():
 			Event_Form.save()
 			messages.success(request, f"Event has been created")
@@ -52,7 +51,7 @@ def view_events(request):
 	end = getattr(model_object, model_end_time)
 
 	# Compares start, end, and current time to determine status.
-	# Datetime Comparisons are made in UTC Timezones.
+	# Datetime Comparisons are made in UTC Timezones. Need to add a date comparison as well.
 	def event_status(start_time, end_time):
 		now = timezone.now()
 
@@ -81,6 +80,13 @@ def view_events(request):
 
 	return render(request, 'events/existing_event.html', context)
 
+
+# Create view restrictions based on users permissions
+def edit_event(request):
+	# Query the event that this user has created.
+	my_event = Event.objects.get(host=request.user)
+
+	return render(request, 'events/edit_event.html')
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation
 def end_product(request):
