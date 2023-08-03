@@ -81,12 +81,16 @@ def view_events(request):
 	return render(request, 'events/existing_event.html', context)
 
 
-# Create view restrictions based on users permissions
-def edit_event(request):
-	# Query the event that this user has created.
-	my_event = Event.objects.get(host=request.user)
+# Render existing event where the host is the current user.
+def view_my_event(request):
+	current_user = request.user
+	current_event = Event.objects.filter(host = current_user)
 
-	return render(request, 'events/edit_event.html')
+	context = {
+		"my_event": current_event,
+	}
+
+	return render(request, 'events/edit_event.html', context)
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation
 def end_product(request):

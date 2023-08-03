@@ -26,7 +26,7 @@ Post MVP Attributes
 
 # Prototype model for Events
 class Event(models.Model):
-    host = models.ForeignKey(auth.get_user_model(), on_delete=models.CASCADE)
+    host = models.OneToOneField(auth.get_user_model(), on_delete=models.CASCADE)
     description = models.CharField(max_length=250,
                     blank=True)
     title = models.TextField()
@@ -35,4 +35,4 @@ class Event(models.Model):
 
 
     def __str__(self):
-        return f"{self.title}"
+        return f"Title: {self.title} \n Host: {self.host}"
