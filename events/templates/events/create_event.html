@@ -8,65 +8,69 @@
         <div class="container px-4 py-2 px-md-5 text-center text-lg-start my-5">
           <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                    Create an event <br />
-                    <span style="color: hsl(218, 81%, 75%)"></span>
+                <h1 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                    Create an event
                 </h1>
                 </div>
                 <!-- Create Event Form -->
-                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="min-height: 5rem;">
                     <div class="card bg-glass">
                         <div class="card-body px-2 py-5 px-md-5">
-                            <h1> Create an Event</h1>
-                            <p> 
-                                Show the crude form controls for the model here.
-                            </p>
+
                             <!--  Event Creation form -->
-                            <div>
-                                    <form method="POST" enctype="multipart/form-data">
-                                    {% csrf_token %}
+                            <div style="border-radius: 10px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
+                                <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
                                     <fieldset class="form-group">
                                         <!-- Individual Form Fields -->
-                                        <ul class="list-group" style="padding: 5px;">
-                                        <!-- User Login information -->
-                                        <li class="list-group-item" style="background-color: hsla(194, 65%, 20%, 0.815);"> 
-                                            <strong style="color: #f8f9fa;"> Event Form </strong> 
-                                        </li>
-                                        <li class="list-group-item">
-                                            <pre><!--
-                                            TODO: Fix Datetime formatting
-                                            [
-                                            "%Y-%m-%d %H:%M:%S",  # '2006-10-25 14:30:59'
-                                            "%Y-%m-%d %H:%M:%S.%f",  # '2006-10-25 14:30:59.000200'
-                                            "%Y-%m-%d %H:%M",  # '2006-10-25 14:30'
-                                            "%m/%d/%Y %H:%M:%S",  # '10/25/2006 14:30:59'
-                                            "%m/%d/%Y %H:%M:%S.%f",  # '10/25/2006 14:30:59.000200'
-                                            "%m/%d/%Y %H:%M",  # '10/25/2006 14:30'
-                                            "%m/%d/%y %H:%M:%S",  # '10/25/06 14:30:59'
-                                            "%m/%d/%y %H:%M:%S.%f",  # '10/25/06 14:30:59.000200'
-                                            "%m/%d/%y %H:%M",  # '10/25/06 14:30'
-                                            ]
-                                            -->
-                                            <!-- Deconstructed Form Fields 
-                                            <li class="list-group-item"><strong>First Name</strong> </br> {{ u_form.first_name }}</li>
-                                            <li class="list-group-item"><strong>Last Name</strong> </br> {{ u_form.last_name }}</li>
-                                            <li class="list-group-item"><strong>Username</strong> </br> {{ u_form.username }}</li>
-                                            <li class="list-group-item"><strong>Email</strong> </br> {{ u_form.email }}</li>
-                                            -->
-                                            </pre>
-                                        </li>
-                                        <li class="list-group-item"><strong>Full Form</strong> </br> 
-                                            {{ Event_Form|crispy }} </br>
-                                        </li>
+                                        <ul class="list-group" style="padding: 3px;">
+                                            <!-- User Login information -->
+                                            <li class="list-group-item" style="background-color: hsla(194, 45%, 26%, 0.815);"> 
+                                                <h3 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                                                Event Details
+                                                </h3> 
+                                            </li>
+                                            <li class="list-group-item">
+                                                <p style="padding:  1rem 2rem;"> 
+                                                    Hi {{ user.first_name }} Nice of you to show up. Theres plently of awesome people around you also looking to kill sometime. 
+                                                    Chicago can be a neat playground with the proper company. What kind of vibe are you feeling and what do 
+                                                    you wanna see?
+                                                </p>
+                                                <!--
+                                                TODO: Fix Datetime formatting
+                                                [
+                                                "%Y-%m-%d %H:%M:%S",  # '2006-10-25 14:30:59'
+                                                "%Y-%m-%d %H:%M:%S.%f",  # '2006-10-25 14:30:59.000200'
+                                                "%Y-%m-%d %H:%M",  # '2006-10-25 14:30'
+                                                "%m/%d/%Y %H:%M:%S",  # '10/25/2006 14:30:59'
+                                                "%m/%d/%Y %H:%M:%S.%f",  # '10/25/2006 14:30:59.000200'
+                                                "%m/%d/%Y %H:%M",  # '10/25/2006 14:30'
+                                                "%m/%d/%y %H:%M:%S",  # '10/25/06 14:30:59'
+                                                "%m/%d/%y %H:%M:%S.%f",  # '10/25/06 14:30:59.000200'
+                                                "%m/%d/%y %H:%M",  # '10/25/06 14:30'
+                                                ]
+                                                -->
+                                                <!-- Deconstructed Form Fields 
+                                                <li class="list-group-item"><strong>First Name</strong> </br> {{ u_form.first_name }}</li>
+                                                <li class="list-group-item"><strong>Last Name</strong> </br> {{ u_form.last_name }}</li>
+                                                <li class="list-group-item"><strong>Username</strong> </br> {{ u_form.username }}</li>
+                                                <li class="list-group-item"><strong>Email</strong> </br> {{ u_form.email }}</li>
+                                                -->
+                                            </li>
+                                            <li class="list-group-item"> 
+                                                {{ Event_Form|crispy }} </br>
+                                            </li>
+                                            <!-- Submit Button-->
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
+                                                    <strong style="color: #f8f9fa; text-decoration:none;">Create</strong>
+                                                    </button>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </fieldset>
-                                    <!-- Submit Button-->
-                                    <div class="form-group">
-                                        <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
-                                        <strong style="color: #f8f9fa; text-decoration:none;">Create</strong>
-                                        </button>
-                                    </div>
-                                    </form>
+                                </form>
                             </div>
                             <br/>
                             <!-- Page Navigation Button Controls. -->
