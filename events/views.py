@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Event
@@ -74,14 +74,26 @@ def view_events(request):
 		"Events": event_list,
 		"Datetime_now": CST_time_now,
 		"Status_Start": start,
-		"Status_End": end,
+		"Status_End": end,  
 		"Event_Status": status,
 	}
 
 	return render(request, 'events/existing_event.html', context)
 
 
-# Render existing event where the host is the current user.
+# Render single event details Allow the host to edit and for guest to join.
+def event_details(request, event_id):
+	event_details = get_object_or_404(Event, pk = event_id)
+
+	context = {
+		"event_details": event_details,
+	}
+
+	return render(request, 'events/event_details.html', context)
+
+
+
+# Placeholder for Host Modify events
 def view_my_event(request):
 	current_user = request.user
 	current_event = Event.objects.filter(host = current_user)
@@ -90,7 +102,7 @@ def view_my_event(request):
 		"my_event": current_event,
 	}
 
-	return render(request, 'events/edit_event.html', context)
+	return render(request, 'events/event_details.html', context)
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation
 def end_product(request):

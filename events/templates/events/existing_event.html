@@ -37,6 +37,13 @@
                                     </p> </br>
                                     Start Time: {{ events.start_time }} </br>
                                     End Time: {{ events.end_time }} </br> 
+
+                                    <!-- Generic Model access template boilerplate -->
+                                    <a href="{{ events.get_absolute_url }}" style="color:rgb(33, 32, 46); margin-top: 1rem;">
+                                        view event details
+                                    </a>
+
+
                             </div>
                             {% endfor %}
                             <div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
@@ -44,18 +51,6 @@
                                     Event End Time Attr: {{ Status_End }} </br>
                                     Event Status: {{ Event_Status }} </br>
                             </div>
-                            <!-- Generic Model access template boilerplate -->
-                            {% if "Event" %}
-                                <!-- Create list view for each detected and parsed db model object -->
-                                <ul>
-                                {% for events in Event %}
-                                    <!-- Hyperlink to page/post containing object -->
-                                    <li> <a href=" " {{ events.title }}> {{ Event  }} </a> </li>
-                                {% endfor %}
-                                </ul>
-                            {% else %}
-                                    <p> No Event entry available/found </p>
-                            {% endif%}
                         </p>
                         <!-- Page Navigation Button Controls. -->
                         <div>
@@ -73,34 +68,3 @@
 
 
 {% endblock %}
-
-<!--
-
-Iterate through all of the events published and stored in the db
-{% for events in Event %}
-
-<div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
-    
-    <h2>
-    <a href="{{ post.get_absolute_url }}" style="color:rgb(6, 3, 53);">
-        {{ post.title }}
-    </a>
-    </h2>
-    Django Taggit Library to add tags to posts
-    <p class = "tags">
-    Tags: 
-    {% for tag in post.tags.all %}
-        <a href = "{% url 'blog:post_list_by_tag' tag.slug %}">
-        {{ tag.name }}
-        </a>
-        {% if not forloop.last %}, {% endif %}
-    {% endfor %}
-
-
-</div>
-
-{% endfor %}
-
-
-
--->
