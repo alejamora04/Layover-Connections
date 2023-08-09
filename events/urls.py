@@ -13,9 +13,9 @@ urlpatterns = [
     path("create_event", views.create_event, name="create_event"),
     path("view_events", views.view_events, name="view_events"),
     path("end_product", views.end_product, name="formatted_event"),
-
-    #path("event_details", views.view_my_event, name="event_details"),
     path("<int:event_id>/event_details/", views.event_details, name="event_details"),
+    
+    path("<int:event_id>/edit_event/", views.edit_event, name="edit_event"),
 ] 
 
 # Pre-Deployment check to see if currently in DEBUG mode
