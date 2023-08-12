@@ -93,19 +93,20 @@ def event_details(request, event_id):
 
 
 
-# Placeholder for Host Modify events
+# Allow the host to edit event details on the front end.
 def edit_event(request, event_id):
+	# Load event model details to prepopulate the form fields.
 	event_details = get_object_or_404(Event, pk = event_id)
 
 	if request.method == "POST":
-		update_form = EventUpdateForm(request.POST, instance=request.user)
+		update_form = EventCreationForm(request.POST, instance=event_details)
 		if update_form.is_valid():
 			update_form.save()
-			messages.success(request, f"Your Event has been updated")
-			return render(request, 'events/even_details.html', {"event_details": event_details})
+			messages.success(request, f"Your Event {format(update_form)} has been updated.")
+			return render(request, 'events/event_details.html', {"event_details": update_form})
 	
 	else:
-		update_form = EventUpdateForm(instance=request.user)
+		update_form = EventCreationForm(instance=event_details)
 
 	context = {
 		"event_details": event_details,
@@ -114,47 +115,6 @@ def edit_event(request, event_id):
 		 
 
 	return render(request, 'events/edit_event.html', context)
-
-
-
-"""
-# Update User Profile information
-@login_required
-def edit_profile(request):
-	if request.method == "POST":
-		u_form = UserUpdateForm(request.POST, instance=request.user)
-		p_form = ProfileUpdateForm(request.POST, 
-								   request.FILES, 
-								   instance=request.user.profile)
-		if u_form.is_valid() and p_form.is_valid():
-			u_form.save()
-			p_form.save()
-			messages.success(request, f"Your account has been updated.") 
-			return render(request, 'layoverconnections/user_profile.html')
-
-	else:
-		u_form = UserUpdateForm(instance=request.user)
-		p_form = ProfileUpdateForm(instance=request.user.profile)
-
-	context = {
-		'u_form': u_form,
-		'p_form': p_form
-	}
-
-	return render(request, 'layoverconnections/edit_profile.html', context)
-
-
-
-"""
-
-
-
-
-
-
-
-
-
 
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation
