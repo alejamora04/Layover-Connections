@@ -7,18 +7,23 @@
     <section class="background-radial-gradient overflow-hidden">
         <div class="container px-4 py-2 px-md-5 text-center text-lg-start my-5">
           <div class="row gx-lg-5 align-items-center mb-5">
-                <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-                <h1 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                    Create an event
-                </h1>
-                </div>
                 <!-- Create Event Form -->
                 <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="min-height: 5rem;">
                     <div class="card bg-glass">
-                        <div class="card-body px-2 py-5 px-md-5">
-
+                        <div class="card-body px-2 px-md-5">
                             <!--  Event Creation form -->
-                            <div style="border-radius: 10px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
+                            <div style="border-radius: 7px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 1px solid rgba(0, 0, 0, 0.507);">
+                                <div class="mb-2 mb-lg-0" style="z-index: 10">
+                                    <!-- Page Navigation Button Controls. -->
+                                    <div>
+                                        <h1 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(210, 7%, 5%)">
+                                            Create an event
+                                        </h1>
+                                        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
+                                            <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
+                                        </button>
+                                    </div>
+                                </div>
                                 <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                     <fieldset class="form-group">
@@ -36,26 +41,6 @@
                                                     Chicago can be a neat playground with the proper company. What kind of vibe are you feeling and what do 
                                                     you wanna see?
                                                 </p>
-                                                <!--
-                                                TODO: Fix Datetime formatting
-                                                [
-                                                "%Y-%m-%d %H:%M:%S",  # '2006-10-25 14:30:59'
-                                                "%Y-%m-%d %H:%M:%S.%f",  # '2006-10-25 14:30:59.000200'
-                                                "%Y-%m-%d %H:%M",  # '2006-10-25 14:30'
-                                                "%m/%d/%Y %H:%M:%S",  # '10/25/2006 14:30:59'
-                                                "%m/%d/%Y %H:%M:%S.%f",  # '10/25/2006 14:30:59.000200'
-                                                "%m/%d/%Y %H:%M",  # '10/25/2006 14:30'
-                                                "%m/%d/%y %H:%M:%S",  # '10/25/06 14:30:59'
-                                                "%m/%d/%y %H:%M:%S.%f",  # '10/25/06 14:30:59.000200'
-                                                "%m/%d/%y %H:%M",  # '10/25/06 14:30'
-                                                ]
-                                                -->
-                                                <!-- Deconstructed Form Fields 
-                                                <li class="list-group-item"><strong>First Name</strong> </br> {{ u_form.first_name }}</li>
-                                                <li class="list-group-item"><strong>Last Name</strong> </br> {{ u_form.last_name }}</li>
-                                                <li class="list-group-item"><strong>Username</strong> </br> {{ u_form.username }}</li>
-                                                <li class="list-group-item"><strong>Email</strong> </br> {{ u_form.email }}</li>
-                                                -->
                                             </li>
                                             <li class="list-group-item"> 
                                                 {{ Event_Form|crispy }} </br>
@@ -72,16 +57,8 @@
                                     </fieldset>
                                 </form>
                             </div>
-                            <br/>
-                            <!-- Page Navigation Button Controls. -->
-                            <div>
-                            <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
-                                <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
-                            </button>
-                            </div>
                         </div>
                     </div>
-    
                 </div>
             </div>
         </div>

@@ -37,4 +37,4 @@ class Event(models.Model):
     
     # Allows for get object or 404 & to insert args into URL route reqs: (/host/title)
     def get_absolute_url(self):
-        return reverse( 'events:event_details', kwargs={"event_id": self.pk})
+        return reverse('events:event_details', kwargs={"event_id": self.pk})
