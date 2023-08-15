@@ -13,10 +13,9 @@ urlpatterns = [
     path("create_event", views.create_event, name="create_event"),
     path("view_events", views.view_events, name="view_events"),
     path("end_product", views.end_product, name="formatted_event"),
-    # Non Functional get_absolute_URL
     path("<int:event_id>/event_details/", views.event_details, name="event_details"),
-    # V Functional get absolute URL 
     path("<int:event_id>/edit_event/", views.edit_event, name="edit_event"),
+    path("<int:event_id>/delete_event/", views.delete_event, name="delete_event"),
 ] 
 
 # Pre-Deployment check to see if currently in DEBUG mode

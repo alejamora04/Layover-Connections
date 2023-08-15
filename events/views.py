@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Event
-from .forms import EventCreationForm, EventUpdateForm
+from .forms import EventCreationForm
 # Enables Datetime objects to become aware
 from django.utils import timezone
 
@@ -115,6 +115,23 @@ def edit_event(request, event_id):
 		 
 
 	return render(request, 'events/edit_event.html', context)
+
+
+# Allow the host to edit event details on the front end.
+def delete_event(request, event_id):
+	# Load event model details to prepopulate the form fields.
+	event_to_delete = get_object_or_404(Event, pk = event_id)
+	
+	context = {
+		"delete_event": event_to_delete,
+	}
+
+	if request.method == "POST":
+		event_to_delete.delete()
+
+		return render(request, 'events/existing_event.html')
+		 
+	return render(request, 'events/delete_event.html', context)
 
 
 # [END GOAL] Front-End: Formatted Front-End UI heavy event creation

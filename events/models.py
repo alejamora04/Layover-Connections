@@ -9,13 +9,15 @@ from django.urls import reverse
 #from PIL import Image
 
 MVP Checklist
-- Configure Middlewar to assign local CST to views attribute to make status accurate
+- Configure Middleware to assign local CST to views attribute to make status accurate
 - Configure special permissions for Host controls over event
 - Assign Guest controls based on request to join event. 
+
 MVP Attributes
  Host approval controls,
  Event Guest controls, 
  Thumbnail,
+ 
 Post MVP Attributes 
  Duration
  Basic Category tags and pagination controls. 

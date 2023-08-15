@@ -68,20 +68,15 @@
                                         ">
                                             <div class="flex-shrink-0" style="padding-right: 1rem; ">
                                                 <!-- class ="wc-title" Work title Text Row -->
-                                                <div style="
+                                                <ul style="
                                                 font-weight: 635;
                                                 font-size: 1rem;
-                                                line-height: 1.2;
                                                 color: #343a40;
                                                 text-align: justify;
-                                                display: flex;
                                                 text-transform: uppercase;">
-                                                Event: {{ events.title }} </br>
-                                                When: </br>
-                                                Start: {{ events.start_time }} </br>
-                                                End: {{ events.end_time }} </br> 
-                                                Event Details:
-                                                </div>
+                                                    <li style="color:#736b22"> {{ events.title }}</li>
+                                                    <li>Time: {{ events.start_time }}</li>
+                                                </ul>
                                                 <!-- class = "work-description" Work Description 60 words (Lorem Ipsum) 560 Chars-->
                                                 <div style="
                                                         text-align: justify;
