@@ -107,6 +107,9 @@ def event_details(request, event_id):
 
 
 """
+# Old event_details view [Functional]
+# Render single event details Allow the host to edit and for guest to join.
+def event_details(request, event_id):
 	event_details = get_object_or_404(Event, pk = event_id)
 
 	context = {
