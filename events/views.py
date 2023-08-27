@@ -1,38 +1,15 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+from django.contrib import messages, auth
 from .models import Event
 from .forms import EventCreationForm
 # Enables Datetime objects to become aware
 from django.utils import timezone
 
 
-# Formatting for the splash page portal. 
-#TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
 # Base Event Page to encapsulate all event controls.
 def event_base(request):
 	return render(request, 'events/event_splashpage.html')
-
-# Load form variables for the event creation portal.
-@login_required 
-def create_event(request):
-	if request.method == 'POST':
-		Event_Form = EventCreationForm(request.POST)
-		Event_Form.instance.host = request.user
-		if Event_Form.is_valid():
-			Event_Form.save()
-			messages.success(request, f"Event has been created")
-			# TODO Create redirect to updated event
-			return render(request, 'events/existing_event.html')
-	else:
-		Event_Form = EventCreationForm()
-
-	# TODO Read about the role of context with views and rendering forms.
-	context = {
-		'Event_Form': Event_Form
-	}
-
-	return render(request, 'events/create_event.html', context)
 
 # Base Event Page to encapsulate all event controls.
 def view_events(request):
@@ -80,10 +57,47 @@ def view_events(request):
 
 	return render(request, 'events/existing_event.html', context)
 
+# Load form variables for the event creation portal.
+@login_required 
+def create_event(request):
+	if request.method == 'POST':
+		Event_Form = EventCreationForm(request.POST)
+		# Store host & title to add the current user as the host.
+		host = request.user
+
+		if Event_Form.is_valid():
+			event_title = Event_Form.cleaned_data['title']
+			Event_Form.save()
+			# Retrieve event and add current user as host.
+			New_Event = Event.objects.get(title=event_title)
+			New_Event.participants.add(host)
+			New_Event.save()
+
+			messages.success(request, f"Event has been created")
+			# TODO Create redirect to updated event
+			return render(request, 'events/existing_event.html')
+
+	else:
+		Event_Form = EventCreationForm()
+
+	# TODO Read about the role of context with views and rendering forms.
+	context = {
+		'Event_Form': Event_Form
+	}
+
+	return render(request, 'events/create_event.html', context)
+
 
 # Render single event details Allow the host to edit and for guest to join.
 def event_details(request, event_id):
 	event_details = get_object_or_404(Event, pk = event_id)
+
+	# Allow user to join event.
+	if request.method == "POST":
+		event_details.participants.add(request.user)
+		event_details.save()
+		messages.success(request, f"You have joined the event.")
+		return render(request, 'events/event_details.html', {"event_details": event_details})
 
 	context = {
 		"event_details": event_details,
@@ -91,6 +105,16 @@ def event_details(request, event_id):
 
 	return render(request, 'events/event_details.html', context)
 
+
+"""
+	event_details = get_object_or_404(Event, pk = event_id)
+
+	context = {
+		"event_details": event_details,
+	}
+
+	return render(request, 'events/event_details.html', context)
+"""
 
 
 # Allow the host to edit event details on the front end.
@@ -103,7 +127,7 @@ def edit_event(request, event_id):
 		if update_form.is_valid():
 			update_form.save()
 			messages.success(request, f"Your Event {format(update_form)} has been updated.")
-			return render(request, 'events/event_details.html', {"event_details": update_form})
+			return render(request, 'events/event_details.html', {"event_details": event_details})
 	
 	else:
 		update_form = EventCreationForm(instance=event_details)

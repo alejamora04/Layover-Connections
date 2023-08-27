@@ -12,14 +12,18 @@
             <!-- Create Event Form -->
             <div class="col-lg-8 mb-5 mb-lg-0 position-relative">
                 <div class="card bg-glass">
-                    <div class="card-body px-3 py-5 px-md-5">
-                        <!-- Integrate all model attributes -->
-                        <h1> All Current Events </h1>
-                            Django's calulated Time now "UTC" [Django.utils "timezone" {{ Datetime_now }}]: 
-                            </br>
+                    <div class="card-body px-3 py-3 px-md-5">
+                            <div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
+                                <!-- Integrate all model attributes -->
+                                <h1> All Current Events </h1>
+                                Django's calulated Time now "UTC" [Django.utils "timezone" {{ Datetime_now }}]: 
+                                </br>
+                                Event Start Time Attr: {{ Status_Start }} </br>
+                                Event End Time Attr: {{ Status_End }} </br>
+                                Event Status: {{ Event_Status }} </br>
+                            </div>
                         <div>
                         </div>
-                        <p> 
                             <!-- Iterate through all of the events published and stored in the db-->
                             {% for events in Events %}
                             <!-- Event Details w Styling + CSS Wireframing: -->
@@ -72,119 +76,44 @@
                                                 font-weight: 635;
                                                 font-size: 1rem;
                                                 color: #343a40;
-                                                text-align: justify;
-                                                text-transform: uppercase;">
-                                                    <li style="color:#736b22"> {{ events.title }}</li>
-                                                    <li>Time: {{ events.start_time }}</li>
-                                                </ul>
-                                                <!-- class = "work-description" Work Description 60 words (Lorem Ipsum) 560 Chars-->
-                                                <div style="
+                                                text-align: left;
+                                                padding-left: 0rem;
+                                                text-transform: uppercase;
+                                                list-style-type: none;">
+                                                    <li style="color:#736b22; font-size: 1.3rem;"> {{ events.title }}</li>
+                                                    <li><i class="fa-regular fa-calendar"></i> {{ events.start_time }}</li>
+                                                    <li> Details: </li>
+                                                    <li style="
                                                         text-align: justify;
                                                         text-justify: inter-word;
+                                                        font-weight: 400;
+                                                        font-size: .9rem;
                                                         ">
-                                                    <p> 
-                                                        Details: </br>
-                                                        {{ events.description}}</br> 
-                                                        <em>
-                                                            <a href="{%  url 'events:event_details' events.id %}" style="color:rgb(33, 32, 46); margin-top: 1rem;">
-                                                                <!--a href="{{ events.get_absolute_url }}" style="color:rgb(33, 32, 46); margin-top: 1rem;"-->
-                                                                    view event details
-                                                            </a>
-                                                        </em>.</br>
-                                                        Host: {{ events.host }}
-                                                    </p>
-                                                </div>
+                                                            {{ events.description}}
+
+                                                    </li>
+                                                    <li>
+                                                        Host: <span style="font-weight: 400;">
+                                                            {% for participant in events.participants.all %}
+                                                                {{ user.first_name }}
+                                                            {% endfor %}
+                                                        </span>
+
+                                                    </li>
+                                                    <li>
+                                                        <a href="{%  url 'events:event_details' events.id %}" style="color:rgb(33, 32, 46); font-weight: 400;">
+                                                            <!--a href="{{ events.get_absolute_url }}" style="color:rgb(33, 32, 46); margin-top: 1rem;"-->
+                                                                view event details
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             {% endfor %}
-                            <div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
-                                    Event Start Time Attr: {{ Status_Start }} </br>
-                                    Event End Time Attr: {{ Status_End }} </br>
-                                    Event Status: {{ Event_Status }} </br>
-                            </div>
-                        </p>
-
-
-                        <!-- Event Details w Styling + CSS Wireframing: -->
-                        <!-- Outermost card wrapper -->
-                        <div class = "container-fluid"
-                        style = "
-                        max-width: 62rem;
-                        min-height: 14rem;
-                        overflow: hidden;
-                        padding-right: 1.2rem; 
-                        padding-left: 1rem; 
-                        padding-top: 1rem; 
-                        padding-bottom: 1rem;
-                        margin-bottom: 1rem;
-                        flex-grow: 1;
-                        border: 1px solid rgba(0, 0, 0, 0.561); 
-                        border-radius: 3px;
-                        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);            
-                        ">
-                            <div class="row">
-                                <!-- Work Card Thumbnail -->
-                                <div class="col-lg-4" >
-                                    <!-- .work-thumbnail-container Bounding div for work thumbnail -->
-                                    <div class="wrapper " style = "
-                                    border-radius: 10px; 
-                                    background-color:#3f637e; 
-                                    width: 100%; 
-                                    height: 100%;
-                                    ">
-                                        <!-- .work-image" Work Card Thumbnail -->
-                                        <img src="img/500x500placeholder.png"  style="
-                                        object-fit:contain; 
-                                        width:100%; 
-                                        height: 100%;
-                                        padding: .8rem;
-                                        ">
-                                    </div>
-                                </div>
-                                <!--  Text Description Column-->
-                                <div class="col-lg-8">
-                                    <!-- class = "wdescription-container" Work Description Container -->
-                                    <div style="
-                                    padding-left: .2rem; 
-                                    padding-top: .7rem;
-                                    ">
-                                        <div class="flex-shrink-0" style="padding-right: 1rem; ">
-                                            <!-- class ="wc-title" Work title Text Row -->
-                                            <div style="
-                                            font-weight: 650;
-                                            font-size: 1rem;
-                                            line-height: 1.2;
-                                            color: #343a40;
-                                            text-align: justify;
-                                            display: flex;
-                                            text-transform: uppercase;">
-                                            Event: </br>
-                                            When: </br>
-                                            Event Details:
-                                            </div>
-                                            <!-- class = "work-description" Work Description 60 words (Lorem Ipsum) 560 Chars-->
-                                            <div style="
-                                                    text-align: justify;
-                                                    text-justify: inter-word;
-                                                    ">
-                                                <p> 
-                                                    There is currently space for approximately 60 words or 560 characters. Lorem ipsum dolor sit amet, 
-                                                    consectetur.</br> 
-                                                    <em>View Event Details</em>.</br>
-                                                    Host
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
                         <!-- Page Navigation Button Controls. -->
                         <div>
                         <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">

@@ -42,32 +42,3 @@ class ImageUploadForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['image', 'userimage_1', 'userimage_2', 'userimage_3', 'userimage_4']
-
-
-
-"""
-
-# Custom Django Image Upload Formatting
-from django.forms.widgets import ClearableFileInput
-
-Protype Custom Image forms
-
-# Library Dependancy
-from django.forms.widgets import ClearableFileInput
-
-# PROTOTYPE - Custom Django Imgae HTML Formatting
-class CustomImageFieldWidget(ClearableFileInput):
-	template_with_clear = 'layoverconnections/imageuploadform.html'
-
-# PROTOTYPE - Custom Django Image Upload Form
-class ImageUploadForm(forms.ModelForm):
-
-	class Meta:
-		model = Profile
-		fields = ['userimage_1',]
-		widgets = {
-            'userimage_1': CustomImageFieldWidget,
-		}
-
-
-"""

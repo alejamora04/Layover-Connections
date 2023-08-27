@@ -16,12 +16,7 @@
                                 <div class="mb-2 mb-lg-0" style="z-index: 10">
                                     <!-- Page Navigation Button Controls. -->
                                     <div>
-                                        <h1 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(210, 7%, 5%)">
-                                            Create an event
-                                        </h1>
-                                        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
-                                            <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
-                                        </button>
+
                                     </div>
                                 </div>
                                 <form method="POST" enctype="multipart/form-data">
@@ -32,11 +27,18 @@
                                             <!-- User Login information -->
                                             <li class="list-group-item" style="background-color: hsla(194, 45%, 26%, 0.815);"> 
                                                 <h3 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                                                Event Details
+                                                    Create an event
                                                 </h3> 
+                                                <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
+                                                    <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
+                                                </button>
                                             </li>
                                             <li class="list-group-item">
-                                                <p style="padding:  1rem 2rem;"> 
+                                                <p style="                                                        text-align: justify;
+                                                text-justify: inter-word;
+                                                font-weight: 400;
+                                                font-size: 1rem;
+                                                padding:  1rem;"> 
                                                     Hi {{ user.first_name }} Nice of you to show up. Theres plently of awesome people around you also looking to kill sometime. 
                                                     Chicago can be a neat playground with the proper company. What kind of vibe are you feeling and what do 
                                                     you wanna see?
@@ -49,7 +51,7 @@
                                             <li class="list-group-item">
                                                 <div class="form-group">
                                                     <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
-                                                    <strong style="color: #f8f9fa; text-decoration:none;">Create</strong>
+                                                            <strong style="color: #f8f9fa; text-decoration:none;">Create</strong>
                                                     </button>
                                                 </div>
                                             </li>

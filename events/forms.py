@@ -9,7 +9,6 @@ class EventCreationForm(forms.ModelForm):
 	start_time = forms.CharField(label= 'Start Time: [ yyyy-mm-dd 00:00 ]')
 	description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
 
-
 	class Meta:
 		model = Event
 		fields = ['title', 'start_time', 'end_time', 'description']
