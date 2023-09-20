@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
+from events.models import Event
+
 from django.contrib import messages, auth
-from .models import Event
 from .forms import EventCreationForm
-# Enables Datetime objects to become aware
 from django.utils import timezone
 
 
@@ -57,12 +60,13 @@ def view_events(request):
 
 	return render(request, 'events/existing_event.html', context)
 
+# TODO Add Host specific event edit permissions upon creation of the event.
 # Load form variables for the event creation portal.
 @login_required 
 def create_event(request):
 	if request.method == 'POST':
 		Event_Form = EventCreationForm(request.POST)
-		# Store host & title to add the current user as the host.
+		# Store host & title, apply host controls to the current user.
 		host = request.user
 
 		if Event_Form.is_valid():
@@ -71,6 +75,11 @@ def create_event(request):
 			# Retrieve event and add current user as host.
 			New_Event = Event.objects.get(title=event_title)
 			New_Event.participants.add(host)
+			# Provide Host with elevated event permissions to allow them to modify/delete the event.
+			edit_permission = Permission.objects.get(codename='can_edit_event')
+			print(f"This is the permission object queried {edit_permission}")
+			host.user_permissions.add(edit_permission)
+
 			New_Event.save()
 
 			messages.success(request, f"Event has been created")
@@ -119,8 +128,9 @@ def event_details(request, event_id):
 	return render(request, 'events/event_details.html', context)
 """
 
-
-# Allow the host to edit event details on the front end.
+# TODO Add a user passed test filter to match event edit controsl to proper host.
+# Allow Host User to modify the event. Raise HTTP 403 Error code if the user is unauthorized.
+@permission_required('events.can_edit_event', raise_exception=True)
 def edit_event(request, event_id):
 	# Load event model details to prepopulate the form fields.
 	event_details = get_object_or_404(Event, pk = event_id)
@@ -130,7 +140,7 @@ def edit_event(request, event_id):
 		if update_form.is_valid():
 			update_form.save()
 			messages.success(request, f"Your Event {format(update_form)} has been updated.")
-			return render(request, 'events/event_details.html', {"event_details": event_details})
+			return render(request, 'events/event_details.html', {"event_details": event_details,})
 	
 	else:
 		update_form = EventCreationForm(instance=event_details)

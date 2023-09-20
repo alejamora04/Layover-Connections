@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'layoverconnections',
     'events.apps.EventsConfig',
-    'sandbox.apps.SandboxConfig',
     'crispy_forms',
     'django_rename_app',
     'django.contrib.admin',

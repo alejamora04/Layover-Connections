@@ -21,6 +21,5 @@ from django.contrib import admin
 urlpatterns = [
     path('', include('layoverconnections.urls', namespace='layoverconnections')),
     path('events/', include('events.urls', namespace='events')),
-    path('sandbox/', include('sandbox.urls', namespace='sandbox')),
     path('admin/', admin.site.urls),
 ]

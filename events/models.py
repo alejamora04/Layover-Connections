@@ -1,19 +1,17 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.contrib import auth
 from django.urls import reverse
 
+from django.contrib import auth
+from django.utils import timezone
+from PIL import Image
+
 """
-#from django.utils import timezone
-#from PIL import Image
-
 MVP Checklist
-- Assign permissions depending on participant role.
 - Configure Middleware to assign local CST to views attribute to make status accurate
-
-MVP Attributes
- Host approval controls,
+Attributes
+ Host approval controls[In Progress],
  Event Guest controls, 
  Thumbnail,
  
@@ -30,9 +28,11 @@ class Event(models.Model):
     title = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
-
     participants = models.ManyToManyField(User)
-    #participants = models.ManyToManyField(auth.get_user_model())
+
+    # Host permissions created via model attributes.
+    class Meta:
+        permissions = (('can_edit_event', 'Host Controls'),)
 
     def __str__(self):
         return f"Title: {self.title} \n"
