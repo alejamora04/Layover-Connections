@@ -12,7 +12,6 @@ MVP Checklist
 - Configure Middleware to assign local CST to views attribute to make status accurate
 Attributes
  Host approval controls[In Progress],
- Event Guest controls, 
  Thumbnail,
  
 Post MVP Attributes 
@@ -22,7 +21,6 @@ Post MVP Attributes
 
 # Prototype model for Events
 class Event(models.Model):
-    #host = models.OneToOneField(auth.get_user_model(), on_delete=models.CASCADE)
     description = models.CharField(max_length=250,
                     blank=True)
     title = models.TextField()

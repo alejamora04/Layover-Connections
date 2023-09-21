@@ -1,0 +1,73 @@
+{% extends "events/event_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <!-- Section: Design Block -->
+    <section class="background-radial-gradient overflow-hidden">
+        <div class="container px-4 py-2 px-md-5 text-center text-lg-start my-5">
+          <div class="row gx-lg-5 align-items-center mb-5">
+                <!-- Event Details -->
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div class="card bg-glass" style = "border-radius: 10px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 1px solid rgba(0, 0, 0, 0.507);">
+                        <div class="card-body px-2 py-5 px-md-5" >
+                            <h1> Delete Event </h1>
+                            <button class="btn btn-outline-info mb-1" style="background-color:hsl(195, 65%, 19%);">
+                                <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Return to the Events Page </a></strong>
+                            </button>
+                            <!-- Individual Form Fields -->
+                            <ul class="list-group" style="padding: 5px; opacity: 90%;">
+                            <!-- Event Details -->
+                                <li class="list-group-item" style="background-color: hsla(8, 67%, 18%, 0.822); opacity: 100%;"> 
+                                    <p style="font-size: large; color: white;"> 
+                                        <h1 style="color: white;">WARNING:</h1>
+                                        <h2 style="color: white;">ONCE AN EVENT IS DELETED IT CAN'T BE RECOVERED!</h2>
+                                    </p>
+                                </li>
+                                <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
+                                    <strong style="color: #363434;"> Title: {{ delete_event.title}} </strong> 
+                                </li>
+                                <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
+                                    <strong style="color: #363434;"> Start Time: {{ delete_event.start_time}} </strong> 
+                                </li>
+                                <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
+                                    <strong style="color: #363434;"> End Time: {{ delete_event.end_time}} </strong> 
+                                </li>
+                                <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
+                                    <strong style="color: #363434;"> Description: {{ delete_event.description}} </strong> 
+                                </li>
+                                <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
+                                <!-- Page Navigation Button Controls. -->
+                                    <div style = "display: flex;">
+                                        <div style="flex: auto;">
+                                            <!-- Create a Form -->
+                                            <form method="POST">
+                                                <!-- Security token by Django -->
+                                                {% csrf_token %}
+                                                <button class="btn btn-outline-info mt-3" style="background-color: hsla(8, 67%, 18%, 0.822);">
+                                                    <strong style=" color: white;">
+                                                        Delete this Event?
+                                                    </strong>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

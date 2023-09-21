@@ -1,0 +1,89 @@
+{% extends "events/event_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <!-- Section: Design Block -->
+    <section class="background-radial-gradient overflow-hidden">
+        <div class="container px-4 px-md-5 text-center text-lg-start">
+          <div class="row gx-lg-5 align-items-center mb-5">
+                <!-- Event Details -->
+                <div class="col-lg-6 mt-2 mb-5 mb-lg-0 position-relative">
+                    <div class="card bg-glass">
+                        <div class="card-body px-2 py-5 px-md-5">
+                            <h1> Event Details </h1>
+                            <!-- Create Alternative view if user = host -->
+                            <p> 
+                                <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 6%, 44%);">
+                                    <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Return Events Page </a></strong>
+                                </button>
+                            </p>
+                        <!--  Event Creation form -->
+                            <!-- Individual Form Fields -->
+                            <ul class="list-group" style="padding: 5px;">
+                            <!-- Event Details -->
+                                <li class="list-group-item" style="
+                                background-color: hsla(194, 65%, 20%, 0.815); 
+                                text-align: start; 
+                                min-height: 7rem;
+                                font-size: 1.8rem;"> 
+                                    <strong style="color: #f8f9fa;"> Event: </br> {{ event_details.title}} </strong> 
+                                </li>
+                                <li class="list-group-item"><strong>Description</strong> </br> 
+                                    {{event_details.description}}
+                                </li>
+                                <li class="list-group-item">
+                                    <div style = "display: flex;">
+                                        <div style="flex: auto;">
+                                            <strong>Start Time:</strong> </br> 
+                                            {{event_details.start_time}}
+                                        </div>
+                                        <div style="flex: auto;">
+                                            <strong>End Time:</strong> </br> 
+                                                {{event_details.end_time}}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"><strong>Status:</strong> </br> 
+                                            {{ event_details.status }}
+                                </li>
+                                <!-- Page Navigation Button Controls. -->
+                                <li class="list-group-item">
+                                    <div style = "display: flex;">
+                                        <!-- Conditional filtering: Enforce check on participant permissions to allow navigation to edit controls. -->
+                                        {% if perms.events.can_edit_event %}
+
+                                            <div style="flex: auto;">
+                                                <button class="btn mt-1" style="background-color:hsla(197, 16%, 83%, 0.813)">
+                                                    <strong>
+                                                        <!-- Generic Model access template boilerplate -->
+                                                        <a href="{%  url 'events:edit_event' event_details.id %}" style="color: #050505; text-decoration:none;">
+                                                            <i class="fa-solid fa-pen" style="color: rgb(6, 6, 6)"></i> Edit: 
+                                                        </a>
+                                                    </strong>
+                                                </button>
+                                            </div>
+                                            
+                                        {% endif %}
+
+                                        <!-- Show option to join if user not in participants add javascript confirmation message pre-post via DOM -->
+                                        <div style="flex: auto;">
+                                            <form method="POST" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <button class="btn mt-1" style="background-color:hsla(197, 16%, 83%, 0.813)" type="submit">
+                                                    <strong style="color: #000000; text-decoration:none;"> Join</strong>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

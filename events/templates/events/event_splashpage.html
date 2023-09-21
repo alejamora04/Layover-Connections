@@ -1,0 +1,47 @@
+{% extends "events/event_base.html" %}
+{% load static %}
+{% block content %}
+
+  <!-- Section: Design Block -->
+  <body>
+    <section class="background-radial-gradient overflow-hidden" style="
+    background: hsla(54, 56%, 83%, 1);
+    background: linear-gradient(135deg, hsla(54, 56%, 83%, 1) 30%, rgb(115, 93, 57) 100%);
+    background: -moz-linear-gradient(135deg, hsla(54, 56%, 83%, 1) 30%, rgb(115, 93, 57) 100%);
+    background: -webkit-linear-gradient(135deg, hsla(54, 56%, 83%, 1) 30%, rgb(115, 93, 57) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ECE7BB', endColorstr='#956F33', GradientType=1 );"
+    >
+        <div class="container px-4 py-1 px-md-5 text-center text-lg-start my-5">
+          <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                    <h1 class="my-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        Event Splash Page
+                    </h1>
+                </div>
+                <!-- Event Main Card Styling -->
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div class="card bg-glass">
+                        <div class="card-body" style="padding: 2rem;">
+                            <h1> Event Splash & Base Page.</h1>
+                            <p> 
+                                Simplify the html create reusable classes for the CSS. Change the temaplating here. Use this base to build the rest of the event creation templates. 
+                                Incorporate Links to send users to Event Create and Event View portals.
+                            </p>
+                            <div>
+                                <!-- Event Navigation -->
+                                <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
+                                    <strong><a href="{% url 'events:create_event' %}" style="color: #f8f9fa; text-decoration:none;"> Create Event </a></strong>
+                                </button>
+                                <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
+                                    <strong><a href="{% url 'events:view_events' %}" style="color: #f8f9fa; text-decoration:none;"> View Existing Events. </a></strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </body>
+
+{% endblock %}

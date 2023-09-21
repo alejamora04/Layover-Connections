@@ -60,7 +60,6 @@ def view_events(request):
 
 	return render(request, 'events/existing_event.html', context)
 
-# TODO Add Host specific event edit permissions upon creation of the event.
 # Load form variables for the event creation portal.
 @login_required 
 def create_event(request):
@@ -68,7 +67,6 @@ def create_event(request):
 		Event_Form = EventCreationForm(request.POST)
 		# Store host & title, apply host controls to the current user.
 		host = request.user
-
 		if Event_Form.is_valid():
 			event_title = Event_Form.cleaned_data['title']
 			Event_Form.save()
@@ -115,20 +113,7 @@ def event_details(request, event_id):
 	return render(request, 'events/event_details.html', context)
 
 
-"""
-# Old event_details view [Functional]
-# Render single event details Allow the host to edit and for guest to join.
-def event_details(request, event_id):
-	event_details = get_object_or_404(Event, pk = event_id)
-
-	context = {
-		"event_details": event_details,
-	}
-
-	return render(request, 'events/event_details.html', context)
-"""
-
-# TODO Add a user passed test filter to match event edit controsl to proper host.
+# TODO Add a user_passes_test() function to provide event edit controls to proper host.
 # Allow Host User to modify the event. Raise HTTP 403 Error code if the user is unauthorized.
 @permission_required('events.can_edit_event', raise_exception=True)
 def edit_event(request, event_id):
