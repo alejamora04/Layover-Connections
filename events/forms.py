@@ -1,8 +1,7 @@
-# Format Built-In Django Server-side validated forms here
 from django import forms
 from .models import Event
 
-# Event model [Prototype]
+# Event model forms
 # Formatting for event creation.
 class EventCreationForm(forms.ModelForm):
 	title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 1}))
@@ -14,7 +13,7 @@ class EventCreationForm(forms.ModelForm):
 		fields = ['title', 'start_time', 'end_time', 'description']
 
 
-# Redundant form in case I make the update form different.
+# [Placeholder form] in case I make the update form different.
 class EventUpdateForm(forms.ModelForm):
 	title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 1}))
 	start_time = forms.CharField(label= 'Start Time: [ yyyy-mm-dd 00:00 ]')

@@ -47,6 +47,13 @@
                                 <li class="list-group-item"><strong>Status:</strong> </br> 
                                             {{ event_details.status }}
                                 </li>
+
+                                <!-- Create a front end placeholder to track who the host is.-->
+                                <li class="list-group-item"><strong>Current Host id:</strong> </br> 
+                                    This is what django is detecting as the current host. </br> 
+                                    <strong>{{ event_details.host }}</strong>
+                                </li>
+
                                 <!-- Page Navigation Button Controls. -->
                                 <li class="list-group-item">
                                     <div style = "display: flex;">

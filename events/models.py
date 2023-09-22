@@ -27,6 +27,8 @@ class Event(models.Model):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     participants = models.ManyToManyField(User)
+    # Add a field to store the host's user id.
+    host = models.IntegerField(null=True)
 
     # Host permissions created via model attributes.
     class Meta:

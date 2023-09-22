@@ -1,13 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import Permission
-from django.contrib.contenttypes.models import ContentType
 from events.models import Event
-
-from django.contrib import messages, auth
+from django.contrib import messages
 from .forms import EventCreationForm
-from django.utils import timezone
+from django.utils import timezone 
 
 
 # Base Event Page to encapsulate all event controls.
@@ -67,11 +64,13 @@ def create_event(request):
 		Event_Form = EventCreationForm(request.POST)
 		# Store host & title, apply host controls to the current user.
 		host = request.user
+
 		if Event_Form.is_valid():
 			event_title = Event_Form.cleaned_data['title']
 			Event_Form.save()
-			# Retrieve event and add current user as host.
+			# Retrieve event and add current user as participant, store user to make them a host with permissions in edit_details().
 			New_Event = Event.objects.get(title=event_title)
+			New_Event.host = (host.id)
 			New_Event.participants.add(host)
 			# Provide Host with elevated event permissions to allow them to modify/delete the event.
 			edit_permission = Permission.objects.get(codename='can_edit_event')
@@ -113,7 +112,45 @@ def event_details(request, event_id):
 	return render(request, 'events/event_details.html', context)
 
 
-# TODO Add a user_passes_test() function to provide event edit controls to proper host.
+# Allow Host User to modify the event. Raise HTTP 403 Error code if the user is unauthorized.
+@permission_required('events.can_edit_event', raise_exception=True)
+def edit_event(request, event_id):
+	# Load event model details to prepopulate the form fields.
+	event_details = get_object_or_404(Event, pk = event_id)
+	update_form = EventCreationForm(instance=event_details)
+
+	# Store user id to validate against event host id
+	current_user = request.user
+	host = current_user.id
+	event_host = event_details.host
+
+	# Only allow user to modify event details if they're a host.
+	if host == event_host:
+		if request.method == "POST":
+			update_form = EventCreationForm(request.POST, instance=event_details)
+			if update_form.is_valid():
+				update_form.save()
+				# FIXME Django routing messages to admin/ login portal url insert messages with JavaScript
+				messages.success(request, f"Your Event {format(update_form)} has been updated.")
+				return render(request, 'events/event_details.html', {"event_details": event_details,})
+		# TODO : Add JS popup denoting that changes are invalid.
+		else:
+			update_form = EventCreationForm(instance=event_details)
+	# Route user to event details if they aren't the host.
+	# TODO Add JavaScript popup message saying user is unauthorized to edit event information
+	else:
+		context = {"event_details": event_details,}
+		return render(request, 'events/event_details.html', context)
+
+	context = {
+		"event_details": event_details,
+		"update_form": update_form,
+	}
+		 
+	return render(request, 'events/edit_event.html', context)
+
+"""
+#[Functional]: Old code without additional test.
 # Allow Host User to modify the event. Raise HTTP 403 Error code if the user is unauthorized.
 @permission_required('events.can_edit_event', raise_exception=True)
 def edit_event(request, event_id):
@@ -135,9 +172,9 @@ def edit_event(request, event_id):
 		"update_form": update_form,
 	}
 		 
-
 	return render(request, 'events/edit_event.html', context)
 
+"""
 
 # Allow the host to edit event details on the front end.
 def delete_event(request, event_id):
