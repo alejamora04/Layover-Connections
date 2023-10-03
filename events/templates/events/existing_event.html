@@ -55,7 +55,8 @@
                                         height: 100%;
                                         ">
                                             <!-- .work-image" Work Card Thumbnail -->
-                                            <img src= "{% static '/events/images/500x500_placeholder.png' %}" style="
+                                            <!--img src= "{% static '/events/images/500x500_placeholder.png' %}" style=" -->
+                                            <img src= "{{ events.event_thumbnail.url }}" style="
                                             object-fit:contain;
                                             width: 100%;
                                             height: 100%; 

@@ -6,6 +6,12 @@ from django.contrib import messages
 from .forms import EventCreationForm
 from django.utils import timezone 
 
+"""
+
+MVP Checklist
+- Configure Middleware to assign local CST to views attribute to make status accurate
+
+"""
 
 # Base Event Page to encapsulate all event controls.
 def event_base(request):
@@ -61,7 +67,7 @@ def view_events(request):
 @login_required 
 def create_event(request):
 	if request.method == 'POST':
-		Event_Form = EventCreationForm(request.POST)
+		Event_Form = EventCreationForm(request.POST, request.FILES)
 		# Store host & title, apply host controls to the current user.
 		host = request.user
 
@@ -148,33 +154,6 @@ def edit_event(request, event_id):
 	}
 		 
 	return render(request, 'events/edit_event.html', context)
-
-"""
-#[Functional]: Old code without additional test.
-# Allow Host User to modify the event. Raise HTTP 403 Error code if the user is unauthorized.
-@permission_required('events.can_edit_event', raise_exception=True)
-def edit_event(request, event_id):
-	# Load event model details to prepopulate the form fields.
-	event_details = get_object_or_404(Event, pk = event_id)
-
-	if request.method == "POST":
-		update_form = EventCreationForm(request.POST, instance=event_details)
-		if update_form.is_valid():
-			update_form.save()
-			messages.success(request, f"Your Event {format(update_form)} has been updated.")
-			return render(request, 'events/event_details.html', {"event_details": event_details,})
-	
-	else:
-		update_form = EventCreationForm(instance=event_details)
-
-	context = {
-		"event_details": event_details,
-		"update_form": update_form,
-	}
-		 
-	return render(request, 'events/edit_event.html', context)
-
-"""
 
 # Allow the host to edit event details on the front end.
 def delete_event(request, event_id):
