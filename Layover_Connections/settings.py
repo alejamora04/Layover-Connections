@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'layoverconnections',
     'events.apps.EventsConfig',
     'crispy_forms',
-    'django_rename_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
