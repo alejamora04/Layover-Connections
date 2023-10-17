@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'layoverconnections',
+    'layoverconnections.apps.HomepageConfig',
     'events.apps.EventsConfig',
     'crispy_forms',
     'django.contrib.admin',
@@ -75,11 +75,24 @@ WSGI_APPLICATION = 'Layover_Connections.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+"""
+Default Sqlite Config [DEPRECATED] 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'layoverconnectionsdb',
+        'USER': 'layover_contributor',
+        'PASSWORD': 'open_source_user',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
