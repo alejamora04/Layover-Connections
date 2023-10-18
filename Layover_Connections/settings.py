@@ -73,25 +73,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Layover_Connections.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-"""
-Default Sqlite Config [DEPRECATED] 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-"""
-
+# Connect to PostgreSQL database running in docker container.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'layoverconnectionsdb',
-        'USER': 'layover_contributor',
-        'PASSWORD': 'open_source_user',
-        'HOST': 'localhost',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
