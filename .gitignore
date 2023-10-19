@@ -3,8 +3,14 @@
 *.pot
 *.pyc
 __pycache__
+
+# db specific files
 db.sqlite3
-media
+data/
+
+# User uploaded pictures.
+media/event_thumbnails/
+media/profile_pics/
 
 # Byte-compiled / optimized / DLL files
 Layover_Connections/__pycache__/
