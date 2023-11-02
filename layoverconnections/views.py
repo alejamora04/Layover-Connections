@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.contrib import messages
 from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, ImageUploadForm
 
-# Formatting for the splash page portal. 
-#TODO Setup the splash page with a demo button to - return render(request, 'layoverconnections/index.html')
+#from django.contrib.auth.forms import AuthenticationForm
+#from django.http import HttpResponseRedirect
+
+# Splash page portal.
 def index(request):
 	if not request.user.is_authenticated:
-		return redirect(reverse("layoverconnections:login"))
+		return render(request, "layoverconnections/splashpage.html")
 	return render(request, 'layoverconnections/homepage.html')
 
 # Server side new user registration validation

@@ -1,8 +1,18 @@
 {% extends "layoverconnections/signup.html" %}
+{% load static %}
 
 {% block content %}      
 <!--Registration form--> 
-        <!-- Template formatting -->
+                <!-- Template formatting -->
+                <p class="mb-2 opacity-70 login-banner-text">
+                    Welcome to Layover Connections the app where solo travelers can meetup and 
+                    spend time together to share stories and create new experiences. Sign up 
+                    to meet other travelers in the area and to connect. Whether you're only in 
+                    town in time with enough time to grab a quick drink or you've got some time 
+                    to explore and have fun in the city we've got you covered.
+                </p>        
+
+
                 <h1> Log In</h1>
                 <form action="{% url 'layoverconnections:login' %}" method="post">
                   {% csrf_token %}
@@ -16,14 +26,6 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Email input 
-                <div class="form-outline mb-4">
-                  <input type="email" name="email" id="form3Example3" class="form-control" />
-                  <label class="form-label" for="form3Example3"><strong>E-mail Address</strong></label>
-                </div>
-                -->
-  
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                   <input type="password" name="password" id="form3Example4" class="form-control" />
@@ -31,25 +33,15 @@
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4" value="Login">
+                <button type="submit" class="btn btn-primary btn-block mb-2" value="Login" style="background-color: rgba(6, 25, 88, 0.726);">
                     <strong>Log In</strong>
                 </button>
-                {% if message %}
-                  <div>{{ message }}</div>
-                {% endif %}
-
                 <!-- Signup Redirect -->
-                <a class="btn btn-primary btn-block mb-4" href="{% url 'layoverconnections:register' %}" role="button">
+                <a class="btn btn-primary btn-block mb-2" href="{% url 'layoverconnections:register' %}" role="button" style="background-color: rgba(6, 25, 88, 0.726);">
                   <strong>Sign up</strong>
                 </a>
 
-                    <!-- Checkbox -->
-                    <div class="form-check d-flex justify-content-center  mt-4 mb-4">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" unchecked />
-                        <label class="form-check-label" for="form2Example33">
-                          Join our mailing list for updates?
-                        </label>
-                    </div>
+
 
                 <!-- Register buttons 
 
