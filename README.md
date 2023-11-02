@@ -1,4 +1,5 @@
-![Main Banner](/LayoverRepo/layoverconnections/static/images/banner.jpg)
+
+![Main Banner](/Layover-Connections/layoverconnections/static/images/banner.jpg)
 
 # Welcome to Layover Connections
 Layover Connections is an app designed to connect people who are stuck at the airport in the same city during an extended layover. Users will be able to find other travelers to hang out with and to explore the city. Together groups both large and small will be able to coordinate social events. The app will launch in Beta with support for flyers located in Chicago at either the O’Hare or Midway airports. Whether you’re in the city for 2 hours or over 16 hours this will provide a greet service to meet cool people.
@@ -6,8 +7,10 @@ Layover Connections is an app designed to connect people who are stuck at the ai
 
 
 
+
 ## App Features and functionality
 This app will allow users to schedule events for when they have a layover in Chicago. Events will be organized via categories and will allow any interested guest to join an existing or upcoming event. Events will either be open to the public or require host approval beforehand.
+
 
 ## Installation & Setup
 To run Layover Connections the application repository source code has been containerized using Docker via a compose.yaml file. In order to install and run all dependencies Docker Compose must be installed in the target machine.

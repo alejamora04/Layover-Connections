@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import Permission
 from events.models import Event
@@ -87,8 +88,8 @@ def create_event(request):
 
 			messages.success(request, f"Event has been created")
 			# TODO Create redirect to updated event
-			return render(request, 'events/existing_event.html')
-
+			#return render(request, 'events/existing_event.html')
+			return redirect(reverse("events:view_events"))
 	else:
 		Event_Form = EventCreationForm()
 
