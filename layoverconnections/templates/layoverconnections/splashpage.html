@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Splash landing page for index view. -->
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <!-- Load Google Sign-in-->
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <!-- Load Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+        <!-- Font Awesome icons (free version)-->
+        <script 
+        src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous">
+        </script>
+
+        <link rel="stylesheet" href="{% static 'layoverconnections/style.css' %}">
+
+        <title>Welcome to Layover Connections </title>
+    </head> 
+    <body>
+    <!-- Upper Navbar links to important app sections-->
+    <header>
+        <div class="navbar navbar-dark box-shadow" style="background-color: hsl(218, 41%, 15%);">
+            <div class="container d-flex justify-content: space-between">
+                <div>
+                    <!-- If user Athenticated provide link to profile page -->
+                    <a href="{% url 'layoverconnections:homepage' %}" class="navbar-brand d-flex align-items-center">
+                        <i class="fa-sharp fa-solid fa-plane" style="margin-right:10px;"></i>
+                        <strong> Main page </strong>
+                    </a>
+                </div>
+                <div>
+                    <!-- Sign up & Sign In routing -->
+                    <a href="{% url 'layoverconnections:login' %}" role="button" style="color:white; text-decoration: none; font-weight: 550; margin-right: 1rem;">
+                        <strong> Login </strong>
+                    </a>
+                    <!-- Signup Redirect -->
+                    <a class="btn btn-primary btn-block mb-2" href="{% url 'layoverconnections:register' %}" role="button" style="background-color: rgba(9, 32, 110, 0.726);">
+                        <strong>Sign up</strong>
+                    </a>
+                </div>
+
+                <!-- Application Collapsible Navbar menu -->
+                {% if user.is_authenticated %}
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse" id="navbarHeader">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-7 py-4">
+                                    <h4 class="text-white"> Upcoming Events </h4>
+                                    <p class="text-muted">
+                                    Upcoming Events [Django placeholder Populate quick info of upcoming events].</p>
+                                </div>
+                                <div class="col-sm-4 offset-md-1 py-4">
+                                    <h4 class="text-white">Welcome, {{user.username}}</h4>
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="nav-link text-white">Check into the Airport</a></li>
+                                        <!-- Route to event Creation -->
+                                        <li><a href="{% url 'layoverconnections:events' %}" class="nav-link text-white">Create a New Event</a></li>
+                                        <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <!-- Splash Page: Main -->
+    <!-- Outer div background gradient -->
+    <section class="background-radial-gradient overflow-hidden">
+        <div class="container px-4 py-2 px-md-5 text-center text-lg-start my-5">
+            <div class="row gx-lg-5 align-items-center mb-5">
+                <!-- Top Login Page Banner-->
+                <div class="col-lg-6 mb-2 mb-lg-0" style="z-index: 10">
+                    <h1 class="my-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        Layover Connections <br />
+                        <span style="color: hsl(218, 81%, 75%)">A Social Travel Hub.</span>
+                    </h1>
+                </div>
+                <!-- Login Template formatting -->
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-4 px-md-5">
+                            <!-- Template formatting -->
+                            <p class="mb-4 opacity-70 login-banner-text" style="color:black;">
+                                Welcome to Layover Connections the app where solo travelers can meetup and 
+                                spend time together to share stories and create new experiences. Sign up 
+                                to meet other travelers in the area and to connect. Whether you're only in 
+                                town in time with enough time to grab a quick drink or you've got some time 
+                                to explore and have fun in the city we've got you covered.
+                            </p>        
+                            <button type="submit" class="btn btn-primary btn-block mb-1" style="background-color: rgba(6, 25, 88, 0.726);">
+                                <a href="{% url 'layoverconnections:register' %}"  style="color:white; text-decoration: none; font-weight: 350;"> Join Layover Connections. </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    </body>
+</html>
