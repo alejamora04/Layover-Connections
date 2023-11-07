@@ -1,5 +1,5 @@
 
-![Main Banner](/Layover-Connections/layoverconnections/static/images/banner.jpg)
+![Main Banner](https://github.com/alejamora04/Layover-Connections/tree/main/media/airport-departure-board-cropped.jpg "Main Banner")
 
 # Welcome to Layover Connections
 Layover Connections is an app designed to connect people who are stuck at the airport in the same city during an extended layover. Users will be able to find other travelers to hang out with and to explore the city. Together groups both large and small will be able to coordinate social events. The app will launch in Beta with support for flyers located in Chicago at either the O’Hare or Midway airports. Whether you’re in the city for 2 hours or over 16 hours this will provide a greet service to meet cool people.

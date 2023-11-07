@@ -6,7 +6,10 @@ Style Sheet applies to
 - Main Page 
 */
 
+
 /* Login Portal Styling */
+
+
 /* Background gradient for login portal */
 .background-radial-gradient {
   background-color: hsl(218, 41%, 15%);
@@ -30,6 +33,7 @@ Style Sheet applies to
   color: hsl(218, 81%, 85%); 
   text-align: justify;
   text-justify: inter-word;
+  padding: 1.5rem 1rem 0rem 1rem;
 }
 
 
@@ -43,7 +47,9 @@ Style Sheet applies to
   backdrop-filter: saturate(200%) blur(25px);
 }
 
-/* styling for profile page */
+
+/* Profile Page Specific Styling */
+
 
 .gradient-custom-2 {
   /* fallback for old browsers */
@@ -131,7 +137,11 @@ footer p {
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
+
+
 /* Main Page Styling*/
+
+
 
 /* Spotify Style card text
 .main-card-text {

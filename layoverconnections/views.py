@@ -1,21 +1,21 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .models import Profile
 from django.contrib import messages
 from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, ImageUploadForm
 
-#from django.contrib.auth.forms import AuthenticationForm
-#from django.http import HttpResponseRedirect
+# from django.urls import reverse
+# from .models import Profile
 
-# Splash page portal.
+# Login Registration and Sign Up Views.
+
+# Splash page
 def index(request):
 	if not request.user.is_authenticated:
 		return render(request, "layoverconnections/splashpage.html")
 	return render(request, 'layoverconnections/homepage.html')
 
-# Server side new user registration validation
+# New user registration validation
 def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST) 
@@ -30,7 +30,6 @@ def register_request(request):
 
 # Formatting for the Login page. 
 # TODO change username field to email- register form email = request.POST["email"]
-# TODO Fix Django populated error messages
 # TODO Fix Redirect after user registers and signs in
 def login_view(request):
 	if request.method == "POST":
@@ -41,9 +40,8 @@ def login_view(request):
 			login(request, user)
 			return redirect("layoverconnections:homepage")
 		else:
-			return render(request, "layoverconnections/index.html", {
-				"message": "Invalid Credentials."
-			})
+			return render(request, "layoverconnections/login.html",
+				messages.info(request, "Invalid Credentials.") )
 	return render(request, 'layoverconnections/login.html')
 
 # Logout Functionality
@@ -51,6 +49,9 @@ def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("layoverconnections:index")
+
+
+# User Profile Based Views
 
 # Routing to a user profile.
 @login_required
@@ -109,6 +110,8 @@ def edit_bio(request):
 	}
 
 	return render(request, 'layoverconnections/about_me.html', context)
+
+# Homepage Based Views
 
 # Configure Requests for the homepage http request
 def homepage(request):

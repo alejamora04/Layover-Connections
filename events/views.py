@@ -87,8 +87,6 @@ def create_event(request):
 			New_Event.save()
 
 			messages.success(request, f"Event has been created")
-			# TODO Create redirect to updated event
-			#return render(request, 'events/existing_event.html')
 			return redirect(reverse("events:view_events"))
 	else:
 		Event_Form = EventCreationForm()

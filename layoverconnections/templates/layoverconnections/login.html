@@ -2,70 +2,52 @@
 {% load static %}
 
 {% block content %}      
-<!--Registration form--> 
-                <!-- Template formatting -->
-                <p class="mb-2 opacity-70 login-banner-text">
-                    Welcome to Layover Connections the app where solo travelers can meetup and 
-                    spend time together to share stories and create new experiences. Sign up 
-                    to meet other travelers in the area and to connect. Whether you're only in 
-                    town in time with enough time to grab a quick drink or you've got some time 
-                    to explore and have fun in the city we've got you covered.
-                </p>        
+<!--Login Glass form-->
+  <div class="card-body px-4 py-1 px-md-5">
+      <!-- Template formatting -->
+      <p class="mb-4 opacity-70 login-banner-text" style="color:black;">
+          Welcome to Layover Connections the app where solo travelers stuck in the same city 
+          can meet and spend time together to share stories and create new experiences. 
+          Sign up to meet other travelers in the area and to connect. Whether you're only in 
+          town in time with enough time to grab a quick drink at the airport or you've got 
+          time to explore and have fun in the city we've got you covered.
+      </p> 
+      <h1> Log In</h1>
+      <form action="{% url 'layoverconnections:login' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <div class="form-outline">
+            <input type="text" name="username"id="form3Example2" class="form-control" />
+            <label class="form-label" for="form3Example2"><strong>Username</strong></label>
+          </div>
+        </div>
+      </div>
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" name="password" id="form3Example4" class="form-control" />
+        <label class="form-label" for="form3Example4"><strong>Password</strong></label>
+      </div>
+      <!-- Submit button -->
 
+      <!-- Invalid Login Credentials -->
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}> {{ message }} </li>
+          {% endfor %}
+      </ul>
+      {% endif %}
 
-                <h1> Log In</h1>
-                <form action="{% url 'layoverconnections:login' %}" method="post">
-                  {% csrf_token %}
-                  {{ form.as_p}}
-                <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row">
-                  <div class="col-md-12 mb-2">
-                    <div class="form-outline">
-                      <input type="text" name="username"id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2"><strong>Username</strong></label>
-                    </div>
-                  </div>
-                </div>
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" name="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4"><strong>Password</strong></label>
-                </div>
+      <button type="submit" class="btn btn-primary btn-block mb-2" value="Login" style="background-color: rgba(6, 25, 88, 0.726);">
+          <strong>Log In</strong>
+      </button>
+      <!-- Signup Redirect -->
+      <a class="btn btn-primary btn-block mb-2" href="{% url 'layoverconnections:register' %}" role="button" style="background-color: rgba(6, 25, 88, 0.726);">
+        <strong>Sign up</strong>
+      </a>
 
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-2" value="Login" style="background-color: rgba(6, 25, 88, 0.726);">
-                    <strong>Log In</strong>
-                </button>
-                <!-- Signup Redirect -->
-                <a class="btn btn-primary btn-block mb-2" href="{% url 'layoverconnections:register' %}" role="button" style="background-color: rgba(6, 25, 88, 0.726);">
-                  <strong>Sign up</strong>
-                </a>
-
-
-
-                <!-- Register buttons 
-
-                <div class="text-center">
-                    <p>or sign up with:</p>
-                     Google Sign-on Prompt consider Django Server app recommendations-->
-                     <!-- 
-                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                    <script>
-                      function onSignIn(googleUser) {
-                        // Useful data for your client-side scripts:
-                        var profile = googleUser.getBasicProfile();
-                        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                        console.log('Full Name: ' + profile.getName());
-                        console.log('Given Name: ' + profile.getGivenName());
-                        console.log('Family Name: ' + profile.getFamilyName());
-                        console.log("Image URL: " + profile.getImageUrl());
-                        console.log("Email: " + profile.getEmail());
-                
-                        // The ID token you need to pass to your backend:
-                        var id_token = googleUser.getAuthResponse().id_token;
-                        console.log("ID Token: " + id_token);
-                      }
-                    </script>
-
-                  -->
+  </div>
 {% endblock %}
