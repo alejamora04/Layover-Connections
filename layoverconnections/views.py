@@ -9,7 +9,7 @@ from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, ImageUploadFo
 
 # Login Registration and Sign Up Views.
 
-# Splash page
+# Splash page routing
 def index(request):
 	if not request.user.is_authenticated:
 		return render(request, "layoverconnections/splashpage.html")
@@ -22,7 +22,7 @@ def register_request(request):
 		if form.is_valid():
 			user = form.save()
 			login(request, user)
-			messages.success(request, "Registration successful." )
+			messages.success(request, "Registration successful.")
 			return redirect("layoverconnections:login")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
@@ -30,7 +30,6 @@ def register_request(request):
 
 # Formatting for the Login page. 
 # TODO change username field to email- register form email = request.POST["email"]
-# TODO Fix Redirect after user registers and signs in
 def login_view(request):
 	if request.method == "POST":
 		username = request.POST["username"]
@@ -47,8 +46,8 @@ def login_view(request):
 # Logout Functionality
 def logout_request(request):
 	logout(request)
-	messages.info(request, "You have successfully logged out.") 
-	return redirect("layoverconnections:index")
+	return render(request, "layoverconnections/login.html",
+		messages.info(request, "You have Succesfully logged out.") )
 
 
 # User Profile Based Views
@@ -81,7 +80,7 @@ def edit_profile(request):
 		'p_form': p_form
 	}
 
-	return render(request, 'layoverconnections/edit_profile.html', context)
+	return render(request, 'layoverconnections/edit_profile.html', context)# TODO Route back to Login Page.
 
 # Update About Me Section
 @login_required
