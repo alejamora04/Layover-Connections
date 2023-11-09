@@ -65,7 +65,7 @@
                                         <!-- Route to event Creation -->
                                         <li><a href="{% url 'layoverconnections:events' %}" class="nav-link text-white">Create a New Event</a></li>
                                         <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
-                                    </ul>
+                                    </ul>class="Splashpage-Background"
                                 </div>
                             </div>
                         </div>
@@ -74,21 +74,34 @@
             </div>
         </div>
     </header>
-
-    <!-- Splash Page: Main -->
+    <!-- Splash Page: Main --->
     <!-- Outer div background gradient -->
-    <section class="background-radial-gradient overflow-hidden">
-        <div class="container px-4 py-3 px-md-5 text-center text-lg-start my-1">
+    <!-- /* Background image controls. */ -->
+    <section class="container" style="
+    max-width: 1000rem; 
+    max-height: 1000rem;
+    padding: 0rem;                        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-image: url('{% static "/images/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" %}');">
+        <!-- Transparency overlay -->
+        <div style = "
+        background-color: rgba(02, 06, 21, 0.8);
+        margin: 0rem;
+        padding: 5rem 1rem 5rem 1rem;
+        width: 100vw;
+        height: 100vh;">
             <div class="row gx-lg-5 align-items-center mb-5">
                 <!-- Title Text Column -->
                 <div class="col-lg-6 mb-2 mb-lg-0" style="z-index: 10">
-                    <h1 class="display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                        Layover Connections <br />
-                        <span style="color: hsl(218, 81%, 75%); font-size: 1.75rem;">A Social Travel Hub.</span>
-                    </h1>
+                    <img src = '{% static "/images/airport-departure-board-cropped.jpg" %}' style="max-height:20rem; max-width: 32rem; border-radius: 20px">
+                     <br />
+                    <h1 style="color: hsl(51, 81%, 75%); font-size: 1.75rem;">A Social Travel Hub.</h1>
                 </div>
                 <!-- Application Join Description -->
-                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div class="col-lg-6 mb-2 mb-lg-0 position-relative">
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-4 px-md-5">
                             <!-- Template formatting -->
@@ -108,6 +121,6 @@
             </div>
         </div>
     </section>
-        
+
     </body>
 </html>
