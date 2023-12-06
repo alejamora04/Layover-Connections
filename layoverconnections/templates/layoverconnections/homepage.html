@@ -22,7 +22,7 @@
       src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous">
       </script>
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'layoverconnections/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'layoverconnections/style.css' %}">
   </head>
 
   <body>
@@ -35,16 +35,11 @@
             <i class="fa-sharp fa-solid fa-circle-user" style="margin-right:10px;"></i>
             <strong>Profile</strong>
           </a>
-          <a href="{% url 'events:event_base' %}" class="navbar-brand d-flex align-items-center">
+          <a href="{% url 'events:view_events' %}" class="navbar-brand d-flex align-items-center">
             <i class="fa-solid fa-people-group" style="margin-right:10px;"></i>
             <strong>events</strong>
           </a>
 
-          <a href="#" class="navbar-brand d-flex align-items-center ">
-            <button type="button" class="btn btn-primary" style="background-color:hsl(202, 65%, 20%)">
-              Messages <span class="badge bg-secondary">4</span>
-            </button>
-          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -55,16 +50,15 @@
                   <div class="col-sm-8 col-md-7 py-4">
                     <h4 class="text-white"> Upcoming Events </h4>
                     <p class="text-muted">
-                    Upcoming Events [Django placeholder Populate quick info of upcoming events].</p>
+                    Looks like you haven't joined or scheduled any events yet. When you have something booked the details will show up right here. </p>
                   </div>
                   <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Welcome, {{user.username}}</h4>
                     <ul class="list-unstyled">
                       <!-- Django tools for User Navbar Controls-->
                       {% if user.is_authenticated %}
-                      <li><a href="#" class="nav-link text-white">Check into the Airport</a></li>
                       <!-- Route to event Creation -->
-                      <li><a href="{% url 'layoverconnections:events' %}" class="nav-link text-white">Create a New Event</a></li>
+                      <li><a href="{% url 'layoverconnections:profile' %}" class="nav-link text-white">Edit your profile</a></li>
                       <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
                       {% else %}
                       <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
@@ -80,150 +74,117 @@
 
     <main role="main">
     <!-- Main Page welcome banner-->
-      <section class="jumbotron text-center" style="background-color: hsla(224, 65%, 20%, 0.363);">
-        <div class="container">
-          <ul class="list-group" style="width: 100%;">
-            <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
-              <h1 class="jumbotron-heading" style="color: #f8f9fa;"><strong>Welcome to the Travel Hub</strong></h1>
-            </li>
-            <li class="list-group-item">
-              <p class="lead text-muted" style="background-color: #f8f9fa;">
-                It's a good time to meet and connect with fellow travelers. Lets help you find a group and explore the windy city. 
-                Feel free to explore some of the open events below or feel free to create one yourself. If you're a local now's the chance
-                to show some travelers what makes this place so special.
-              </p>
-            </li>
-            <li class="list-group-item">
-              <!-- Route Users to Events Apps -->
-              <p>
-                <a href="{% url 'events:event_base' %}" class="btn btn-primary my-2 text-white" style="background-color:hsl(221, 65%, 20%);"><strong>View Events</strong></a>
-              </p>
-            </li>
-          </ul>
+      <section class="jumbotron text-center" style="
+      background-color: hsla(224, 65%, 20%, 0.363);
+      width: 100%; 
+      height: 90%;                    
+      display: flex;
+      justify-content: center;
+      padding: 0rem;
+      align-items: center;
+      background-size: cover;
+      background-image: url('{% static "/images/engin-yapici-aF7_ZKJChK4-unsplash(1).jpg" %}');">
+          <div style="background-color: rgba(02, 06, 21, 0.8);
+          margin: 0rem;
+          padding: 2rem 0rem 1rem 0rem;    
+          width: 100vw;
+          height: 100vh;">
+            <div class="container" style="max-width: 35rem;">
+              <ul class="list-group" style="width: 100%;">
+                <li class="list-group-item" style="padding: 0rem; margin: 0rem;">
+                  <!-- Boostrap picture carousel. -->
+                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <div class="card box-shadow" style="border-radius: 15px;">
+                          <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                            <h1 class="card-text text-white text-center" style="margin-top:120px;"><strong>Get Food</strong></h1>
+                          </div>
+                          <img src= "{% static '/images/fabio-alves-tN3CDxTkx0Q-unsplash.jpg' %}" class="d-block w-100" style="height:300px; border-radius: 15px;" alt="food">
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="card box-shadow" style="border-radius: 15px;">
+                          <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                            <h1 class="card-text text-white text-center" style="margin-top:120px;"><strong>Enjoy the Nightlife</strong></h1>
+                          </div>
+                          <img src= "{% static '/images/redd-f-nE1K_qO2z38-unsplash.jpg' %}" class="d-block w-100" style="height:300px; border-radius: 15px;" alt="food">
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="card box-shadow" style="border-radius: 15px;">
+                          <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                            <h1 class="card-text text-white text-center" style="margin-top:120px;"><strong>Have a Drink</strong></h1>
+                          </div>
+                          <img src= "{% static '/images/stanislav-ivanitskiy-j5SwUbcgeyA-unsplash.jpg' %}"  class="d-block w-100" style="height:300px; border-radius: 15px;" alt="food">
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="card box-shadow" style="border-radius: 15px;">
+                          <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                            <h1 class="card-text text-white text-center" style="margin-top:120px;"><strong>Explore the City</strong></h1>
+                          </div>
+                          <img src= "{% static '/images/robert-v-ruggiero-jE0gJddqulM-unsplash.jpg' %}" class="d-block w-100" style="height: 300px; border-radius: 15px;" alt="Explore">
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="card box-shadow" style="border-radius: 15px;">
+                          <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                            <h1 class="card-text text-white text-center" style="margin-top:120px;"><strong>Meet the Locals </strong></h1>
+                          </div>
+                          <img src= "{% static '/images/valiant-made-UrzN-8K1PCE-unsplash.jpg' %}" class="d-block w-100" style="height: 300px; border-radius: 15px;" alt="Explore">
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="card box-shadow" style="border-radius: 15px;">
+                          <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
+                            <h1 class="card-text text-white text-center" style="margin-top:120px;"><strong>Catch a Show</strong></h1>
+                          </div>
+                          <img src=  "{% static '/images/yu-shao-wu-EzPfYTB4aDg-unsplash.jpg' %}"  class="d-block w-100" style="height: 300px; border-radius: 15px;" alt="Catch a Show">
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </li>
+                <!-- Banner text. -->
+                <li class="list-group-item" style="padding: 0rem 2rem 0rem 2rem; background-color: #d9dcdfde;">
+                  <p class="lead text-muted" style="          
+                  text-align: justify;
+                  text-justify: inter-word;">
+                    <h2 class="jumbotron-heading" style="color:hsla(194, 65%, 20%, 0.616);"><strong>Welcome to the Travel Hub</strong></h2>
+                    It's a good time to meet and connect with fellow travelers. Lets help you find a group and explore the windy city. 
+                    Feel free to explore some of the open events below or feel free to create one yourself. If you're a local now's the chance
+                    to show some travelers what makes this place so special.
+                  </p>
+                  <!-- Event Navigation -->
+                  <div style="padding: .5rem; margin-bottom: .5rem; display: flex; justify-content: space-between;">
+                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 15%);">
+                        <strong><a href="{% url 'events:view_events' %}" style="color: #f8f9fa; text-decoration:none;"> View Events. </a></strong>
+                    </button>
+                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 15%);">
+                      <strong><a href="{% url 'events:create_event' %}" style="color: #f8f9fa; text-decoration:none;"> Create an Event </a></strong>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            </div>
         </div>
       </section>
-
-    <!-- Events Page" -->
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow" style="border-radius: 5px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
-                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Get Food</strong></h1>
-                </div>
-                <img src= "{% static '/images/fabio-alves-tN3CDxTkx0Q-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="food">
-                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
-                  <p class="card-text"> Grab some food around the city.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
-                    </div>
-                    <small class="text-muted"> # of events </small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow" style="border-radius: 10px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
-                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Enjoy the Nightlife</strong></h1>
-                </div>
-                <img src= "{% static '/images/redd-f-nE1K_qO2z38-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Nightlife">
-                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
-                  <p class="card-text">Enjoy the nightlife</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow" style="border-radius: 5px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
-                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Have a Drink</strong></h1>
-                </div>
-                <img src= "{% static '/images/stanislav-ivanitskiy-j5SwUbcgeyA-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Drinks">
-                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
-                  <p class="card-text">Grab a drink at the bar.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow" style="border-radius: 5px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
-                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Explore the City</strong></h1>
-                </div>
-                <img src= "{% static '/images/robert-v-ruggiero-jE0gJddqulM-unsplash.jpg' %}" class="card-img-top"  style="height:275px;" alt="Events">
-                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
-                  <p class="card-text"> Explore the city for a day.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow" style="border-radius: 5px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
-                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Meet Locals</strong></h1>
-                </div>
-                <img src= "{% static '/images/valiant-made-UrzN-8K1PCE-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Connect with Residents">
-                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
-                  <p class="card-text">Meet the locals.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow" style="border-radius: 5px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 2px solid rgba(0, 0, 0, 0.507);">
-                <div class="card-img-overlay" style = "background: linear-gradient(0deg, #00000088 45%, #ffffff44 100%)">
-                  <h1 class="card-text text-white text-center" style="margin-top:100px;"><strong>Current Events</strong></h1>
-                </div>
-                <img src= "{% static '/images/yu-shao-wu-EzPfYTB4aDg-unsplash.jpg' %}" class="card-img-top" style="height:275px;" alt="Current Events">
-                <div class="card-body" style="background-color: hsla(208, 45%, 58%, 0.603)">
-                  <p class="card-text"> Enjoy current events in town.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(2, 64%, 20%)"><strong>View</strong></button>
-                      <button type="button" class="btn btn-md btn-outline-secondary text-white" style="background-color:hsl(0, 2%, 32%)"><strong>Create</strong></button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
     </main>
 
     <footer class="text-muted">
       <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Layover Connections is still in Beta while we test out some features in Chicago.</p>
-        <p>Have any suggestions for ways we can improve? <a href="../../">E-mail Us</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p>Layover Connections is still in Beta while we test features in Chicago.</p>
+        <p>Have suggestions for ways we can improve? <a href="../../">E-mail Us</a>. </p>
       </div>
     </footer>
 

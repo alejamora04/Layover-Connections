@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Splash landing page index view. -->
     <head>
         <meta name="viewport" content="initial-scale=1, width=device-width">
         <!-- Load Google Sign-in-->
@@ -9,35 +10,83 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <!-- Load Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Font Awesome icons (free version)-->
-        <script 
-        src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous">
-        </script>
-
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- CSS Stylesheet-->
         <link rel="stylesheet" href="{% static 'layoverconnections/style.css' %}">
 
+        <style>
+        /* Splashpage styling */
+
+            /* Transparency overlay layer for image */
+            .Splashpage-overlay-layer {
+                background-color: rgba(02, 06, 21, 0.8);
+                margin: 0rem;
+                padding: 4rem 1rem 5rem 1rem;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .bg-glass {
+            background-color: hsla(0, 0%, 100%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+            }
+
+            .login-banner-text{
+            color: hsl(0, 0%, 3%); 
+            text-align: justify;
+            text-justify: inter-word;
+            padding: 1.5rem 1rem 0rem 1rem;
+            }
+
+            .bg-glass {
+            background-color: hsla(0, 0%, 100%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+            }
+
+        </style>
         <title>Welcome to Layover Connections </title>
-    </head>
+    </head> 
     <body>
-    <!-- Login Portal background gradient -->
-    <section class="background-radial-gradient overflow-hidden">
-        <div class="container px-4 py-2 px-md-5 text-center text-lg-start my-5">
-            <div class="row gx-lg-5 align-items-center mb-5">
-                <!-- Top Login Page Banner-->
-                <div class="col-lg-6 mb-2 mb-lg-0" style="z-index: 10">
-                    <h1 class="my-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                        Layover Connections <br />
-                        <span style="color: hsl(218, 81%, 75%)">A Social Travel Hub.</span>
-                    </h1>
+
+    <!-- Background image controls. --> 
+    <section class="container" style="
+                max-width: 1000rem; 
+                max-height: 1000rem;
+                padding: 0rem;                        
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-size: cover;
+                background-image: url('{% static "/images/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" %}');">
+        <!-- Transparency overlay layer for image -->
+        <div class="Splashpage-overlay-layer">
+            <div class="row align-items-center" style="max-width: 80rem; margin: auto;">
+                <!-- Banner Image and Column max-height:20rem; -->
+                <div class="col-lg-6">
+                    <div class="container" style="
+                    background-color: rgba(0, 0, 0, 0.699); 
+                    padding: 1rem;                        
+                    border-radius: 20px;">
+                        <img src = '{% static "/images/airport-departure-board-cropped.jpg" %}' style="
+                        height: auto; 
+                        max-width: 100%; 
+                        border-radius: 20px;
+                        padding: 1rem; ">
+                         <br />
+                        <h1 style="color: hsl(51, 74%, 45%); 
+                        font-size: 1.75rem;
+                        text-align: center;
+                        padding: .5rem;">A Social Travel Hub.</h1>
+                    </div>
 
                 </div>
-                <!-- Login Template formatting -->
-                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <!-- Application Join Description -->
+                <div class="col-lg-6">
                     <div class="card bg-glass">
-                        <div class="card-body px-4 py-5 px-md-5">
+                        <div class="card-body px-4 py-4 px-md-5" style="margin: auto;">
+                            <!-- Template formatting -->
                             {% block content %}
                             {% endblock %}
                         </div>
@@ -46,6 +95,6 @@
             </div>
         </div>
     </section>
-        
+
     </body>
 </html>

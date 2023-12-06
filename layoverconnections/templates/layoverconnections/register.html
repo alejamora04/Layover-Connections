@@ -10,11 +10,11 @@
 	<form method="POST">
 		{% csrf_token %}
 		{{ register_form|crispy }}                    
-		<button class="btn btn-primary btn-block mb-4" type="submit"><strong>Register</strong></button>
+		<button class="btn btn-primary btn-block mb-4" type="submit" style="background-color: rgba(5, 20, 68, 0.726); border:none;"><strong>Register</strong></button>
 	</form>
 	<!-- Sign In Redirect-->
 	<p>If you already have an account login instead.</p>
-	<a class="btn btn-primary btn-block mb-4" href="{% url 'layoverconnections:login' %}" role="button">
+	<a class="btn btn-primary btn-block mb-4" style=" background-color: rgba(5, 20, 68, 0.726); border:none;" href="{% url 'layoverconnections:login' %}" role="button">
 		<strong>Sign In</strong>
 	</a>
 

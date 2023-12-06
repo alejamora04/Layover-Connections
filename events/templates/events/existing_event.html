@@ -5,130 +5,138 @@
 {% block content %}
 <!-- Section: Design Block -->
 <section class="background-radial-gradient overflow-hidden">
-    <div class="container px-4 py-3 px-md-5 text-center text-lg-start">
+    <div class="container py-1 text-center text-lg-start" style="max-width: 50rem;">
         <!-- Background card container -->
-        <!-- div class="row gx-lg-5 align-items-center mb-5" style="background-color: blanchedalmond;" -->
-        <div class="row gx-lg-5 align-items-center mb-5">
-            <!-- Create Event Form -->
-            <div class="col-lg-8 mb-5 mb-lg-0 position-relative">
-                <div class="card bg-glass">
-                    <div class="card-body px-3 py-3 px-md-5">
-                            <div style ="background-color:rgb(255, 255, 255); padding:15px; margin-top:20px;">
-                                <!-- Integrate all model attributes -->
-                                <h1> All Current Events </h1>
-                                Django's calulated Time now "UTC" [Django.utils "timezone" {{ Datetime_now }}]: 
-                                </br>
-                                Event Start Time Attr: {{ Status_Start }} </br>
-                                Event End Time Attr: {{ Status_End }} </br>
-                                Event Status: {{ Event_Status }} </br>
-                            </div>
-                        <div>
-                        </div>
-                            <!-- Iterate through all of the events published and stored in the db-->
-                            {% for events in Events %}
-                            <!-- Event Details w Styling + CSS Wireframing: -->
-                            <!-- Outermost card wrapper -->
-                            <div class = "container-fluid"
-                            style = "
-                            background-color:rgb(245, 245, 245);
-                            max-width: 62rem;
-                            min-height: 14rem;
-                            overflow: hidden;
-                            padding-right: 1rem; 
-                            padding-left: 1rem; 
-                            padding-top: 1rem; 
-                            padding-bottom: 1rem;
-                            margin-bottom: 1rem;
-                            flex-grow: 1;
-                            border: 1px solid rgba(0, 0, 0, 0.561); 
-                            border-radius: 4px;
-                            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);            
-                            ">
-                                <div class="row">
-                                    <!-- Work Card Thumbnail -->
-                                    <div class="col-lg-4" >
-                                        <!-- .work-thumbnail-container Bounding div for work thumbnail -->
-                                        <div class="wrapper " style = "
-                                        border-radius: 10px; 
-                                        background-color:#375871; 
-                                        width: 100%; 
-                                        height: 100%;
-                                        ">
-                                            <!-- .work-image" Work Card Thumbnail -->
-                                            <!--img src= "{% static '/events/images/500x500_placeholder.png' %}" style=" -->
-                                            <img src= "{{ events.event_thumbnail.url }}" style="
-                                            object-fit:contain;
-                                            width: 100%;
-                                            height: 100%; 
-                                            max-width: 30rem; 
-                                            max-height: 16rem;
-                                            padding: .8rem;
-                                            opacity: 70%;
-                                            ">
-                                        </div>
-                                    </div>
-                                    <!--  Text Description Column-->
-                                    <div class="col-lg-8">
-                                        <!-- class = "wdescription-container" Work Description Container -->
-                                        <div style="
-                                        padding-left: .2rem; 
-                                        padding-top: .7rem;
-                                        ">
-                                            <div class="flex-shrink-0" style="padding-right: 1rem; ">
-                                                <!-- class ="wc-title" Work title Text Row -->
-                                                <ul style="
-                                                font-weight: 635;
-                                                font-size: 1rem;
-                                                color: #343a40;
-                                                text-align: left;
-                                                padding-left: 0rem;
-                                                text-transform: uppercase;
-                                                list-style-type: none;">
-                                                    <li style="color:#736b22; font-size: 1.3rem;"> {{ events.title }}</li>
-                                                    <li><i class="fa-regular fa-calendar"></i> {{ events.start_time }}</li>
-                                                    <li> Details: </li>
-                                                    <li style="
-                                                        text-align: justify;
-                                                        text-justify: inter-word;
-                                                        font-weight: 400;
-                                                        font-size: .9rem;
-                                                        ">
-                                                            {{ events.description}}
 
-                                                    </li>
-                                                    <li>
-                                                        Host: <span style="font-weight: 400;">
-                                                            {% for participant in events.participants.all %}
-                                                                {{ participant.first_name }},
-                                                            {% endfor %}
-                                                        </span>
-
-                                                    </li>
-                                                    <li>
-                                                        <a href="{%  url 'events:event_details' events.id %}" style="color:rgb(33, 32, 46); font-weight: 400;">
-                                                            <!--a href="{{ events.get_absolute_url }}" style="color:rgb(33, 32, 46); margin-top: 1rem;"-->
-                                                                view event details
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
+        <div class="card bg-glass">
+            <div class="card-body px-1">
+                <div style="margin-bottom: 1rem; text-align: center;">
+                    <!-- List Header -->
+                    <h2 class="jumbotron-heading" style="color:hsla(194, 65%, 20%, 0.616); font-size: 1.7rem;"><strong>Scheduled Events.</strong></h2>
+                    <p style="                                                        
+                    text-align: justify;
+                    text-justify: inter-word;
+                    font-weight: 400;
+                    font-size: 1rem;
+                    padding:  1rem;
+                    margin-bottom: 0rem;">
+                        Nice of you to join us heres what's currently happening around the airport. If you see something that looks interesting why don't you join in? Or if you're feeling up
+                        to it feel free to invite some of your fellow solo travelers to join in on a new adventure.
+                    </p>
+                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 15%);">
+                        <strong><a href="{% url 'events:create_event' %}" style="color: #f8f9fa; text-decoration:none;"> Create Event </a></strong>
+                    </button>
+                </div>
+                    <!-- Iterate through all of the events published and stored in the db-->
+                    {% for events in Events %}
+                    <!-- Event Details w Styling + CSS Wireframing: -->
+                    <!-- Outermost card wrapper -->
+                    <div class = "container-fluid"
+                    style = "
+                    background-color:rgb(245, 245, 245);
+                    max-width: 62rem;
+                    min-height: 14rem;
+                    overflow: hidden;
+                    padding-right: 1rem; 
+                    padding-left: 1rem; 
+                    padding-top: 1rem; 
+                    padding-bottom: 1rem;
+                    margin-bottom: 1rem;
+                    flex-grow: 1;
+                    border: 1px solid rgba(0, 0, 0, 0.561); 
+                    border-radius: 4px;
+                    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);            
+                    ">
+                        <div class="row" style="margin-bottom: 0rem;">
+                            <!-- Work Card Thumbnail -->
+                            <div class="col-lg-4" >
+                                <!-- .work-thumbnail-container Bounding div for work thumbnail. -->
+                                <div class="wrapper" style ="
+                                border-radius: 10px; 
+                                background-color:#375871; 
+                                width: 100%; 
+                                height: 100%;
+                                background-image: url('{{ events.event_thumbnail.url }}');
+                                ">
+                                    <!-- .work-image" Work Card Thumbnail -->
+                                    <!-- img src= "{% static '/events/images/500x500_placeholder.png' %}" style=" -->
+                                    <div style="
+                                    width: 100%; 
+                                    height: 100%; 
+                                    background-color: rgba(51, 64, 241, 0.178); 
+                                    backdrop-filter: blur(7px);">
+                                        <img src= "{{ events.event_thumbnail.url }}" style="
+                                        object-fit:contain;
+                                        border-radius: 10px;
+                                        max-width: 28rem; 
+                                        max-height: 13rem;
+                                        width: 100%;
+                                        height: 100%;">
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
-                        <!-- Page Navigation Button Controls. -->
-                        <div>
-                        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
-                            <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
-                        </button>
+                            <!--  Text Description Column-->
+                            <div class="col-lg-8">
+                                <!-- class = "wdescription-container" Work Description Container -->
+                                <div style="
+                                padding-left: .2rem; 
+                                padding-top: .7rem;
+                                ">
+                                    <div class="flex-shrink-0" style="padding-right: 1rem; ">
+                                        <!-- class ="wc-title" Work title Text Row -->
+                                        <ul style="
+                                        font-weight: 635;
+                                        font-size: .8rem;
+                                        color: #111e2c;
+                                        text-align: left;
+                                        padding-left: 0rem;
+                                        margin-bottom: 0rem;
+                                        text-transform: uppercase;
+                                        list-style-type: none;">
+                                            <li style="color:#736b22; font-size: 1rem;"> {{ events.title }}</li>
+                                            <li><i class="fa-regular fa-calendar"></i> {{ events.start_time }}</li>
+                                            <li> Details: </li>
+                                            <li style="
+                                                text-align: justify;
+                                                text-justify: inter-word;
+                                                font-weight: 400;
+                                                font-size: .8rem;
+                                                ">
+                                                    {{ events.description}}
+
+                                            </li>
+                                            <li>
+                                                Host:
+                                                    {% for participant in events.participants.all %}
+                                                    <a href="{% url 'layoverconnections:profile' %}" style="font-weight: 400; font-size: .4rem; color: black;">
+                                                        <div style="                                                                    
+                                                        vertical-align: top;
+                                                        display: inline-block;
+                                                        text-align: center;
+                                                        width: 1.6rem;">
+                                                            <img src= "{{ participant.profile.image.url }}" style="height: 1.5rem; width: 1.5rem; border-radius: 20px;">
+                                                            <span style="display: block;">{{ participant.first_name }}</span>
+                                                        </div>
+                                                    </a>
+                                                    {% endfor %}
+                                            </li>
+                                            <li>
+                                                <a href="{%  url 'events:event_details' events.id %}" style="color:rgb(33, 32, 46); font-weight: 400;">
+                                                    <!--a href="{{ events.get_absolute_url }}" style="color:rgb(33, 32, 46); margin-top: 1rem;"-->
+                                                        view event details
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                    {% endfor %}
             </div>
         </div>
+
     </div>
 </section>
 

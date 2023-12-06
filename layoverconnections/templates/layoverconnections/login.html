@@ -4,14 +4,7 @@
 {% block content %}      
 <!--Login Glass form-->
   <div class="card-body px-4 py-1 px-md-5">
-      <!-- Template formatting -->
-      <p class="mb-4 opacity-70 login-banner-text" style="color:black;">
-          Welcome to Layover Connections the app where solo travelers stuck in the same city 
-          can meet and spend time together to share stories and create new experiences. 
-          Sign up to meet other travelers in the area and to connect. Whether you're only in 
-          town in time with enough time to grab a quick drink at the airport or you've got 
-          time to explore and have fun in the city we've got you covered.
-      </p> 
+
       <h1> Log In</h1>
       <form action="{% url 'layoverconnections:login' %}" method="post">
         {% csrf_token %}
