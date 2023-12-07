@@ -132,7 +132,9 @@ def edit_event(request, event_id):
 	# Only allow user to modify event details if they're a host.
 	if host == event_host:
 		if request.method == "POST":
-			update_form = EventCreationForm(request.POST, instance=event_details)
+			update_form = EventCreationForm(request.POST,
+								   		 	request.FILES,
+											instance=event_details)
 			if update_form.is_valid():
 				update_form.save()
 				# FIXME Django routing messages to admin/ login portal url insert messages with JavaScript

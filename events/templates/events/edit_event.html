@@ -3,83 +3,86 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <!-- Section: Design Block -->
-    <section class="background-radial-gradient overflow-hidden">
-        <div class="container px-4 py-2 px-md-5 text-center text-lg-start my-5">
-          <div class="row gx-lg-5 align-items-center mb-5">
-
-                <!-- Create Event Form -->
-                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-                    <div class="card bg-glass" style = "border-radius: 10px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 1px solid rgba(0, 0, 0, 0.507);">
-                        <div class="card-body px-2 py-5 px-md-5" >
-                        <button class="btn btn-outline-info mb-1" style="background-color:hsl(195, 65%, 19%);">
-                            <strong><a href="{% url 'events:event_base' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
-                        </button>
-                        <button class="btn btn-outline-info mb-1" style="background-color:hsl(195, 65%, 19%);">
-                            <strong><a href="{%  url 'events:delete_event' event_details.id %}" style="color: #f8f9fa; text-decoration:none;"> Delete Event </a></strong>
-                        </button>
-                        <!--  Event Edit form -->
-                            <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <fieldset class="form-group">
-                                  <!-- Individual Form Fields -->
-                                  <ul class="list-group" style="padding: 5px; opacity: 90%;">
-                                    <!-- Event Details -->
-                                        <li class="list-group-item" style="background-color: hsla(194, 68%, 18%, 0.822); opacity: 100%;"> 
-                                            <h1> Edit Event </h1>
-                                            <p style=
-                                            "font-size: large;
-                                            text-align: justify;
-                                            text-justify: inter-word;
-                                            "> 
-                                                Here are the details of your event. If there are any changes you need to make feel free to adjust some of the details below.
-                                            </p>
-                                        </li>
-                                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
-                                            <strong style="color: #363434;"> Title: {{ update_form.title}} </strong> 
-                                        </li>
-                                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);">
-                                            <div style = "display: flex;">
-                                                <div style="flex: auto;">
-                                                    <strong>Starts:</strong> </br> 
-                                                        {{ update_form.start_time}}
-                                                </div>
-                                                <div style="flex: auto;">
-                                                    <strong>Ends:</strong> </br> 
-                                                        {{ update_form.end_time}}
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
-                                            <strong style="color: #363434;"> Description: {{ update_form.description}} </strong> 
-                                        </li>
-                                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
-                                            <!-- Submit Button-->
-                                            <div class="form-group">
-                                                <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
-                                                <strong style="color: #f8f9fa; text-decoration:none;">Update</strong>
-                                                </button>
-                                            </div>
-                                        </li>
-                                  </ul>
-                                </fieldset>
-                            </form>
-
-                            
-                        </div>
-                    </div>
-                </div>
+<!-- Old Section: Page below Navbar -->
+<section class="background-radial-gradient" style="height: 100vh; overflow: auto;">
+    <!-- Form Outercontainer Nav-buttons -->
+    <div class="card bg-glass" style="border-radius: 7px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 1px solid rgba(0, 0, 0, 0.507); max-width: 40rem; margin: auto;">
+        <div class="px-2 px-md-5" >
+            <h1 style="text-align: center; padding-top: 1rem; color: rgb(4, 4, 61);"> Edit Event </h1>
+            <p style=
+            "font-size: 1rem;
+            text-align: justify;
+            text-justify: inter-word;
+            "> 
+                Here are the details of your event. If there are any changes you need to make feel free to adjust some of the details below.
+            </p>
+            <!-- Exit and Delete Nav Buttons.-->
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-outline-info mb-1" style="background-color:hsl(195, 65%, 19%); border: 1px;">
+                    <strong><a href="{% url 'events:view_events' %}" style="color: #f8f9fa; text-decoration:none;"> Return to Events </a></strong>
+                </button>
+                <button class="btn btn-outline-info mb-1" style="background-color:hsl(0, 65%, 19%); border: 1px;">
+                    <strong><a href="{%  url 'events:delete_event' event_details.id %}" style="color: #f8f9fa; text-decoration:none;"> Delete Event </a></strong>
+                </button>
             </div>
+            <!--  Event Edit form -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <!-- List of Individual Form Fields -->
+                    <ul class="list-group" style="padding: 5px; opacity: 90%; color: #363434;">
+                        <!-- Event Banner -->
+                        <li class="list-group-item" style="background-color: hsla(194, 17%, 75%, 0.87); min-height: 15rem; text-align: center; padding-top: 1rem;">
+                            <!-- Thumbnail-container Bounding div for work thumbnail. -->
+                            <strong> Current Thumbnail:</strong>
+                            <div class="wrapper" style ="
+                            border-radius: 10px; 
+                            margin: auto;
+                            object-fit: contain;
+                            padding-top: .5rem;
+                            ">
+                                <img src="{{ event_details.event_thumbnail.url }}" style="
+                                border-radius: 10px;
+                                max-height: 12rem;">
+                            </div>
+
+                            <span class="ls-tight" style="font-size: .8rem; font-weight: 400;">
+                                {{ update_form.event_thumbnail }} 
+                            </span>
+                        </li>
+                        <!-- Event Description-->
+                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);">
+                            <strong>Title:</strong> </br>  
+                            {{ update_form.title}} 
+                        </li>
+                        <!-- Event Description-->
+                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);">
+                            <strong>Details:</strong> </br>  
+                            {{ update_form.description }} 
+                        </li>
+                        <!-- Scheduled Time -->
+                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);">
+                            <strong>Start Time:</strong> </br> 
+                                {{ update_form.start_time }}
+                        </li>
+                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);">
+                            <strong>End Time:</strong> </br> 
+                                {{ update_form.end_time }}
+                        </li>
+                        <!-- Update Event Confirmation Button -->
+                        <li class="list-group-item" style="background-color: hsla(194, 14%, 82%, 0.642);"> 
+                            <div class="form-group" style="text-align: center; padding: .2rem;">
+                                <button class="btn" style="background-color:hsl(194, 65%, 20%); border: 1px;" type="submit">
+                                    <strong style="color: #f8f9fa; text-decoration:none;">Update Event</strong>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
         </div>
-    </section>
-
-
-
-
-
-
-
-
+    </div>
+</section>
 
 
 {% endblock %}

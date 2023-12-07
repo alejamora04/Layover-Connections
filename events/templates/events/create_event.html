@@ -3,52 +3,48 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <!-- Section: Design Block -->
-    <section class="background-radial-gradient overflow-hidden">
-        <div class="card bg-glass" style="border-radius: 7px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 1px solid rgba(0, 0, 0, 0.507); max-width: 40rem; margin: auto;">
-            <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-                <fieldset class="form-group">
-                    <!-- Individual Form Fields -->
-                    <ul class="list-group" style="padding: 3px;">
-                        <!-- User Login information -->
-                        <li class="list-group-item" style="background-color: hsla(194, 45%, 26%, 0.815); text-align: center;"> 
-                            <h3 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%);">
-                                Create an event
-                            </h3> 
-                            <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
-                                <strong><a href="{% url 'events:view_events' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
-                            </button>
-                        </li>
-                        <li class="list-group-item">
-                            <p style="                                                        
-                            text-align: justify;
-                            text-justify: inter-word;
-                            font-weight: 400;
-                            font-size: 1rem;
-                            padding:  1rem;"> 
-                                Hi {{ user.first_name }} Nice of you to show up. Theres plently of awesome people around you also looking to kill sometime. 
-                                Chicago can be a neat playground with the proper company. What kind of vibe are you feeling and what do 
-                                you wanna see?
-                            </p>
-                        </li>
-                        <li class="list-group-item"> 
-                            {{ Event_Form|crispy }} </br>
-                        </li>
-                        <!-- Submit Button-->
-                        <li class="list-group-item">
-                            <div class="form-group">
-                                <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%)" type="submit">
-                                        <strong style="color: #f8f9fa; text-decoration:none;">Create</strong>
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
-                </fieldset>
-            </form>
-        </div>
-    </section>
 
+<!-- Section: Area below upper navbar -->
+<section class="background-radial-gradient overflow-hidden" style="height: 100vh;">
+    <!-- Event Update Form -->
+    <div class="card bg-glass" style="border-radius: 7px; box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); border: 1px solid rgba(0, 0, 0, 0.507); max-width: 40rem; margin: auto;">
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <fieldset class="form-group">
+                <ul class="list-group" style="padding: 3px;">
+                    <li class="list-group-item" style="background-color: hsla(194, 45%, 26%, 0.815); text-align: center;"> 
+                        <h3 class="my-2 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%);">
+                            Create an Event
+                        </h3>
+                        <p style="                                                        
+                        text-align: justify;
+                        text-justify: inter-word;
+                        font-weight: 500;
+                        font-size: 1rem;
+                        padding:  .5rem 1rem 0rem 1rem;"> 
+                            Hi {{ user.first_name }} Nice of you to show up. Theres plently of awesome people around you also looking to kill sometime. 
+                            Chicago can be a neat playground with the proper company. What kind of vibe are you feeling?
+                        </p> 
+                        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 20%);">
+                            <strong><a href="{% url 'events:view_events' %}" style="color: #f8f9fa; text-decoration:none;"> Back to the Events Page </a></strong>
+                        </button>
+                    </li>
+                    <li class="list-group-item" style="background-color: rgba(245, 239, 239, 0.74);"> 
+                        {{ Event_Form|crispy }} </br>
+                    </li>
+                    <!-- Submit Button-->
+                    <li class="list-group-item" style="padding-top: 0rem; background-color: rgba(245, 239, 239, 0.74);">
+                        <div class="form-group">
+                            <button class="btn btn-outline-info mt-3" style="background-color:hsl(194, 65%, 20%); border: 1px;" type="submit">
+                                    <strong style="color: #f8f9fa; text-decoration:none;">Create</strong>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</section>
 
 {% endblock %}
 

@@ -19,8 +19,9 @@ class EventUpdateForm(forms.ModelForm):
 	title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 1}))
 	start_time = forms.CharField(label= 'Start Time: [ yyyy-mm-dd 00:00 ]')
 	description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+	event_thumbnail = forms.ImageField()
 
 	class Meta:
 		model = Event
-		fields = ['title', 'start_time', 'end_time', 'description']
+		fields = ['title', 'event_thumbnail', 'start_time', 'end_time', 'description']
 
