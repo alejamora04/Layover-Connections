@@ -18,9 +18,14 @@ MVP Checklist
 def event_base(request):
 	return render(request, 'events/event_splashpage.html')
 
-# Base Event Page to encapsulate all event controls.
-def view_events(request):
-	event_list = Event.objects.all()
+
+"""
+
+
+Prototype: Establish Event status by comparing model object start time, end time, and current time
+TODO:
+1. Configure Middleware to convert UDT to CST
+2. Establish chron job to schedule event status refreshed.
 
 	# V django.utils.timezone
 	# TODO Set this to CST as a barometer before Introducing comparison logic.
@@ -53,13 +58,25 @@ def view_events(request):
 	
 	status = event_status(start, end)	
 
-
-	context = {
+		context = {
 		"Events": event_list,
 		"Datetime_now": CST_time_now,
 		"Status_Start": start,
 		"Status_End": end,  
 		"Event_Status": status,
+	}
+
+
+"""
+
+
+
+# Base Event Page to encapsulate all event controls.
+def view_events(request):
+	event_list = Event.objects.all()
+
+	context = {
+		"Events": event_list,
 	}
 
 	return render(request, 'events/existing_event.html', context)
