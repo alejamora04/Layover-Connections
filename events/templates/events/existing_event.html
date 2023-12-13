@@ -23,9 +23,28 @@
                         Nice of you to join us heres what's currently happening around the airport. If you see something that looks interesting why don't you join in? Or if you're feeling up
                         to it feel free to invite some of your fellow solo travelers to join in on a new adventure.
                     </p>
-                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 15%);">
-                        <strong><a href="{% url 'events:create_event' %}" style="color: #f8f9fa; text-decoration:none;"> Create Event </a></strong>
-                    </button>
+
+                    <!-- Validate that user is signed in to Allow user to create event if they are logged in -->
+                    {% if user.is_authenticated %}
+                        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 15%);">
+                            <strong><a href="{% url 'events:create_event' %}" style="color: #f8f9fa; text-decoration:none;"> Create Event </a></strong>
+                        </button>
+                    {% else %}
+                    <p style="                                                        
+                    text-align: justify;
+                    text-justify: inter-word;
+                    font-weight: 400;
+                    font-size: 1rem;
+                    padding:  1rem;
+                    margin-bottom: 0rem;">
+                        If you would like to join the fun and create or join an event please log in or sign up. 
+                    </p>
+                        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 15%);">
+                            <strong><a href="/login" style="color: #f8f9fa; text-decoration:none;"> Login or Sign Up </a></strong>
+                        </button>
+                    {% endif %}
+
+
                 </div>
                     <!-- Iterate through all of the events published and stored in the db-->
                     {% for events in Events %}

@@ -9,8 +9,10 @@ from django.conf.urls.static import static
 # Event paths: events/<view_of_interest>
 app_name = "events"
 urlpatterns = [
-    path("", views.event_base, name="event_base"),
+    # TODO consolidate both paths into single url path.
+    path("", views.view_events, name="event_base"),
     path("view_events", views.view_events, name="view_events"),
+
     path("create_event", views.create_event, name="create_event"),
     path("end_product", views.end_product, name="formatted_event"),
     path("<int:event_id>/event_details/", views.event_details, name="event_details"),

@@ -57,28 +57,39 @@
                     <!-- Conditional filtering: Enforce check on participant permissions to allow navigation to edit controls. -->
                     {% if perms.events.can_edit_event %}
 
-                    <div style="flex: auto;">
-                        <button class="btn mt-1" style="background-color:hsla(197, 16%, 83%, 0.813)">
-                            <strong>
-                                <!-- Generic Model access template boilerplate -->
-                                <a href="{%  url 'events:edit_event' event_details.id %}" style="color: #050505; text-decoration:none;">
-                                    <i class="fa-solid fa-pen" style="color: rgb(6, 6, 6)"></i> Edit: 
-                                </a>
-                            </strong>
-                        </button>
-                    </div>
+                        <!-- Evaluate whether the current user is the host with edit controls. -->
+                        {% if event_details.host == request.user.id %}
+                            <div style="flex: auto;">
+                                <button class="btn btn-outline-info mt-2" style="background-color:hsla(197, 16%, 83%, 0.813); border: 1px;">
+                                    <strong>
+                                        <!-- Generic Model access template boilerplate -->
+                                        <a href="{%  url 'events:edit_event' event_details.id %}" style="color: #050505; text-decoration:none;">
+                                            <i class="fa-solid fa-pen" style="color: rgb(6, 6, 6)"></i> Edit Event: 
+                                        </a>
+                                    </strong>
+                                </button>
+                            </div>
+                        <!-- User is not the host. -->
+                        {% else %}
+
+                        {% endif %}
+
+
                         
                     {% endif %}
 
-                    <!-- Show option to join if user not in participants add javascript confirmation message pre-post via DOM -->
-                    <div style="flex: auto;">
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <button class="btn btn-outline-info mt-3" style="background-color:hsla(197, 16%, 83%, 0.813); border: 1px;" type="submit">
-                                <strong style="color: #000000; text-decoration:none;"> Join </strong>
-                            </button>
-                        </form>
-                    </div>
+                    <!-- Only allow user to join if they are signed in. -->
+                    {% if user.is_authenticated %}
+                            <!-- Show option to join if user not in participants add javascript confirmation message pre-post via DOM -->
+                            <div style="flex: auto;">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <button class="btn btn-outline-info mt-2" style="background-color:hsla(197, 16%, 83%, 0.813); border: 1px;" type="submit">
+                                        <strong style="color: #000000; text-decoration:none;"> Join </strong>
+                                    </button>
+                                </form>
+                            </div>
+                    {% endif %}
 
                 </div>
             </li>
