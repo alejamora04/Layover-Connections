@@ -28,16 +28,7 @@
             </div>
             <div class="p-4 text-black" style="background-color: #f8f9fa;">
               <div class="d-flex justify-content-end text-center py-1">
-                <!-- Social Media Integration 
-                <div class="px-3">
-                  <p class="mb-1 h5"><a class="social-icon" href="#"><i class="fab fa-twitter"></i></a></p>
-                  <p class="small text-muted mb-0">twitter</p>
-                </div>
-                <div>
-                  <p class="mb-1 h5"><a class="social-icon" href="#"><i class="fab fa-instagram"></i></a></p>
-                  <p class="small text-muted mb-0">Instagram</p>
-                </div>
-                -->
+
                 <p class="lead fw-normal mb-3">
                   <!-- Django Utility to update profile information and pictures -->
                   <button type="button" class="btn btn-md btn-outline-secondary" style="background-color:hsl(194, 65%, 20%)">
@@ -50,6 +41,11 @@
             <div class="card-body p-4 text-black">
               <div class="mb-4">
                 <div class="p-3" style="background-color: #f8f9fa;">
+                  {% if messages %}
+                    {% for message in messages %}
+                      <h5>{{ message}}</h5>
+                    {% endfor %}
+                  {% endif %}
                   <strong>Hello, {{ user.first_name }}.</strong>
                   <!-- Provide Bio if present -->
                   {% if user.profile.bio %}

@@ -28,11 +28,21 @@
                 </span>
             </li>
 
-            <!-- Create a front end placeholder to track who the host is.-->
+            <!-- Show host thumbnail and link to profile. -->
             <li class="list-group-item" style="background-color: rgba(245, 239, 239, 0.74);"><strong>Host:</strong> </br> 
-                <strong>{{ event_details.host.profile.first_name }}</strong>
-                <img src= "{{ event_details.host.profile.image.url }}" style="height: 2rem; width: 2rem; border-radius: 20px;">
+
+                <a href="{% url 'layoverconnections:public_profile' host.id %}" style="font-weight: 400; font-size: .4rem; color: black;">
+                    <div style="                                                                    
+                    vertical-align: top;
+                    display: inline-block;
+                    text-align: center;
+                    width: 4rem;">
+                    <img src= "{{ host.profile.image.url }}" style="height: 3.4rem; width: 3.4rem; border-radius: 50px;">
+                        <span style="display: block;"><strong>{{ host.first_name }}</strong></span>
+                    </div>
+                </a>
             </li>
+
             <!-- Description-->
             <li class="list-group-item" style="background-color: rgba(245, 239, 239, 0.74);"><strong>Details:</strong> </br> 
                 {{event_details.description}} </br>

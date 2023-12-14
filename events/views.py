@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import Permission
-from events.models import Event
+from events.models import Event, User
 from django.contrib import messages
 from .forms import EventCreationForm
 from django.utils import timezone 
@@ -108,7 +108,6 @@ def create_event(request):
 	else:
 		Event_Form = EventCreationForm()
 
-	# TODO Read about the role of context with views and rendering forms.
 	context = {
 		'Event_Form': Event_Form
 	}
@@ -119,6 +118,9 @@ def create_event(request):
 # Render single event details Allow the host to edit and for guest to join.
 def event_details(request, event_id):
 	event_details = get_object_or_404(Event, pk = event_id)
+	# Query Host Participant details to link profile and thumbnail.
+	host_id = event_details.host
+	host = User.objects.get(id=host_id)
 
 	# Allow user to join event.
 	if request.method == "POST":
@@ -129,6 +131,7 @@ def event_details(request, event_id):
 
 	context = {
 		"event_details": event_details,
+		"host": host,
 	}
 
 	return render(request, 'events/event_details.html', context)

@@ -18,12 +18,13 @@ urlpatterns = [
     path("logout", views.logout_request, name="logout"),
     path("user_profile", views.user_profile, name="profile"),
     path("edit_profile", views.edit_profile, name="editprofile"),
+    path("<int:user_id>/user_profile/", views.public_profile, name="public_profile"),
     
     # Testing combined form
     path("about_me", views.edit_bio, name="aboutme"),
 
     # Event Creation URL routing
-    path("events", views.create_event, name="events")
+    path("events", views.create_event, name="events"),
 ] 
 
 # Pre-Deployment check to see if currently in DEBUG mode

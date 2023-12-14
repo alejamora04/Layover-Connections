@@ -127,7 +127,8 @@
                                             <li>
                                                 Host:
                                                     {% for participant in events.participants.all %}
-                                                    <a href="{% url 'layoverconnections:profile' %}" style="font-weight: 400; font-size: .4rem; color: black;">
+
+                                                    <a href="{% url 'layoverconnections:public_profile' participant.id %}" style="font-weight: 400; font-size: .4rem; color: black;">
                                                         <div style="                                                                    
                                                         vertical-align: top;
                                                         display: inline-block;

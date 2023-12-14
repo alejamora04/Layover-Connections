@@ -3,10 +3,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, ImageUploadForm
+from django.contrib.auth.models import User
 
 # from django.urls import reverse
-# from .models import Profile
-
 # Login Registration and Sign Up Views.
 
 # Splash page routing
@@ -53,9 +52,26 @@ def logout_request(request):
 # User Profile Based Views
 
 # Routing to a user profile.
+# Route to logged_in user's profile
 @login_required
 def user_profile(request):
 	return render(request, 'layoverconnections/user_profile.html')
+
+
+
+
+# Route to a specific user's public profile via their id.
+@login_required
+def public_profile(request, user_id):
+	queried_user = User.objects.get(id = user_id) 
+	
+	context = {
+		"queried_user": queried_user,
+	}
+	return render(request, 'layoverconnections/public_profile.html', context)
+
+
+
 
 # Update User Profile information
 @login_required
@@ -68,8 +84,8 @@ def edit_profile(request):
 		if u_form.is_valid() and p_form.is_valid():
 			u_form.save()
 			p_form.save()
-			messages.success(request, f"Your account has been updated.") 
-			return render(request, 'layoverconnections/user_profile.html')
+
+			return render(request, 'layoverconnections/user_profile.html', messages.success(request, f"Your account has been updated.") )
 
 	else:
 		u_form = UserUpdateForm(instance=request.user)

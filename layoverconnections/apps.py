@@ -5,5 +5,3 @@ class HomepageConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'layoverconnections'
 
-    def ready(self):
-        import layoverconnections.signals

@@ -30,6 +30,7 @@ class UserUpdateForm(forms.ModelForm):
 # Combined ProfileUpdate Form + AboutMe Form Provides Front-End access to user the profile model
 class ProfileUpdateForm(forms.ModelForm):
 	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 7}))
+	image = forms.ImageField()
 
 	class Meta:
 		model = Profile
