@@ -1,0 +1,123 @@
+{% extends "layoverconnections/base_profile.html" %}
+{% load static %}
+{% load crispy_forms_tags%}
+
+{% block content %}
+<body>
+
+  <section class="h-100 gradient-custom-2">
+    
+    <div class="container py-1 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card">
+            <div class="rounded-top text-white d-flex flex-row" style="background-color: hsl(218, 41%, 15%); height:200px;">
+              <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                <!-- Image upload from Database if none present provides a default thumbnail-->
+                <img src="{{ queried_user.profile.image.url }}"
+                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                  style="width: 150px; z-index: 1">
+              </div>
+              <div class="ms-3" style="margin-top: 90px;">
+                <h4>{{ queried_user.first_name }} {{ queried_user.last_name }}</h4>
+                <p>
+                        Age: {{ queried_user.profile.age }} 
+                  <br> Hometown: {{ queried_user.profile.hometown }}
+                </p>
+              </div>
+            </div>
+            <div class="p-4 text-black" style="background-color: #f8f9fa;">
+              <div class="d-flex justify-content-end text-center py-1">
+
+                <p class="lead fw-normal mb-3">
+
+                </p>
+              </div>
+            </div>
+            <!-- User profile information -->
+            <div class="card-body p-4 text-black">
+              <div class="mb-4">
+                <div class="p-3" style="background-color: #f8f9fa;">
+                  {% if messages %}
+                    {% for message in messages %}
+                      <h5>{{ message}}</h5>
+                    {% endfor %}
+                  {% endif %}
+                  <strong>About Me</strong>
+                  <!-- Provide Bio if present -->
+                  {% if queried_user.profile.bio %}
+                    <p class="font-italic">                    
+                      {{ queried_user.profile.bio}}
+                    </p>
+                  {% else %}
+
+                  {% endif %}
+                </div>
+              </div>
+
+              <!-- Carousel with Profile Images-->
+              <div class="container justify-content-center" style="width: 26rem;">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <!-- 1st Carousel Row Image 1 + 2-->
+                    <div class="carousel-item active">
+                      <div class="row g-3">
+                        <!-- Image 1-->
+                        <div class="col mb-2">
+                          <img src="{{ queried_user.profile.userimage_1.url }}"
+                              alt="Image 1" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                        <!-- Image 2 -->
+                        <div class="col mb-2">
+                          <img src="{{ queried_user.profile.userimage_2.url }}"
+                              alt="Image 2" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Row 2 Image 3 + 4-->
+                    <div class="carousel-item">
+                      <div class="row g-3">
+                        <!-- Image 3 -->
+                        <div class="col mb-2">
+                          <img src="{{ queried_user.profile.userimage_3.url }}"
+                            alt="image 3" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                        <!-- Image 4 -->
+                        <div class="col mb-2">
+                          <img src="{{ queried_user.profile.userimage_4.url }}"
+                            alt="image 4" class="w-100 rounded-3" style="height:10rem;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>  
+              </div>
+
+
+
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+
+
+
+
+{% endblock %}
