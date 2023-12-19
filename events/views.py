@@ -5,7 +5,7 @@ from django.contrib.auth.models import Permission
 from events.models import Event, User
 from django.contrib import messages
 from .forms import EventCreationForm
-from django.utils import timezone 
+
 
 """
 
@@ -26,6 +26,8 @@ Prototype: Establish Event status by comparing model object start time, end time
 TODO:
 1. Configure Middleware to convert UDT to CST
 2. Establish chron job to schedule event status refreshed.
+
+from django.utils import timezone 
 
 	# V django.utils.timezone
 	# TODO Set this to CST as a barometer before Introducing comparison logic.

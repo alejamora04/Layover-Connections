@@ -57,9 +57,6 @@ def logout_request(request):
 def user_profile(request):
 	return render(request, 'layoverconnections/user_profile.html')
 
-
-
-
 # Route to a specific user's public profile via their id.
 @login_required
 def public_profile(request, user_id):
@@ -69,9 +66,6 @@ def public_profile(request, user_id):
 		"queried_user": queried_user,
 	}
 	return render(request, 'layoverconnections/public_profile.html', context)
-
-
-
 
 # Update User Profile information
 @login_required

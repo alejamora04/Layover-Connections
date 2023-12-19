@@ -13,13 +13,7 @@
                 <div style="margin-bottom: 1rem; text-align: center;">
                     <!-- List Header -->
                     <h2 class="jumbotron-heading" style="color:hsla(194, 65%, 20%, 0.616); font-size: 1.7rem;"><strong>Scheduled Events.</strong></h2>
-                    <p style="                                                        
-                    text-align: justify;
-                    text-justify: inter-word;
-                    font-weight: 400;
-                    font-size: 1rem;
-                    padding:  1rem;
-                    margin-bottom: 0rem;">
+                    <p class="event_heading">
                         Nice of you to join us heres what's currently happening around the airport. If you see something that looks interesting why don't you join in? Or if you're feeling up
                         to it feel free to invite some of your fellow solo travelers to join in on a new adventure.
                     </p>
@@ -30,13 +24,7 @@
                             <strong><a href="{% url 'events:create_event' %}" style="color: #f8f9fa; text-decoration:none;"> Create Event </a></strong>
                         </button>
                     {% else %}
-                    <p style="                                                        
-                    text-align: justify;
-                    text-justify: inter-word;
-                    font-weight: 400;
-                    font-size: 1rem;
-                    padding:  1rem;
-                    margin-bottom: 0rem;">
+                    <p class="event_heading">
                         If you would like to join the fun and create or join an event please log in or sign up. 
                     </p>
                         <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="background-color:hsl(194, 65%, 15%);">
@@ -49,91 +37,40 @@
                     <!-- Iterate through all of the events published and stored in the db-->
                     {% for events in Events %}
                     <!-- Event Details w Styling + CSS Wireframing: -->
-                    <!-- Outermost card wrapper -->
-                    <div class = "container-fluid"
-                    style = "
-                    background-color:rgb(245, 245, 245);
-                    max-width: 62rem;
-                    min-height: 14rem;
-                    overflow: hidden;
-                    padding-right: 1rem; 
-                    padding-left: 1rem; 
-                    padding-top: 1rem; 
-                    padding-bottom: 1rem;
-                    margin-bottom: 1rem;
-                    flex-grow: 1;
-                    border: 1px solid rgba(0, 0, 0, 0.561); 
-                    border-radius: 4px;
-                    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);            
-                    ">
+                    <!-- .card_outer_container: Outermost Container-->
+                    <div class = "container-fluid card_outer_container">
                         <div class="row" style="margin-bottom: 0rem;">
                             <!-- Work Card Thumbnail -->
                             <div class="col-lg-4" >
-                                <!-- .work-thumbnail-container Bounding div for work thumbnail. -->
-                                <div class="wrapper" style ="
-                                border-radius: 10px; 
-                                background-color:#375871; 
-                                width: 100%; 
-                                height: 100%;
-                                background-image: url('{{ events.event_thumbnail.url }}');
-                                ">
-                                    <!-- .work-image" Work Card Thumbnail -->
-                                    <!-- img src= "{% static '/events/images/500x500_placeholder.png' %}" style=" -->
-                                    <div style="
-                                    width: 100%; 
-                                    height: 100%; 
-                                    background-color: rgba(51, 64, 241, 0.178); 
-                                    backdrop-filter: blur(7px);">
-                                        <img src= "{{ events.event_thumbnail.url }}" style="
-                                        object-fit:contain;
-                                        border-radius: 10px;
-                                        max-width: 28rem; 
-                                        max-height: 13rem;
-                                        width: 100%;
-                                        height: 100%;">
+                                <!-- .thumbnail_background: Event thumbnail background image -->
+                                <div class="wrapper thumbnail_background" style ="background-image: url('{{ events.event_thumbnail.url }}');">
+                                    <!-- .blur_layer: Blurred layer for smaller thumbnail image -->
+                                    <div class="blur_layer">
+                                        <!-- .event_thumbnail-->
+                                        <img src= "{{ events.event_thumbnail.url }}" class="event_thumbnail">
                                     </div>
                                 </div>
                             </div>
                             <!--  Text Description Column-->
                             <div class="col-lg-8">
-                                <!-- class = "wdescription-container" Work Description Container -->
-                                <div style="
-                                padding-left: .2rem; 
-                                padding-top: .7rem;
-                                ">
-                                    <div class="flex-shrink-0" style="padding-right: 1rem; ">
-                                        <!-- class ="wc-title" Work title Text Row -->
-                                        <ul style="
-                                        font-weight: 635;
-                                        font-size: .8rem;
-                                        color: #111e2c;
-                                        text-align: left;
-                                        padding-left: 0rem;
-                                        margin-bottom: 0rem;
-                                        text-transform: uppercase;
-                                        list-style-type: none;">
+                                <div style="padding-left: .2rem; padding-top: .7rem;">
+                                    <div class="flex-shrink-0" style="padding-right: 1rem;">
+                                        <!-- .event_text -->
+                                        <ul class="event_text">
                                             <li style="color:#736b22; font-size: 1rem;"> {{ events.title }}</li>
                                             <li><i class="fa-regular fa-calendar"></i> {{ events.start_time }}</li>
                                             <li> Details: </li>
-                                            <li style="
-                                                text-align: justify;
-                                                text-justify: inter-word;
-                                                font-weight: 400;
-                                                font-size: .8rem;
-                                                ">
+                                            <!-- .event_details -->
+                                            <li class="event_details">
                                                     {{ events.description}}
 
                                             </li>
                                             <li>
                                                 Host:
                                                     {% for participant in events.participants.all %}
-
+                                                    <!-- Participant profile picture anchor tags -->
                                                     <a href="{% url 'layoverconnections:public_profile' participant.id %}" style="font-weight: 400; font-size: .4rem; color: black;">
-                                                        <div style="                                                                    
-                                                        vertical-align: top;
-                                                        display: inline-block;
-                                                        text-align: center;
-                                                        width: 1.6rem;">
+                                                        <div style="vertical-align: top; display: inline-block; text-align: center; width: 1.6rem;">
                                                             <img src= "{{ participant.profile.image.url }}" style="height: 1.5rem; width: 1.5rem; border-radius: 20px;">
                                                             <span style="display: block;">{{ participant.first_name }}</span>
                                                         </div>

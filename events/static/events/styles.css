@@ -75,4 +75,81 @@
   }
   
   .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+
+/* Paragraph formatting for jumbotron.*/
+.event_heading{                                                 
+  text-align: justify;
+  text-justify: inter-word;
+  font-weight: 400;
+  font-size: 1rem;
+  padding:  1rem;
+  margin-bottom: 0rem;
+}
+
+/* Event Card Styling */
+
+/* Outermost Container */
+.card_outer_container{
+  background-color:rgb(245, 245, 245);
+  max-width: 62rem;
+  min-height: 14rem;
+  overflow: hidden;
+  padding-right: 1rem; 
+  padding-left: 1rem; 
+  padding-top: 1rem; 
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  border: 1px solid rgba(0, 0, 0, 0.561); 
+  border-radius: 4px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);  
+}
+
+/* Event thumbnail background image */
+.thumbnail_background{
+  border-radius: 10px; 
+  background-color:#375871; 
+  width: 100%; 
+  height: 100%;
+}
+
+/* Blur layer for smaller thumbnail image */
+.blur_layer{
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(51, 64, 241, 0.178); 
+  backdrop-filter: blur(7px);
+}
+
+/* Event Thumbnail */
+.event_thumbnail{
+  object-fit:contain;
+  border-radius: 10px;
+  max-width: 28rem; 
+  max-height: 13rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* Event text */
+.event_text{
+  font-weight: 635;
+  font-size: .8rem;
+  color: #111e2c;
+  text-align: left;
+  padding-left: 0rem;
+  margin-bottom: 0rem;
+  text-transform: uppercase;
+  list-style-type: none;
+}
+
+/* Event Details*/
+.event_details{
+  text-align: justify;
+  text-justify: inter-word;
+  font-weight: 400;
+  font-size: .8rem;
+  text-transform: none;
+}
   

@@ -37,14 +37,20 @@ To run Layover Connections the application repository source code has been conta
 
 6. Run updated containers for both the database as well as the application.  
        `$ docker compose up -d`
-   
-7. Apply existing migrations to the Django project database to reflect the state of the database from the command line.  
+
+7. Apply existing migrations to the Django project database to reflect the state of the database from the command line.
+       
+       
+       `$ docker compose exec web python manage.py makemigrations --noinput`
+
+
        `$ docker compose exec web python manage.py migrate --noinput`
-   
-9. Open the running appplication within your web browser via the specified localhost http: port.  
+
+
+8. Open the running appplication within your web browser via the specified localhost http: port.  
         http://localhost:8000
    
-11. To stop any running images.  
+9. To stop any running images.  
         `$ docker compose down`
 
 
