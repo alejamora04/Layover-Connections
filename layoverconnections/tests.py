@@ -1,7 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from .models import Profile
 from django.contrib.auth.models import User
 from PIL import Image
+from django.urls import reverse
 
 # Unit Test for Layover Connections app.
 
@@ -62,3 +63,45 @@ class TestProfileModel(TestCase):
         self.assertIsNone(profile.age)
         self.assertEqual(profile.profile, '')
         self.assertEqual(profile.bio, '')
+
+
+# Views Testing:
+# [Registration] Unit test for login & registration based views.
+class TestViews(TestCase):
+
+    # Setup dummy user to link ot a Profile.
+    def setUp(self):
+        # Create dummy user object to link to a Profile [one-to-one]
+        self.user = User.objects.create_user(first_name = "John",\
+                                             last_name = "Doe",\
+                                             username = "John_Doe",\
+                                             email = "johndoe@gmail.com",\
+                                             password = "GenericPassword1234")
+
+    # Remove Profile object once finished.
+    def tearDown(self):
+        pass
+
+    # Test User login View.
+    # Evaluate 200 HTTP status code for user log in. 
+    def test_login_http_status_code(self):
+        dummy_user = Client()
+        login_url = reverse("layoverconnections:login")
+        login_response = dummy_user.post(login_url, {"username": self.user.username, "password": self.user.password}, follow=True)
+        login_status_code = login_response.status_code
+
+        # Validate login functionality by checking for a 200 HTTP Status code.
+        self.assertEqual(login_status_code, 200)
+    
+
+    # Validate functional login redirects.
+    def test_login_redirect(self):
+        dummy_user = Client()
+        login_url = reverse("layoverconnections:login")
+        login_response = dummy_user.post(login_url, {"username": self.user.username, "password": "GenericPassword1234"}, follow=True)
+
+        # Check for successful login and redirect
+        self.assertRedirects(login_response, reverse("layoverconnections:homepage"))
+        # Check if the user is actually logged in
+        self.assertTrue(login_response.wsgi_request.user.is_authenticated)
+

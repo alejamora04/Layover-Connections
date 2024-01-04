@@ -27,8 +27,7 @@ def register_request(request):
 	form = NewUserForm()
 	return render (request=request, template_name="layoverconnections/register.html", context={"register_form":form})
 
-# Formatting for the Login page. 
-# TODO change username field to email- register form email = request.POST["email"]
+# View functionality for user log in. 
 def login_view(request):
 	if request.method == "POST":
 		username = request.POST["username"]
