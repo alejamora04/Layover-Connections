@@ -104,4 +104,3 @@ class TestViews(TestCase):
         self.assertRedirects(login_response, reverse("layoverconnections:homepage"))
         # Check if the user is actually logged in
         self.assertTrue(login_response.wsgi_request.user.is_authenticated)
-

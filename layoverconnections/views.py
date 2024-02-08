@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, ImageUploadForm
 from django.contrib.auth.models import User
+from .models import Profile
 
-# from django.urls import reverse
-# Login Registration and Sign Up Views.
+
+# [User Login & Registration] Views.
 
 # Splash page routing
 def index(request):
@@ -21,6 +22,9 @@ def register_request(request):
 		if form.is_valid():
 			user = form.save()
 			login(request, user)
+			# Create Profile to add one-to-one to the newly registered User.
+			new_user_profile = Profile.objects.create(user = request.user)
+			new_user_profile.save()
 			messages.success(request, "Registration successful.")
 			return redirect("layoverconnections:login")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
@@ -48,9 +52,10 @@ def logout_request(request):
 		messages.info(request, "You have Succesfully logged out.") )
 
 
-# User Profile Based Views
+# [User Profile] Views
+# User profile routing & CRUD Operations
 
-# Routing to a user profile.
+# [CRUD] - Read Operations
 # Route to logged_in user's profile
 @login_required
 def user_profile(request):
@@ -66,7 +71,47 @@ def public_profile(request, user_id):
 	}
 	return render(request, 'layoverconnections/public_profile.html', context)
 
-# Update User Profile information
+
+# [CRUD] - Update Operations
+# [NEW] Update User Profile information
+# TODO add user id to url pattern on urls.py
+@login_required
+def edit_profile(request, user_profile_id):
+	# Query user profile based on logged in user
+	current_user = request.user
+	queried_profile = Profile.objects.get(user = current_user)
+
+	# Validate that current user is the owner of the user profile to allow editing.
+	if queried_profile.user == current_user:
+		if request.method == "POST":
+			u_form = UserUpdateForm(request.POST, instance=request.user)
+			p_form = ProfileUpdateForm(request.POST, 
+									request.FILES, 
+									instance=request.user.profile)
+			if u_form.is_valid() and p_form.is_valid():
+				u_form.save()
+				p_form.save()
+
+				return render(request, 'layoverconnections/user_profile.html', messages.success(request, f"Your account has been updated.") )
+
+		else:
+			u_form = UserUpdateForm(instance=request.user)
+			p_form = ProfileUpdateForm(instance=request.user.profile)
+
+		context = {
+			'u_form': u_form,
+			'p_form': p_form
+		}
+		# Update profile information and display it to the user.
+		return render(request, 'layoverconnections/edit_profile.html', context)
+	
+	# Return user to Log-In if validation fails display message of invalid credentials.
+	return render(request, "layoverconnections/login.html",
+		messages.info(request, "Invalid Credentials.") )
+
+
+"""
+Functional profile edit doesn't validate user.
 @login_required
 def edit_profile(request):
 	if request.method == "POST":
@@ -90,6 +135,9 @@ def edit_profile(request):
 	}
 
 	return render(request, 'layoverconnections/edit_profile.html', context)# TODO Route back to Login Page.
+
+
+"""
 
 # Update About Me Section
 @login_required

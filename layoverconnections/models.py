@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 from django.conf import settings
-#from django.utils import timezone
 
 # Creates a User Profile with a one to one relationship with User Model
 # Contains information for: profilepic, hometown, age, bio

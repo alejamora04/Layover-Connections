@@ -18,6 +18,8 @@ urlpatterns = [
     path("logout", views.logout_request, name="logout"),
     path("user_profile", views.user_profile, name="profile"),
     path("edit_profile", views.edit_profile, name="editprofile"),
+    # TODO Add user id to edit profile url dispatcher.
+
     path("<int:user_id>/user_profile/", views.public_profile, name="public_profile"),
     
     # Testing combined form

@@ -19,15 +19,14 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 
-# Combine 1-3 Allows user to change profile information
+# User Model information Related Forms
 class UserUpdateForm(forms.ModelForm):
 	email = forms.EmailField()
 	
 	class Meta:
 		model = User
 		fields = ['first_name', 'last_name', 'username', 'email']
-
-# Combined ProfileUpdate Form + AboutMe Form Provides Front-End access to user the profile model
+		  
 class ProfileUpdateForm(forms.ModelForm):
 	bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 7}))
 	image = forms.ImageField()

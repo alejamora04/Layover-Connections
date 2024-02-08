@@ -7,6 +7,8 @@ class EventCreationForm(forms.ModelForm):
 	title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 1}))
 	start_time = forms.CharField(label= 'Start Time: [ yyyy-mm-dd 00:00 ]')
 	description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+	# TODO Fix the default event_thumbnail error.
+	#event_thumbnail = forms.ImageField(required=False)
 	event_thumbnail = forms.ImageField()
 
 	class Meta:

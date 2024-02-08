@@ -4,14 +4,6 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from PIL import Image
 
-#from django.contrib import auth
-#from django.utils import timezone
-"""
-Post MVP Attributes 
- Duration
- Basic Category Tags and pagination controls. 
- Event Comments.
-"""
 
 # Prototype model for Events
 class Event(models.Model):
@@ -22,8 +14,7 @@ class Event(models.Model):
     participants = models.ManyToManyField(User)
     # Add a field to store the host's user id.
     host = models.IntegerField(null=True)
-    
-    # [IN PROGRESS] Add Event Thumbnail and provide a default.
+    # Add Event Thumbnail and provide a default.
     event_thumbnail = models.ImageField(default='event_placeholder.jpg', upload_to='event_thumbnails')
 
     # Host permissions created via model attributes.

@@ -7,71 +7,9 @@ from django.contrib import messages
 from .forms import EventCreationForm
 
 
-"""
-
-MVP Checklist
-- Configure Middleware to assign local CST to views attribute to make status accurate
-
-"""
-
 # Base Event Page to encapsulate all event controls.
 def event_base(request):
 	return render(request, 'events/event_splashpage.html')
-
-
-"""
-
-
-Prototype: Establish Event status by comparing model object start time, end time, and current time
-TODO:
-1. Configure Middleware to convert UDT to CST
-2. Establish chron job to schedule event status refreshed.
-
-from django.utils import timezone 
-
-	# V django.utils.timezone
-	# TODO Set this to CST as a barometer before Introducing comparison logic.
-	CST_time_now = timezone.now()
-
-	# Access Model Start & End DateTime Field Values.
-	model_start_time = 'start_time'
-	model_end_time = 'end_time'
-	model_object = Event.objects.first()
-
-	start = getattr(model_object, model_start_time)
-	end = getattr(model_object, model_end_time)
-
-	# Compares start, end, and current time to determine status.
-	# Datetime Comparisons are made in UTC Timezones. Need to add a date comparison as well.
-	def event_status(start_time, end_time):
-		now = timezone.now()
-
-		if start_time < now and now < end_time:
-			status = 'Active'
-			return status
-		elif now < start_time and now < end_time:
-			status = 'Upcoming'
-			return status
-		elif now > start_time and now > end_time:
-			status = 'Finished'
-			return status
-		
-		return
-	
-	status = event_status(start, end)	
-
-		context = {
-		"Events": event_list,
-		"Datetime_now": CST_time_now,
-		"Status_Start": start,
-		"Status_End": end,  
-		"Event_Status": status,
-	}
-
-
-"""
-
-
 
 # Base Event Page to encapsulate all event controls.
 def view_events(request):
