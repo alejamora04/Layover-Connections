@@ -27,17 +27,21 @@
             </div>
             <!-- Django forms to apply updates to user profile. -->
             <div class="p-4 text-black" style="background-color: #f8f9fa;">
-              <div class="d-flex justify-content-end text-center py-1">
-                <!-- Route to the main page -->
-                <div>
-                  <button type="button" class="btn btn-md btn-outline-secondary" style="background-color:hsl(194, 65%, 20%)">
+                <!-- Routing options -->
+                <div class="container" style="padding-top: 1rem; display: flex; justify-content: space-between;">
+                  <!-- Route to the main page -->
+                  <button class="btn btn-outline-info mb-1" style="background-color:hsl(194, 65%, 20%); border: 1px;">
                     <strong><a href="{% url 'layoverconnections:profile' %}" style="color: #f8f9fa; text-decoration:none;">Return to Profile</a></strong>
                   </button>
-                </div>   
-              </div>
+
+                  <!-- Delete Profile controls -->
+                  <button class="btn btn-outline-info mb-1" style="background-color:hsl(0, 65%, 19%); border: 1px;">
+                    <strong><a href="{%  url 'layoverconnections:delete_profile' %}" style="color: #f8f9fa; text-decoration:none;"> Delete Your Profile? </a></strong>
+                  </button>
+                </div>
 
             <!-- Forms to Edit User Profile-->
-            <div class="card-body p-3 text-black">
+            <div class="card-body p-3 text-black">                </div>
               <div class="mb-5">
                 <div class="py-4" style="background-color: #f8f9fa;">
                   <!--  User Profile information -->

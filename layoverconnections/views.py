@@ -73,16 +73,16 @@ def public_profile(request, user_id):
 
 
 # [CRUD] - Update Operations
-# [NEW] Update User Profile information
-# TODO add user id to url pattern on urls.py
+# Update User Profile information
 @login_required
 def edit_profile(request, user_profile_id):
 	# Query user profile based on logged in user
 	current_user = request.user
+	user_profile_id = current_user.id
 	queried_profile = Profile.objects.get(user = current_user)
 
 	# Validate that current user is the owner of the user profile to allow editing.
-	if queried_profile.user == current_user:
+	if queried_profile.user.id == user_profile_id:
 		if request.method == "POST":
 			u_form = UserUpdateForm(request.POST, instance=request.user)
 			p_form = ProfileUpdateForm(request.POST, 
@@ -108,36 +108,6 @@ def edit_profile(request, user_profile_id):
 	# Return user to Log-In if validation fails display message of invalid credentials.
 	return render(request, "layoverconnections/login.html",
 		messages.info(request, "Invalid Credentials.") )
-
-
-"""
-Functional profile edit doesn't validate user.
-@login_required
-def edit_profile(request):
-	if request.method == "POST":
-		u_form = UserUpdateForm(request.POST, instance=request.user)
-		p_form = ProfileUpdateForm(request.POST, 
-								   request.FILES, 
-								   instance=request.user.profile)
-		if u_form.is_valid() and p_form.is_valid():
-			u_form.save()
-			p_form.save()
-
-			return render(request, 'layoverconnections/user_profile.html', messages.success(request, f"Your account has been updated.") )
-
-	else:
-		u_form = UserUpdateForm(instance=request.user)
-		p_form = ProfileUpdateForm(instance=request.user.profile)
-
-	context = {
-		'u_form': u_form,
-		'p_form': p_form
-	}
-
-	return render(request, 'layoverconnections/edit_profile.html', context)# TODO Route back to Login Page.
-
-
-"""
 
 # Update About Me Section
 @login_required
@@ -166,6 +136,27 @@ def edit_bio(request):
 	}
 
 	return render(request, 'layoverconnections/about_me.html', context)
+
+# CRUD - Delete Operations
+# Allow user to delet their profile and user account
+@login_required
+def delete_profile(request):
+	# Query user profile based on logged in user
+	current_user = request.user
+	profile_to_delete = Profile.objects.get(user = current_user)
+	user_to_delete = User.objects.get(username = current_user.username)
+	
+	context = {
+		"delete_profile": profile_to_delete,
+	}
+
+	if request.method == "POST":
+		profile_to_delete.delete()
+		user_to_delete.delete()
+
+		return render(request, 'layoverconnections/login.html')
+	
+	return render(request, 'layoverconnections/delete_profile.html', context)
 
 # Homepage Based Views
 

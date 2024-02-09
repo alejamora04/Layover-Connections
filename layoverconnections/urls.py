@@ -17,15 +17,10 @@ urlpatterns = [
     path("login", views.login_view, name="login"),
     path("logout", views.logout_request, name="logout"),
     path("user_profile", views.user_profile, name="profile"),
-    path("edit_profile", views.edit_profile, name="editprofile"),
-    # TODO Add user id to edit profile url dispatcher.
-
+    path("<int:user_profile_id>/edit_profile", views.edit_profile, name="editprofile"),
     path("<int:user_id>/user_profile/", views.public_profile, name="public_profile"),
-    
-    # Testing combined form
+    path("delete_profile", views.delete_profile, name="delete_profile"),
     path("about_me", views.edit_bio, name="aboutme"),
-
-    # Event Creation URL routing
     path("events", views.create_event, name="events"),
 ] 
 

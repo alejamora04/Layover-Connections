@@ -1,0 +1,83 @@
+{% extends "layoverconnections/base_profile.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}   
+
+<!-- Section: Design Block -->
+<section class="background-radial-gradient" style="overflow: auto; height: 100vh; padding: .8rem;">
+    <div class="container" style="
+    background-color: hsla(8, 67%, 18%, 0.822); 
+    border-radius: 10px; 
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .7); 
+    border: 2px solid rgba(0, 0, 0, 0.507); 
+    max-width: 35rem;
+    padding: 1rem;
+    margin: auto;">
+      <div style="text-align: center; color: white;">
+          <h1>WARNING!</h1>
+          ONCE A PROFILE IS DELETED IT CAN'T BE RECOVERED!
+
+          <button class="btn" style="background-color:hsl(195, 59%, 14%); border: 2px; margin: 1rem;">
+              <strong><a href="{% url 'layoverconnections:profile' %}" style="color: #f8f9fa; text-decoration:none;">Cancel and Return to Profile</a></strong>
+          </button>
+      </div>
+        <!-- Event Details -->
+        <ul class="list-group" style="padding: 5px; background-color: hsl(194, 14%, 82%); color: #363434; font-size: .8rem;">
+            
+            <!-- Event Banner -->
+            <li class="list-group-item" style="background-color:hsla(196, 58%, 14%, 0.842); min-height: 15rem; text-align: center; padding-top: 1.5rem;">
+                <!-- Thumbnail-container Bounding div for work thumbnail. -->
+                <div class="wrapper" style ="
+                border-radius: 10px; 
+                margin: auto;
+                object-fit: contain;
+                ">
+                    <img src="{{ user.profile.image.url }}" style="
+                    border-radius: 10px;
+                    max-height: 12rem;">
+
+                </div>
+            </li>
+
+            <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+              <strong style="color: #f8f9fa;"> Login Information </strong> 
+            </li>
+            <li class="list-group-item"><strong>First Name</strong> </br> {{ delete_profile.first_name }}</li>
+            <li class="list-group-item"><strong>Last Name</strong> </br> {{ delete_profile.last_name }}</li>
+            <li class="list-group-item"><strong>Username</strong> </br> {{ delete_profile.username }}</li>
+            <li class="list-group-item"><strong>Email</strong> </br> {{ delete_profile.email }}</li>
+            <!-- User profile information -->
+            <li class="list-group-item" style="background-color:hsla(194, 65%, 20%, 0.815);"> 
+              <strong style="color: #f8f9fa;"> Profile Information </strong> 
+            </li>
+            <li class="list-group-item"><strong>Age</strong> </br> {{ delete_profile.age }}</li>
+            <li class="list-group-item"><strong>Hometown</strong> </br> {{ delete_profile.hometown }}</li>
+            <li class="list-group-item"><strong>Profile Picture</strong> </br> {{ delete_profile.image }}</li>
+            <li class="list-group-item"><strong>About Me</strong> </br> {{ delete_profile.bio }}</li>
+            
+            <li class="list-group-item"> 
+                <strong>End Time:</strong>  
+            </li>
+            <li class="list-group-item"> 
+                <strong>Details:</strong> 
+            </li>
+            <!-- Confirm Event Deletion -->
+            <li class="list-group-item"> 
+                <div style="text-align: center;">
+                    <strong> Are you sure that you want to delete your profile? </strong>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-info" style="background-color: hsla(8, 67%, 18%, 0.822); border: 1px; margin: .5rem;">
+                            <strong style=" color: white;">
+                                Delete Profile
+                            </strong>
+                        </button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</section>
+{% endblock %}
+
