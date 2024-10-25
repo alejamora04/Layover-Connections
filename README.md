@@ -40,11 +40,11 @@ To run Layover Connections the application repository source code has been conta
 
 7. Apply existing migrations to the Django project database to reflect the state of the database from the command line.
        
-       
-       `$ docker compose exec web python manage.py makemigrations --noinput`
-
-
-       `$ docker compose exec web python manage.py migrate --noinput`
+```bash
+# Create migrations and apply them to build the postgreSQL database.
+docker compose exec web python manage.py makemigrations --noinput
+docker compose exec web python manage.py migrate --noinput
+```
 
 
 8. Open the running appplication within your web browser via the specified localhost http: port.  
@@ -74,18 +74,18 @@ At the moment any and all contributors are welcome to make contributions to impr
 
 ## Current Objectives
 ### Beta Features (Current Roadmap)
--	Build User Profiles to show traveler details [Complete]
--	Build an Event App where travelers can join and host [Complete]
--       Migrate db build to PostgreSQL. [Complete]
--       Containerize Application with Docker. [Complete]
--	Develop Automated Unit Test for application components with Pytest[In Progress].
--	Perform Django Pre-deploy checks and audit
--	Deploy Beta version of the application.
+- Build User Profiles to show traveler details [Complete]
+- Build an Event App where travelers can join and host [Complete]
+- Migrate db build to PostgreSQL [Complete]
+- Containerize Application with Docker [Complete]
+- Develop Automated Unit Test for application components with Pytest [In Progress]
+- Perform Django Pre-deploy checks and audit
+- Deploy Beta version of the application.
 
 ### Post Beta Features
--	Build a messaging app to allow users to communicate amongst one another.
--	Consider user feedback to suggestions and fixes.
--	Establish more robust CI/CD QA Automation Testing
--	Expand scope of features via 3rd party API interactivity (i.e. Implementing Yelp Suggestions based on user location.)
--	Integrate Smart Watch compatibility
--	Have any other awesome ideas? Let us know!
+- Build a messaging app to allow users to communicate amongst one another.
+- Consider user feedback to suggestions and fixes.
+- Establish more robust CI/CD QA Automation Testing
+- Expand scope of features via 3rd party API interactivity (i.e. Implementing Yelp Suggestions based on user location.)
+- Integrate Smart Watch compatibility
+- Have any other awesome ideas? Let us know!
